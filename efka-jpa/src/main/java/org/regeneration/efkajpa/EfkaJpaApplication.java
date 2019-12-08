@@ -56,7 +56,7 @@ public class EfkaJpaApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception{
 		List<CitizenJpa> citizenJpa = new ArrayList<>();
-		citizenJpa.add(new CitizenJpa(Long.valueOf("52751"), "Μακρόπουλους", "Ιωάννης", "964541", "makpet", "makpet123"));
+		citizenJpa.add(new CitizenJpa(Long.valueOf("52751"), "Μακρόπουλους", "Ιωάννης", "964541", "makpet", 16));
 		//citizenJpa.add(new CitizenJpa(amka, lastName, firstName, phone, email, username, password));
 		citizenJpaRepository.saveAll(citizenJpa);
 

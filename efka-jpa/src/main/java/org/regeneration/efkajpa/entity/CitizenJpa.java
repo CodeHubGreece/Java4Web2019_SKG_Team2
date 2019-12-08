@@ -12,11 +12,11 @@ public class CitizenJpa {
     private String firstName;
     private String phone;
     private String email;
-    private String userId;
+    private int userId;
 
     public CitizenJpa(){}
 
-    public CitizenJpa(Long amka, String lastName, String firstName, String  phone, String email, String userId){
+    public CitizenJpa(Long amka, String lastName, String firstName, String  phone, String email, int userId){
         this.amka = amka;
         this.lastName = lastName;
         this.firstName = firstName;
@@ -46,7 +46,7 @@ public class CitizenJpa {
     public String setEmail(String email){return this.email = email;}
 
     @Column
-    public String getUserId(){return userId;}
-    public String setUserId(String userId){return this.userId = userId;}
+    public int getUserId(){return userId;}
+    public int setUserId(int userId){return this.userId = userId;}
 
 }
