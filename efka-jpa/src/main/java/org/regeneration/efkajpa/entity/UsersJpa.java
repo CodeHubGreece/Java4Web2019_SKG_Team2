@@ -38,4 +38,20 @@ public class UsersJpa {
     public char getType(){
         return type;
     }
+
+    public Integer setId(Integer id) {
+        return this.id = id;
+    }
+
+    public String setUsername(String username) {
+        return this.username = username;
+    }
+
+    public String setPassword(String password) {
+        return this.password = password;
+    }
+
+    public char setType(char type) {
+        return this.type = type;
+    }
 }
