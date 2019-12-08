@@ -55,22 +55,23 @@ public class EfkaJpaApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception{
+		Integer userId = 0;
+		List<UsersJpa> usersJpa = new ArrayList<>();
+		usersJpa.add(new UsersJpa("username", "1234", 'C'));
+		//citizenJpa.add(new CitizenJpa(amka, lastName, firstName, phone, email, username, password));
+		usersJpaRepository.saveAll(usersJpa);
+		for(UsersJpa user : usersJpaRepository.findAll()){
+			logger.info(user.toString());
+			userId = user.getId();
+		}
+
 		List<CitizenJpa> citizenJpa = new ArrayList<>();
-		citizenJpa.add(new CitizenJpa(Long.valueOf("52751"), "Μακρόπουλους", "Ιωάννης", "964541", "makpet", 16));
+		citizenJpa.add(new CitizenJpa(Long.valueOf("52751"), "Μακρόπουλους", "Ιωάννης", "964541", "makpet", userId));
 		//citizenJpa.add(new CitizenJpa(amka, lastName, firstName, phone, email, username, password));
 		citizenJpaRepository.saveAll(citizenJpa);
 
 		for(CitizenJpa citizen : citizenJpaRepository.findAll()){
 			logger.info(citizen.toString());
-		}
-
-		List<UsersJpa> usersJpa = new ArrayList<>();
-		usersJpa.add(new UsersJpa("username", "1234", 'C'));
-		//citizenJpa.add(new CitizenJpa(amka, lastName, firstName, phone, email, username, password));
-		usersJpaRepository.saveAll(usersJpa);
-
-		for(UsersJpa user : usersJpaRepository.findAll()){
-			logger.info(user.toString());
 		}
 	}
 }
