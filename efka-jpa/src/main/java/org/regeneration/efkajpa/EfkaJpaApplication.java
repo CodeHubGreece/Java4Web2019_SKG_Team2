@@ -1,7 +1,9 @@
 package org.regeneration.efkajpa;
 
 import org.regeneration.efkajpa.entity.CitizenJpa;
+import org.regeneration.efkajpa.entity.UsersJpa;
 import org.regeneration.efkajpa.repository.CitizenJpaRepository;
+import org.regeneration.efkajpa.repository.UsersJpaRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,8 +28,11 @@ public class EfkaJpaApplication implements CommandLineRunner {
 
 	private static final Logger logger = LoggerFactory.getLogger(EfkaJpaApplication.class);
 
+/*	@Autowired
+	private CitizenJpaRepository citizenJpaRepository;*/
+
 	@Autowired
-	private CitizenJpaRepository citizenJpaRepository;
+	private UsersJpaRepository usersJpaRepository;
 
 	public static void main(String[] args) {
 		/*Scanner in = new Scanner(System.in);
@@ -50,13 +55,22 @@ public class EfkaJpaApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception{
-		List<CitizenJpa> citizenJpa = new ArrayList<>();
+		/*List<CitizenJpa> citizenJpa = new ArrayList<>();
 		citizenJpa.add(new CitizenJpa(Long.valueOf("52751"), "Μακρόπουλους", "Ιωάννης", "964541", "makpet", "makpet123", "fdgfdgg"));
 		//citizenJpa.add(new CitizenJpa(amka, lastName, firstName, phone, email, username, password));
 		citizenJpaRepository.saveAll(citizenJpa);
 
 		for(CitizenJpa citizen : citizenJpaRepository.findAll()){
 			logger.info(citizen.toString());
+		}*/
+
+		List<UsersJpa> usersJpa = new ArrayList<>();
+		usersJpa.add(new UsersJpa("username", "1234", 'C'));
+		//citizenJpa.add(new CitizenJpa(amka, lastName, firstName, phone, email, username, password));
+		usersJpaRepository.saveAll(usersJpa);
+
+		for(UsersJpa user : usersJpaRepository.findAll()){
+			logger.info(user.toString());
 		}
 	}
 }
