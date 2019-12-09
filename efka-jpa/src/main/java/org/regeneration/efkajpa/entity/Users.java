@@ -5,7 +5,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "users")
 public class Users {
-    private Integer id;
+    private Long id;
     private String username;
     private String password;
     private char type;
@@ -23,10 +23,10 @@ public class Users {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Integer getId(){
+    public Long getId(){
         return id;
     }
-    public void setId(Integer id){this.id = id;}
+    public void setId(Long id){this.id = id;}
 
     @Column
     public String getUsername(){

@@ -7,28 +7,26 @@ import java.util.Set;
 @Entity
 @Table(name = "specialties")
 public class Specialties {
-    private Integer specialtyId;
+    private Long specialtyId;
     private String specialty;
-    private Doctors doctors;
+    private Set<Doctors> doctors;
 
     public Specialties(){}
 
-    public Specialties(Integer specialtyId, String specialty){
+    public Specialties(Long specialtyId, String specialty){
         this.specialtyId = specialtyId;
         this.specialty = specialty;
     }
 
     @Id
-    public Integer getSpecialtyId() {return specialtyId;}
-
-    public void setSpecialtyId(Integer specialtyId) {this.specialtyId = specialtyId;}
+    public Long getSpecialtyId() {return specialtyId;}
+    public void setSpecialtyId(Long specialtyId) {this.specialtyId = specialtyId;}
 
     @Column
     public String getSpecialties() {return specialty;}
     public void setSpecialties(String specialty) {this.specialty = specialty;}
 
     @OneToMany(mappedBy = "specialty", cascade = CascadeType.ALL)
-    @JoinColumn(name = "specialty")
     public Set<Doctors> getDoctors(){return doctors;}
-    public void setDoctors(Doctors doctors){this.doctors = doctors;}
+    public void setDoctors(Set<Doctors> doctors){this.doctors = doctors;}
 }

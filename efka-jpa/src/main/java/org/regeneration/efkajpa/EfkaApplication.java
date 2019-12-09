@@ -34,24 +34,21 @@ public class EfkaApplication implements CommandLineRunner {
 	private UsersRepository usersRepository;
 
 	public void createUser(){
-		Integer userId = 0;
-		List<Users> users = new ArrayList<>();
-		users.add(new Users("username", "1234", 'C'));
+		/*
+		Users users = new Users("username", "1234", 'C');
 		//citizen.add(new Citizen(amka, lastName, firstName, phone, email, username, password));
-		usersRepository.saveAll(users);
+		usersRepository.save(users);
+		Citizens citizens = new Citizens("52751", "Μακρόπουλους", "Ιωάννης", "964541", "makpet", users.getId());
 		for(Users user : usersRepository.findAll()){
 			logger.info(user.toString());
-			userId = user.getId();
 		}
 
-		List<Citizens> citizens = new ArrayList<>();
-		//citizen.add(new Citizen(Long.valueOf("52751"), "Μακρόπουλους", "Ιωάννης", "964541", "makpet", userId));
 		//citizen.add(new Citizen(amka, lastName, firstName, phone, email, username, password));
-		citizenRepository.saveAll(citizens);
+		citizenRepository.save(citizens);
 
 		for(Citizens citizen : citizenRepository.findAll()){
 			logger.info(citizen.toString());
-		}
+		}*/
 	}
 
 	public static void main(String[] args) {
