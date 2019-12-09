@@ -1,0 +1,1 @@
+INSERT INTO citizen (amka,first_name, last_name,phone,email,username,password) VALUES ('test10', 'test55','test3','testew','etetet','tetete','asdasd');
