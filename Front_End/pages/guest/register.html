@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="Registration">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title> Register page</title>
+
+  <!-- Styles -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  <link rel="stylesheet" href="../../styles/main.css">
+  <link rel="stylesheet" href="../../styles/guest.css">
+
+  <!-- JavaScript files -->
+  <script src="../../scripts/config/main.js"></script>
+  <script src="../../scripts/security/guest-auth.js"></script>
+  <script src="../../scripts/guest/authentication.js"></script>
+</head>
+
+<body>
+  <main>
+    <!-- Page name -->
+    <header class="center">
+      <h2>Δημιουργία Χρήστη</h2>
+    </header>
+
+    <!-- Registration form -->
+    <section class="center">
+      <img src="../../img/efka.png" href="index.html" alt="efka" class="center"> </a>
+      <form>
+        <div class="field1">
+          <label for="amka">ΑΜΚΑ</label>
+          <input id="amka" type="text" name="amka" value="" placeholder="Εισάγετε το ΑΜΚΑ σας" required>
+        </div>
+        <div class="field1">
+          <label for="name">Όνομα Χρήστη</label>
+          <input id="name" type="text" name="name" value="" placeholder="Εισάγετε το Όνομα σας" required>
+        </div>
+        <div class="field1">
+          <label for="surname">Επίθετο Χρήστη</label>
+          <input id="surname" type="text" name="surname" value="" placeholder="Εισάγετε το Επίθετο σας" required>
+        </div>
+        <div class="field1">
+          <label for="email">Email</label>
+          <input id="username" type="text" name="email" value="" placeholder="Εισάγετε το Email σας" required>
+        </div>
+        <div class="field1">
+          <label for="username">Username</label>
+          <input id="username" type="text" name="username" value="" placeholder="Εισάγετε το username σας" required>
+        </div>
+        <div class="field1">
+          <label for="password">Password</label>
+          <input id="password" type="text" name="password" value="" placeholder="Εισάγετε το password σας" required>
+        </div>
+        <div class="field1">
+          <label for="phone">Κινητό Τηλέφωνο</label>
+          <input id="phone" type="text" name="phone" pattern="[6]{1}[9]{1}[0-9]{8}" maxlength="10" value=""
+            placeholder="Εισάγετε το κινητό σας" required>
+        </div>
+
+        <div class="field1">
+          <input type="submit" class="registerbtn" value="Εγγραφή" onclick="register()">
+          <button class="registerbtn" formaction="../../index.html">Σύνδεση</button>
+        </div>
+      </form>
+    </section>
+  </main>
+
+</body>
+
+</html>
