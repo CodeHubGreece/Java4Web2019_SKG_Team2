@@ -1,13 +1,15 @@
 package org.regeneration.efkajpa.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
+import javax.persistence.*;
 import java.security.spec.InvalidKeySpecException;
+import java.util.Set;
 
 @Entity
+@Table(name = "specialties")
 public class Specialties {
     private Integer specialtyId;
     private String specialty;
+    private Doctors doctors;
 
     public Specialties(){}
 
@@ -16,21 +18,17 @@ public class Specialties {
         this.specialty = specialty;
     }
 
-    @Column
-    public Integer getSpecialtyId() {
-        return specialtyId;
-    }
+    @Id
+    public Integer getSpecialtyId() {return specialtyId;}
 
-    public void setSpecialtyId(Integer specialtyId) {
-        this.specialtyId = specialtyId;
-    }
+    public void setSpecialtyId(Integer specialtyId) {this.specialtyId = specialtyId;}
 
     @Column
-    public String getSpecialty() {
-        return specialty;
-    }
+    public String getSpecialties() {return specialty;}
+    public void setSpecialties(String specialty) {this.specialty = specialty;}
 
-    public void setSpecialty(String specialty) {
-        this.specialty = specialty;
-    }
+    @OneToMany(mappedBy = "specialty", cascade = CascadeType.ALL)
+    @JoinColumn(name = "specialty")
+    public Set<Doctors> getDoctors(){return doctors;}
+    public void setDoctors(Doctors doctors){this.doctors = doctors;}
 }
