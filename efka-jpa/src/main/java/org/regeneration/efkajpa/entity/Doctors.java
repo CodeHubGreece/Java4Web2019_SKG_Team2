@@ -18,7 +18,7 @@ public class Doctors {
     public Doctors(String lastName, String firstName, Specialties specialty) {
         this.lastName = lastName;
         this.firstName = firstName;
-        this.specialties = specialties;
+        this.specialties = specialty;
     }
 
     @Id
