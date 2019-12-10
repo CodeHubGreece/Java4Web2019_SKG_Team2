@@ -49,7 +49,11 @@ INSERT INTO specialties VALUES
 (default, 'Οφθαλμίατρος'),
 (default, 'Οδοντίατρος');
 
+<<<<<<< HEAD
 INSERT INTO doctors VALUES
+=======
+INSERT INTO doctor VALUES
+>>>>>>> master
 ('59421', 'Μακρόπουλους', 'Πέτρος', 1, 1),
 ('58237', 'Παπάζογλου', 'Κωνσταντίνα', 1, 2),
 ('61237', 'Θεολόγου', 'Αθανασία', 1, 3),
@@ -83,7 +87,11 @@ INSERT INTO doctors VALUES
 ('30364', 'Αραμπατζής', 'Βασίλειος', 10, 31),
 ('42763', 'Γεωργιάδου', 'Ζωή', 10, 32);
 
+<<<<<<< HEAD
 INSERT INTO citizens VALUES
+=======
+INSERT INTO citizen VALUES
+>>>>>>> master
 ('56452859521', 'Παπαγεωργίου', 'Ιωάννης', '6952142012', 'papgia@email.com', 33),
 ('98251523012', 'Σιδηροπούλου', 'Φανή', '6954895201', 'sidfa@email.com', 34),
 ('92542365852', 'Τάτσης', 'Μάριος', '6989140239', 'tamar@email.com', 35),
