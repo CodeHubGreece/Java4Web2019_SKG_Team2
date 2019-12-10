@@ -9,7 +9,7 @@ public class Doctors {
     private String doctorId;
     private String lastName;
     private String firstName;
-    private Specialties specialty;
+    private Specialties specialties;
     private Users users;
     private Set<Appointments> appointments;
 
@@ -18,7 +18,7 @@ public class Doctors {
     public Doctors(String lastName, String firstName, Specialties specialty) {
         this.lastName = lastName;
         this.firstName = firstName;
-        this.specialty = specialty;
+        this.specialties = specialties;
     }
 
     @Id
@@ -35,9 +35,9 @@ public class Doctors {
     public void setFirstName(String firstName) {this.firstName = firstName;}
 
     @ManyToOne
-    @JoinColumn(name = "specialty")
-    public Specialties getSpecialties(){return specialty;}
-    public void setSpecialties(Specialties specialty){this.specialty = specialty;}
+    @JoinColumn(name = "specialty_id")
+    public Specialties getSpecialties(){return specialties;}
+    public void setSpecialties(Specialties specialties){this.specialties = specialties;}
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")

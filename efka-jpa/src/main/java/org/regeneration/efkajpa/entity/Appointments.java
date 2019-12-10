@@ -1,15 +1,17 @@
 package org.regeneration.efkajpa.entity;
 
 import javax.persistence.*;
+import java.sql.Date;
+import java.sql.Time;
 
 @Entity
 @Table(name="appointments")
 public class Appointments {
-    private Long appointmentID;
+    private Long appointmentId;
     private String amkaC;
     private String doctorId;
-    private String time;
-    private String date;
+    private Time time;
+    private Date date;
     private String illnessDescription;
     private String comments;
     private Citizens citizens;
@@ -17,7 +19,7 @@ public class Appointments {
 
     public Appointments(){}
 
-    public Appointments(String amkaC, String doctorId, String time, String date, String illnessDescription, String comments){
+    public Appointments(String amkaC, String doctorId, Time time, Date date, String illnessDescription, String comments){
         this.amkaC = amkaC;
         this.doctorId = doctorId;
         this.time = time;
@@ -28,11 +30,11 @@ public class Appointments {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Long getAppointmentsID() {
-        return appointmentID;
+    public Long getAppointmentId() {
+        return appointmentId;
     }
-    public void setAppointmentID(Long appointmentID) {
-        this.appointmentID = appointmentID;
+    public void setAppointmentId(Long appointmentId) {
+        this.appointmentId = appointmentId;
     }
 
     @ManyToOne
@@ -46,12 +48,12 @@ public class Appointments {
     public void setDoctors(Doctors doctors) {this.doctors = doctors;}
 
     @Column
-    public String getTime(){return time;}
-    public void setTime(String time){this.time = time;}
+    public Time getTime(){return time;}
+    public void setTime(Time time){this.time = time;}
 
     @Column
-    public String getDate(){return date;}
-    public void setDate(String date){this.date = date;}
+    public Date getDate(){return date;}
+    public void setDate(Date date){this.date = date;}
 
     @Column
     public String getIllnessDescription(){return illnessDescription;}
