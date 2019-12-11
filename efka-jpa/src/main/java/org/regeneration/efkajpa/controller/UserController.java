@@ -15,11 +15,11 @@ public class UserController {
     private UsersRepository usersRepository;
 
     @GetMapping("/users/get/{id}")
-    public Citizens getCitizenByUserId(@PathVariable("id") Long id) {
-        return UsersRepository.retrieve(id);
+    public Citizens getCitizenByUserId(@PathVariable("username") String username) {
+        return usersRepository.findByUsername(username);
     }
 
-    @GetMapping("/users/getAll")
+   /* @GetMapping("/users/getAll")
     //Returning is List is supported with JSON response
     public List<Citizens> getAllCitizens() {
         return usersRepository.getAll();
@@ -34,7 +34,7 @@ public class UserController {
     @GetMapping("/citizen/search/{name}")
     public Users getUsersByName(@PathVariable("name") String name) {
         return UsersRepository.search(name);
-    }
+    }*/
 
 
 }

@@ -1,9 +1,9 @@
 package org.regeneration.efkajpa;
 
-import org.regeneration.efkajpa.entity.Appointments;
 import org.regeneration.efkajpa.entity.Citizens;
 import org.regeneration.efkajpa.entity.Users;
-import org.regeneration.efkajpa.repository.*;
+import org.regeneration.efkajpa.repository.CitizenRepository;
+import org.regeneration.efkajpa.repository.UsersRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,20 +33,12 @@ public class EfkaApplication implements CommandLineRunner {
 	@Autowired
 	private UsersRepository usersRepository;
 
-	@Autowired
-	private DoctorRepository doctorRepository;
-
-	@Autowired
-	private AppointmentsRepository appointmentsRepository;
-
-	@Autowired
-	private SpecialtiesRepository specialtiesRepository;
-
 	public void createUser(){
+		/*
 		Users users = new Users("username", "1234", 'C');
 		//citizen.add(new Citizen(amka, lastName, firstName, phone, email, username, password));
 		usersRepository.save(users);
-		Citizens citizens = new Citizens("527561", "Μακρής", "Ιωάννης", "964541", "makpet", users);
+		Citizens citizens = new Citizens("52751", "Μακρόπουλους", "Ιωάννης", "964541", "makpet", users.getId());
 		for(Users user : usersRepository.findAll()){
 			logger.info(user.toString());
 		}
@@ -56,7 +48,7 @@ public class EfkaApplication implements CommandLineRunner {
 
 		for(Citizens citizen : citizenRepository.findAll()){
 			logger.info(citizen.toString());
-		}
+		}*/
 	}
 
 	public static void main(String[] args) {
@@ -80,6 +72,6 @@ public class EfkaApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception{
-		createUser();
+		//createUser();
 	}
 }

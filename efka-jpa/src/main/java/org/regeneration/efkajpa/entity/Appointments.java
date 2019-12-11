@@ -8,6 +8,8 @@ import java.sql.Time;
 @Table(name="appointments")
 public class Appointments {
     private Long appointmentId;
+    private String amkaC;
+    private String doctorId;
     private Time time;
     private Date date;
     private String illnessDescription;
@@ -17,9 +19,9 @@ public class Appointments {
 
     public Appointments(){}
 
-    public Appointments(Citizens citizens, Doctors doctors, Time time, Date date, String illnessDescription, String comments){
-        this.citizens = citizens;
-        this.doctors = doctors;
+    public Appointments(String amkaC, String doctorId, Time time, Date date, String illnessDescription, String comments){
+        this.amkaC = amkaC;
+        this.doctorId = doctorId;
         this.time = time;
         this.date = date;
         this.illnessDescription = illnessDescription;

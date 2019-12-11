@@ -16,13 +16,13 @@ public class Citizens {
 
     public Citizens(){}
 
-    public Citizens(String amka, String lastName, String firstName, String  phone, String email, Users users){
+    public Citizens(String amka, String lastName, String firstName, String  phone, String email/*, Integer users*/){
         this.amka = amka;
         this.lastName = lastName;
         this.firstName = firstName;
         this.phone = phone;
         this.email = email;
-        this.users = users;
+        //this.users = users;
     }
 
     @Id
