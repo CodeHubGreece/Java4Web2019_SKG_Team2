@@ -20,7 +20,7 @@ public class DoctorController {
 	private DoctorRepository doctorRepository;
 	
 	@GetMapping("/doctors/get/{id}")
-	public Doctor getDoctorById(@PathVariable("id") int id) {
+	public Doctors getDoctorByUserId(@PathVariable("id") Long id) {
 		return doctorRepository.retrieve(id);
 	}
 	
