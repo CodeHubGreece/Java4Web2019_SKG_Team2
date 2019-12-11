@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="Login">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title> Login page </title>
+
+  <!-- Styles -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="styles/guest.css">
+
+  <!-- Javascript files -->
+  <script src="scripts/config/main.js"></script>
+  <script src="scripts/security/guest-auth.js"></script>
+  <script src="scripts/guest/authentication.js"></script>
+</head>
+
+<body>
+  <main>
+      
+    <!-- Page name -->
+    <header class="center">
+      <h2>Σύνδεση</h2>
+    </header>
+        <!-- Login form -->
+    <section class="center">
+         <img src="img\efka.png" href="index.html" alt="efka" class="center"> </a>
+      <form>
+        <div class="field1">
+          <label for="username">Όνομα Χρήστη</label>
+          <input id="username" type="text" name="username" value="" placeholder="Username">
+        </div>
+        <div class="field1">
+          <label for="password">Κωδικός Πρόσβασης</label>
+          <input id="password" type="password" name="password" value="" placeholder="Password">
+        </div>
+        <input type="submit" class="registerbtn" value="Σύνδεση" onclick="login(username,password);">
+        <button class="registerbtn" formaction="./pages/guest/register.html">Εγγραφή Νέου</button>
+      </form>
+    </section>
+  </main>
+</body>
+
+</html>
