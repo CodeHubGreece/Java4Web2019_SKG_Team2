@@ -46,11 +46,11 @@ public class Users {
     }
     public void setType(char type){this.type = type; }
 
-    @OneToOne(mappedBy = "users")
+    /*@OneToOne(mappedBy = "users")
     public Citizens getCitizens(){return citizen;}
     public void setCitizens(Citizens citizen){this.citizen = citizen;}
 
     @OneToOne(mappedBy = "users")
     public Doctors getDoctors(){return doctor;}
-    public void setDoctors(Doctors doctor){this.doctor = doctor;}
+    public void setDoctors(Doctors doctor){this.doctor = doctor;}*/
 }

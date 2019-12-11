@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 public class UsersService {
     @Autowired
     public UsersRepository usersRepository;
+
     public Users retrieve(String username){
         return usersRepository.findByUsername(username);
     }

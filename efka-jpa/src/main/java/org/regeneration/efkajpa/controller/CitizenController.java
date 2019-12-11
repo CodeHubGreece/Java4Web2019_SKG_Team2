@@ -3,6 +3,7 @@
 //import java.util.List;
 //
 //import org.regeneration.efkajpa.entity.Citizens;
+//import org.regeneration.efkajpa.service.CitizenService;
 //import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.web.bind.annotation.DeleteMapping;
 //import org.springframework.web.bind.annotation.GetMapping;
@@ -18,11 +19,11 @@
 //public class CitizenController {
 //
 //	@Autowired
-//	private CitizenRepository citizenRepository;
+//	private CitizenService citizenService;
 //
 //	@GetMapping("/citizen/get/{id}")
-//	public Citizens getCitizenByUserId(@PathVariable("id") Long id) {
-//		return citizenRepository.retrieve(id);
+//	public Citizens getCitizenByAmka(@PathVariable("id") String amka) {
+//		return citizenService.retrieve(amka);
 //	}
 //
 //	/*@GetMapping("/citizen/getAll")

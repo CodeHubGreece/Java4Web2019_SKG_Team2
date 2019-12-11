@@ -20,7 +20,7 @@
 //	@Autowired
 //	private AppointmentsRepository appointmentsRepository;
 //
-//	@GetMapping("/appointments/get/{id}")
+//	@GetMapping("/appointments/{id}")
 //	public Appointments getAppointmentsById(@PathVariable("id") Long id) {
 //		return appointmentsRepository.retrieve(id);
 //	}

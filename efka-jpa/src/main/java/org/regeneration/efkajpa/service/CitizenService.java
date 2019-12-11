@@ -2,9 +2,15 @@
 //
 //import org.regeneration.efkajpa.entity.Citizens;
 //import org.regeneration.efkajpa.repository.CitizenRepository;
+//import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.stereotype.Service;
+//
 //@Service
 //public class CitizenService {
-//    public Citizens retrieve(String username){
-//        return CitizenRepository.find
+//    @Autowired
+//    public CitizenRepository citizenRepository;
+//
+//    public Citizens retrieve(String amka){
+//        return citizenRepository.findById(amka);
 //    }
 //}

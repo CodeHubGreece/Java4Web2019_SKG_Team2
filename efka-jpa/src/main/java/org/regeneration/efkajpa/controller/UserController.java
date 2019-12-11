@@ -1,22 +1,29 @@
 package org.regeneration.efkajpa.controller;
 
 
-import org.regeneration.efkajpa.entity.Citizens;
 import org.regeneration.efkajpa.entity.Users;
-import org.regeneration.efkajpa.repository.UsersRepository;
+import org.regeneration.efkajpa.service.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class UserController {
     @Autowired
-    private UsersRepository usersRepository;
+    private UsersService usersService;
 
-    @GetMapping("/users/get/{id}")
-    public Citizens getCitizenByUserId(@PathVariable("username") String username) {
-        return usersRepository.findByUsername(username);
+    @GetMapping("/users")
+    public List<Users> getUsers(@RequestParam(value = "username", required = true) String username) {
+        Users user = new Users(username, "1234", 'd');
+        return Arrays.asList(user);
+    }
+
+    @GetMapping("/users/get/{username}")
+    public Users getUsersByUsername(@PathVariable String username) {
+        return usersService.retrieve(username);
     }
 
    /* @GetMapping("/users/getAll")
