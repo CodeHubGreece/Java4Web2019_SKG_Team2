@@ -34,9 +34,11 @@ a{
 .field1 {
   margin-bottom: 8px;
   font-size: 16px;
-  text-align: right;
 }
 .field > label:nth-child(1){
   font-weight: 900;
   width: 75px;
 }
+.field2 {
+  margin-bottom: 8px;
+  font-size: 16px;}

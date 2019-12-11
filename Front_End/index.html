@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <head>
   <meta charset="utf-8">
   <meta name="description" content="Login">
@@ -16,15 +17,45 @@
   <script src="scripts/guest/authentication.js"></script>
 </head>
 
+
 <body>
+<main>
+  <section id="container">
+    <div id="icon">
+      <img src="img/efkalogo.jpg" href="index.html" alt="efkalogo"> </a>
+    </div>
+
+    <form id="textbox">
+      <div class="box">
+        <label>Σύνδεση ως: </label>
+           <input type="radio" name="gender" value="citizen"> Πολίτης
+          <input type="radio" name="gender" value="doctor">Γιατρός<br>
+        </label>
+      </div>
+      <div class="field1">
+        <label for="username">Όνομα Χρήστη</label>
+        <input id="username" type="text" name="username" value="" placeholder="Username">
+      </div>
+      <div class="field1">
+        <label for="password">Κωδικός Πρόσβασης</label>
+        <input id="password" type="password" name="password" value="" placeholder="Password">
+      </div>
+
+      <input id="submit-button" type="button" value="Σύνδεση" onclick="login(username,password);">
+      <button class="registerbtn" formaction="./pages/guest/register.html">Δημιουργία Λογαριασμού</button>
+    </form>
+  </section>
+</main>
+</body>
+
+
+
+  <!-- <body>
   <main>
-      
-    <!-- Page name -->
-    <header class="center">
+        <header class="center">
       <h2>Σύνδεση</h2>
     </header>
-        <!-- Login form -->
-    <section class="center">
+          <section class="center">
          <img src="img\efka.png" href="index.html" alt="efka" class="center"> </a>
       <form>
         <div class="field1">
@@ -42,4 +73,4 @@
   </main>
 </body>
 
-</html>
+</html> -->

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="Login">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title> Δημιουργία Ραντεβού </title>
+
+    <!-- Styles -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <!-- <link rel="stylesheet" href="../../../styles/guest.css"> -->
+    <link rel="stylesheet" href="../../../styles/user.css">
+
+    <!-- Javascript files -->
+    <script src="/../../../scripts/config/main.js"></script>
+    <script src="../../../scripts/security/guest-auth.js"></script>
+    <script src="../../../scripts/guest/authentication.js"></script>
+    <script src="../../../scripts/user/home.js"></script>
+</head>
+
+<body>
+    <main>
+
+            <ul>
+                    <li><a class="active" href="#home">Δημιουργία</a></li>
+                    <li><a href="#news">Αναζήτηση</a></li>
+                    <li><a href="#news">Ενημέρωση</a></li>
+                    <li><a href="#contact">Διαγραφή</a></li>
+                    <li><a value="Logout" onclick="logout()">Έξοδος</a></li>
+                  </ul>
+        <!-- <header class="center">
+            <h2>Δημιουργία Ραντεβού</h2>
+        </header> -->
+        <section class="center">
+            
+             <form>
+
+                    <div class="field1">
+                            <label for="username">Όνομα Χρήστη</label>
+                            <input id="username" type="text" name="username" value="" placeholder="Username">
+                          </div>
+               <div class ="field2">
+                    <input type="date" max='2022-01-01' id="dt" />
+            </div>
+        </form>
+        </section>
+    </main>
+</body>
+
+</html>

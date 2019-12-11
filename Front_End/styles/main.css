@@ -1,55 +1,80 @@
+
 * {
   font-family: 'Roboto', sans-serif;
-  font-size: 14px;
+  font-size: 16px;
+}
+body{
+   margin: 0;
+   padding: 0;
+   font-family: sans-serif;
+   background-color: #ededed;
 }
 
-.center {
-  margin: 0px auto;
-  width: 400px;
+#container {
+   width:800px;
+   height:500px;
+   border-style:white;
+   margin-right:auto;
+   margin-left:auto;
+   margin-top: 80px;
+   text-align: center;
+   color: Black;
+   background-color:white;
+}
+
+h2{
+   margin-top:5px;
+   padding-bottom:10px;
+}
+
+#icon{
+   width:400px;
+   float:left;
+   padding-top:90px;
+}
+
+#textbox{
+   width:400px;
+   float:right;
+   padding-top:70px;
+}
+
+.field1{
+  position: relative;
+  height: 100%;
+  padding: 20px 30px 0;
+  margin-top:15px;
   text-align: center;
 }
-
-h2 {
-  font-size: 22px;
-  color: #0059af;
+  .registerbtn {
+   background-color: #0059af;
+   padding: 10px;
+   width: 270px;
+   margin-top:20px;
+   border-radius: 25px;  
+   margin-bottom: 10px;
+   border:none;
+   color:white;
 }
-
 input[type="button"] {
-  background-color: beige;
-  padding: 12px;
-  width: 150px;
-  box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
-  margin-bottom: 8px;
-}
-.container {
-  padding: 16px;
-}
-input[type=text]:focus, input[type=password]:focus {
-  background-color: #ddd;
-  outline: none;
-}
-.registerbtn {
   background-color: #0059af;
-  color: white;
-  padding: 16px 20px;
-  margin: 8px 0;
-  border: none;
-  cursor: pointer;
-  width: 100%;
-  opacity: 0.9;
+  padding: 10px;
+  width: 270px;
+  margin-top:40px;
+  border-radius: 25px;  
+  margin-bottom: 8px;
+  border:none;
+  color:white;
 }
 
-.registerbtn:hover {
-  opacity:1;
-}
-
-/* Add a blue text color to links */
-a {
-  color: dodgerblue;
-}
-
-/* Set a grey background color and center the text of the "sign in" section */
-.signin {
-  background-color: #f1f1f1;
-  text-align: center;
+input[type=text], input[type=password] {
+  background-color: white;
+  border-color:black;
+  padding: 10px;
+  width: 250px;
+  margin-top:10px;
+  border-radius: 25px;  
+  margin-bottom: 1px;
+  text-align:center;
+    
 }
