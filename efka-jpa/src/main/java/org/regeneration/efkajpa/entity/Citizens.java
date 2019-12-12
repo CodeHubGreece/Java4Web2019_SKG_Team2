@@ -16,13 +16,13 @@ public class Citizens {
 
     public Citizens(){}
 
-    public Citizens(String amka, String lastName, String firstName, String  phone, String email/*, Integer users*/){
+    public Citizens(String amka, String lastName, String firstName, String email, String phone, Users users){
         this.amka = amka;
         this.lastName = lastName;
         this.firstName = firstName;
-        this.phone = phone;
         this.email = email;
-        //this.users = users;
+        this.phone = phone;
+        this.users = users;
     }
 
     @Id
@@ -51,8 +51,8 @@ public class Citizens {
     public Users getUsers(){return users;}
     public void setUsers(Users users){this.users = users;}
 
-    @OneToMany(mappedBy = "citizens", cascade = CascadeType.ALL)
+    /*@OneToMany(mappedBy = "citizens", cascade = CascadeType.ALL)
     public Set<Appointments> getAppointments(){return appointments;}
-    public void setAppointments(Set<Appointments> appointments){this.appointments = appointments;}
+    public void setAppointments(Set<Appointments> appointments){this.appointments = appointments;}*/
 
 }

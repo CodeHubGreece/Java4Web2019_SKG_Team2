@@ -3,6 +3,7 @@ package org.regeneration.efkajpa.controller;
 import java.util.List;
 import java.sql.Date;
 
+import org.regeneration.efkajpa.service.AppointmentsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,11 +19,11 @@ import org.regeneration.efkajpa.repository.AppointmentsRepository;
 public class AppointmentsController {
 
 	@Autowired
-	private AppointmentsRepository appointmentsRepository;
+	private AppointmentsService appointmentsService;
 
 	@GetMapping("/appointments/{id}")
 	public Appointments getAppointmentsById(@PathVariable Long id) {
-		return appointmentsRepository.findById(id).get();
+		return appointmentsService.findAppointmentById(id);
 	}
 
 	/*@GetMapping("/appointments/{id}")
