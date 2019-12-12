@@ -1,6 +1,7 @@
 package org.regeneration.efkajpa.controller;
 
 import java.util.List;
+import java.util.Set;
 
 import org.regeneration.efkajpa.entity.Specialties;
 import org.regeneration.efkajpa.service.DoctorService;
@@ -22,7 +23,7 @@ public class DoctorController {
 	private DoctorService doctorService;
 
 	@GetMapping("/doctors/get/{specialty}")
-	public Doctors getDoctorBySpecialty(@PathVariable Specialties specialty) {
+	public Set<Doctors> getDoctorBySpecialty(@PathVariable Specialties specialty) {
 		return doctorService.retrieve(specialty);
 	}
 

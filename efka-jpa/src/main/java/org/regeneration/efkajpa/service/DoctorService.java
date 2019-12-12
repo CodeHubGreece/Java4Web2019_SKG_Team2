@@ -8,12 +8,14 @@ import org.regeneration.efkajpa.repository.UsersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Set;
+
 @Service
 public class DoctorService {
     @Autowired
     public DoctorRepository doctorRepository;
 
-    public Doctors retrieve(Specialties specialty){
-        return doctorRepository.findBySpecialty(specialty);
+    public Set<Doctors> retrieve(Specialties specialty){
+        return doctorRepository.findBySpecialties(specialty);
     }
 }

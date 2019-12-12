@@ -4,6 +4,8 @@ import org.regeneration.efkajpa.entity.Doctors;
 import org.regeneration.efkajpa.entity.Specialties;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import java.util.Set;
+
 public interface DoctorRepository extends JpaRepository<Doctors, String> {
-    Doctors findBySpecialty(Specialties specialty);
+    Set<Doctors> findBySpecialties(Specialties specialty);
 }
