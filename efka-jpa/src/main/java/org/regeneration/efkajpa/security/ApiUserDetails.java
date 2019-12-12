@@ -10,14 +10,10 @@ public class ApiUserDetails implements UserDetails {
 
     private final String username;
     private final String password;
-    private final Long id;
-    private final char type;
 
-    public ApiUserDetails(String username, String password, Long id, char type) {
+    public ApiUserDetails(String username, String password) {
         this.username = username;
         this.password = password;
-        this.id = id;
-        this.type = type;
     }
 
     @Override
