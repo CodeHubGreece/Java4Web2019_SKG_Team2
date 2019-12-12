@@ -44,8 +44,8 @@ public class Doctors {
     public Users getUsers(){return users;}
     public void setUsers(Users users){this.users = users;}
 
-    @OneToMany(mappedBy = "doctors", cascade = CascadeType.ALL)
+    /*@OneToMany(mappedBy = "doctors", cascade = CascadeType.ALL)
     public Set<Appointments> getAppointments(){return appointments;}
-    public void setAppointments(Set<Appointments> appointments){this.appointments = appointments;}
+    public void setAppointments(Set<Appointments> appointments){this.appointments = appointments;}*/
 
 }
