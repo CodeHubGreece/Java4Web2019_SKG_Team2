@@ -26,7 +26,7 @@ public class Specialties {
     public String getSpecialty() {return specialty;}
     public void setSpecialty(String specialty) {this.specialty = specialty;}
 
-    @OneToMany(mappedBy = "specialties", cascade = CascadeType.ALL)
+    /*@OneToMany(mappedBy = "specialties", cascade = CascadeType.ALL)
     public Set<Doctors> getDoctors(){return doctors;}
-    public void setDoctors(Set<Doctors> doctors){this.doctors = doctors;}
+    public void setDoctors(Set<Doctors> doctors){this.doctors = doctors;}*/
 }
