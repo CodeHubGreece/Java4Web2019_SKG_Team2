@@ -8,10 +8,8 @@ import java.sql.Time;
 @Table(name="appointments")
 public class Appointments {
     private Long appointmentId;
-    private String amkaC;
-    private String doctor_id;
-    private Time time;
     private Date date;
+    private Time time;
     private String illnessDescription;
     private String comments;
     private Citizens citizens;

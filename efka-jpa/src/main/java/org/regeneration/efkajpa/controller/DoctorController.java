@@ -28,28 +28,4 @@ public class DoctorController {
 		return doctorService.retrieveBySpecialty(specialty);
 	}
 
-	/*@GetMapping("/doctors/appointments")
-	public Set<Appointments> getAppointmentsByDate(@RequestBody )*/
-
-	/*@GetMapping("/doctors/getAll")
-	//Returning is List is supported with JSON response
-	public List<Doctors> getAllDoctors() {
-		return doctorRepository.getAll();
-	}
-
-	@PostMapping("/doctor/create")
-	public Doctors createDoctor(@RequestBody Doctors doctors) {
-		doctorRepository.store(doctors);
-		return doctors;
-	}
-
-	@GetMapping("/doctor/search/{name}")
-	public Doctors getDoctorByName(@PathVariable("name") String name) {
-		return doctorRepository.search(name);
-	}
-
-	@DeleteMapping("/doctor/delete/{id}")
-	public Doctors deleteDoctorById(@PathVariable("id") int id) {
-		return doctorRepository.delete(id);
-	}*/
 }
