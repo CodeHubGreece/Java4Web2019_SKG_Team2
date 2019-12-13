@@ -1,89 +1,50 @@
-
-* {
-  font-family: 'Roboto', sans-serif;
-  font-size: 16px;
-}
 body{
-   margin: 0;
-   padding: 0;
-   font-family: sans-serif;
-   background-color: #ededed;
-}
-
-#container {
-   width:800px;
-   height:500px;
-   border-style:white;
-   margin-right:auto;
-   margin-left:auto;
-   margin-top: 80px;
-   text-align: center;
-   color: Black;
+   background-color: #ededed;}
+   
+.container{        
    background-color:white;
 }
 
-h2{
-   margin-top:5px;
-   padding-bottom:10px;
+img{  
+   width:300px;
+   margin: 0, auto;
+   padding-bottom:50px;
 }
 
-#icon{
-   width:400px;
-   float:left;
-   padding-top:90px;
+h4{  
+   padding-top:20px;
+   padding-bottom: 50px;
+   text-align:center;
 }
 
-#textbox{
-   width:400px;
-   float:right;
-   padding-top:70px;
-}
-.createpageselect{
-   
-      position: relative;
-      height: 100%;
-      padding: 20px 30px 0;
-      margin-top:15px;
-      text-align: center;
-}
-.field1{
-  position: relative;
-  height: 100%;
-  padding: 20px 30px 0;
-  margin-top:15px;
-  text-align: center;
+.form-group input[type="username"], input[type="password"] {
+    border-color:black;
+    border-radius: 50px;
+    text-align: center;
 }
 
-  
-  .registerbtn {
-   background-color: #0059af;
-   padding: 10px;
-   width: 270px;
-   margin-top:20px;
-   border-radius: 25px;  
-   margin-bottom: 10px;
-   border:none;
-   color:white;
-}
-input[type="button"] {
-  background-color: #0059af;
-  padding: 10px;
-  width: 270px;
-  margin-top:40px;
-  border-radius: 25px;  
-  margin-bottom: 8px;
-  border:none;
-  color:white;
+.error-label {
+  display: none;
+  margin-top: 4px;
+  color: red;
 }
 
-input[type=text], input[type=password] {
-  background-color: white;
-  border-color:black;
-  padding: 10px;
-  width: 250px;
-  margin-top:10px;
-  border-radius: 25px;  
-  margin-bottom: 1px;
-  text-align:center;
-    
+.field. invalid-data {
+  border: 1px solid red !important;
+  outline: initial !important;
+}
+
+.field :invalid  {
+  border: 1px solid red;
+  outline: initial;
+}
+
+.field .valid-data {
+  border: 1px solid green !important;
+  outline: initial !important;
+}
+
+.field :valid  {
+  border: 1px solid green;
+  outline: initial;
 }
