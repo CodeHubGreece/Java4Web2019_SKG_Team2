@@ -28,6 +28,7 @@ public class AppointmentsService {
                 date, time, illnessDescription, comments);
         System.out.println(appointment.getDate() + "\n" + appointment.getTime());
         appointmentsRepository.save(appointment);
+        System.out.println(appointment.getDate() + "\n" + appointment.getTime());
     }
     public void deleteAppointments(Long id) {
         appointmentsRepository.deleteById(id);

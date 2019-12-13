@@ -1,6 +1,9 @@
 package org.regeneration.efkajpa.entity;
 
+import org.hibernate.validator.constraints.Length;
+
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 import java.util.Set;
 
 @Entity
@@ -26,7 +29,8 @@ public class Citizens {
     }
 
     @Id
-    @Column(length = 11)
+    @Column
+    @Length(min = 11, max = 11)
     public String getAmka(){return amka;}
     public void setAmka(String amka){this.amka = amka;}
 
@@ -39,6 +43,7 @@ public class Citizens {
     public void setFirstName(String firstName){this.firstName = firstName;}
 
     @Column
+    @Length(min = 10, max = 10)
     public String getPhone(){return phone;}
     public void setPhone(String phone){this.phone = phone;}
 
