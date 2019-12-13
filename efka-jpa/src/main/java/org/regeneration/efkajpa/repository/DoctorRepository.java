@@ -8,4 +8,5 @@ import java.util.Set;
 
 public interface DoctorRepository extends JpaRepository<Doctors, String> {
     Set<Doctors> findBySpecialties(Specialties specialty);
+    Doctors findByDoctorId(String doctorId);
 }

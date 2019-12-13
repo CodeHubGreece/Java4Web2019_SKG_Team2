@@ -15,7 +15,14 @@ public class DoctorService {
     @Autowired
     public DoctorRepository doctorRepository;
 
-    public Set<Doctors> retrieve(Specialties specialty){
+    @Autowired
+    public CitizenService citizenService;
+
+    public Set<Doctors> retrieveBySpecialty(Specialties specialty){
         return doctorRepository.findBySpecialties(specialty);
+    }
+
+    public Doctors retrieveByDoctorId(String doctorId){
+        return doctorRepository.findByDoctorId(doctorId);
     }
 }

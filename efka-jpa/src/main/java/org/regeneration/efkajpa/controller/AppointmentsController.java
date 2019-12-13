@@ -1,19 +1,15 @@
 package org.regeneration.efkajpa.controller;
 
-import java.util.List;
-import java.sql.Date;
+import java.sql.Time;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import org.regeneration.efkajpa.service.AppointmentsService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import org.regeneration.efkajpa.entity.Appointments;
-import org.regeneration.efkajpa.repository.AppointmentsRepository;
 
 @RestController
 public class AppointmentsController {
@@ -27,8 +23,13 @@ public class AppointmentsController {
 	}
 
 	@PostMapping("/appointments/create")
-	public void createAppointments(@RequestBody Appointments appointments) {
-		appointmentsService.create(appointments);
+	public void createAppointments//(@RequestBody Appointments appointments)
+	(@RequestParam(value = "amkaC", required = true) String amkaC, @RequestParam(value = "doctorId", required = true) String doctorId,
+	@RequestParam(value = "date", required = true) String date, @RequestParam(value = "time", required = true) Time time,
+	@RequestParam(value = "illnessDescription", required = true) String illnessDescription, @RequestParam(value = "comments", required = true) String comments) throws ParseException {
+		Date newDate = new SimpleDateFormat("dd-MM-yyyy").parse(date);
+		java.sql.Date sqlDate = new java.sql.Date(newDate.getTime());
+		appointmentsService.createAppointment(amkaC, doctorId, sqlDate, time, illnessDescription, comments);
 	}
 
 	/*@GetMapping("/appointments/{id}")

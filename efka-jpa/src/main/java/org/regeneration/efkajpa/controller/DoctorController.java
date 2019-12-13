@@ -24,8 +24,8 @@ public class DoctorController {
 	private DoctorService doctorService;
 
 	@GetMapping("/doctors/specialty/{specialty}")
-	public Set<Doctors> getDoctorBySpecialty(@PathVariable Specialties specialty) {
-		return doctorService.retrieve(specialty);
+	public Set<Doctors> getDoctorsBySpecialty(@PathVariable Specialties specialty) {
+		return doctorService.retrieveBySpecialty(specialty);
 	}
 
 	/*@GetMapping("/doctors/appointments")

@@ -28,8 +28,8 @@ public class Appointments {
         this.comments = comments;
     }*/
     public Appointments(Citizens citizens, Doctors doctors, Date date, Time time, String illnessDescription, String comments){
-        this.amkaC = citizens.getAmka();
-        this.doctor_id = doctors.getDoctorId();
+        this.citizens = citizens;
+        this.doctors = doctors;
         this.date = date;
         this.time = time;
         this.illnessDescription = illnessDescription;

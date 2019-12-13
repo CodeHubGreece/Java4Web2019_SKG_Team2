@@ -21,7 +21,7 @@ public class CitizenController {
 
 //	@GetMapping("/citizen/get/{id}")
 //	public Citizens getCitizenByAmka(@PathVariable("id") String amka) {
-//		return citizenService.retrieve(amka);
+//		return citizenService.retrieveByAmka(amka);
 //	}
 
     @PostMapping("/citizen/register")
