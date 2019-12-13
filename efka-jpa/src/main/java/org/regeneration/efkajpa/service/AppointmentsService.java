@@ -28,4 +28,11 @@ public class AppointmentsService {
                 date, time, illnessDescription, comments);
         appointmentsRepository.save(appointment);
     }
+    public void deleteAppointments(Long id) {
+        appointmentsRepository.deleteById(id);
+   }
+    public Appointments updateAppointmentsById(Long id){
+        return appointmentsRepository.updateAppointmentsById(id);
+
+    }
 }
