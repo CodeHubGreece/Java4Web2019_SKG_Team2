@@ -28,7 +28,7 @@ public class ApiUserDetailsService implements UserDetailsService {
             throw new UsernameNotFoundException("username not found");
         }
 
-        ApiUserDetails userDetails = new ApiUserDetails(user.getUsername(), user.getPassword());
+        ApiUserDetails userDetails = new ApiUserDetails(user.getUsername(), user.getPassword(), user.getType());
         return userDetails;
     }
 }
