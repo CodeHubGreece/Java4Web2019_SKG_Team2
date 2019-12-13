@@ -32,6 +32,7 @@ public class CitizenController {
 		newUserService.store(amka, lastName, firstName, email, username, password, phone, 'C');
     }
 
+
 	/*@GetMapping("/citizen/getAll")
 	//Returning is List is supported with JSON response
 	public List<Citizens> getAllCitizens() {

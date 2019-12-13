@@ -10,12 +10,18 @@ public class AppointmentsService {
     @Autowired
     public AppointmentsRepository appointmentsRepository;
 
-    public Appointments findAppointmentById(Long id){
+    public Appointments findAppointmentById(Long id) {
         return appointmentsRepository.findByAppointmentId(id);
     }
-}
 
-public void deleteAppointments (Long id){
+    public void deleteAppointments(Long id) {
+        appointmentsRepository.deleteById(id);
+    }
+    public Appointments updateAppointmentsById(Long id){
+        return appointmentsRepository.updateAppointmentsById(id);
 
- appointmentsRepository.delete(id);
+    }
+
+
+
 }
