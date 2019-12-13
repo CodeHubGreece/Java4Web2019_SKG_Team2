@@ -14,3 +14,8 @@ public class AppointmentsService {
         return appointmentsRepository.findByAppointmentId(id);
     }
 }
+
+public void deleteAppointments (Long id){
+
+ appointmentsRepository.delete(id);
+}
