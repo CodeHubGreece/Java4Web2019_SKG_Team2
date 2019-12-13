@@ -5,6 +5,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import org.regeneration.efkajpa.NewAppointment;
 import org.regeneration.efkajpa.service.AppointmentsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -23,13 +24,13 @@ public class AppointmentsController {
 	}
 
 	@PostMapping("/appointments/create")
-	public void createAppointments//(@RequestBody Appointments appointments)
-	(@RequestParam(value = "amkaC", required = true) String amkaC, @RequestParam(value = "doctorId", required = true) String doctorId,
-	@RequestParam(value = "date", required = true) String date, @RequestParam(value = "time", required = true) Time time,
-	@RequestParam(value = "illnessDescription", required = true) String illnessDescription, @RequestParam(value = "comments", required = true) String comments) throws ParseException {
-		Date newDate = new SimpleDateFormat("dd-MM-yyyy").parse(date);
+	public void createAppointments(@RequestBody NewAppointment newAppointment) throws ParseException {
+		System.out.println(newAppointment.getDate() + "\n" + newAppointment.getTime());
+		Date newDate = new SimpleDateFormat("dd-MM-yyyy").parse(newAppointment.getDate());
 		java.sql.Date sqlDate = new java.sql.Date(newDate.getTime());
-		appointmentsService.createAppointment(amkaC, doctorId, sqlDate, time, illnessDescription, comments);
+		System.out.println(newDate + "\n" + sqlDate);
+
+		appointmentsService.createAppointment(newAppointment.getAmkaC(), newAppointment.getDoctorId(), sqlDate, newAppointment.getTime(), newAppointment.getIllnessDescription(), newAppointment.getComments());
 	}
 
 	@DeleteMapping("/appointments/delete/{id}")

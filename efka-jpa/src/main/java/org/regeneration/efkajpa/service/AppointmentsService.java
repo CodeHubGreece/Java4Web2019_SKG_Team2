@@ -26,6 +26,7 @@ public class AppointmentsService {
     public void createAppointment(String amkaC, String doctorId, Date date, Time time, String illnessDescription, String comments){
         Appointments appointment = new Appointments(citizenService.retrieveByAmka(amkaC), doctorService.retrieveByDoctorId(doctorId),
                 date, time, illnessDescription, comments);
+        System.out.println(appointment.getDate() + "\n" + appointment.getTime());
         appointmentsRepository.save(appointment);
     }
     public void deleteAppointments(Long id) {
