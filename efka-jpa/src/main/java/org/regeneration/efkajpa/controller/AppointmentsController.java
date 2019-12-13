@@ -26,6 +26,11 @@ public class AppointmentsController {
 		return appointmentsService.findAppointmentById(id);
 	}
 
+	@PostMapping("/appointments/create")
+	public void createAppointments(@RequestBody Appointments appointments) {
+		appointmentsService.create(appointments);
+	}
+
 	/*@GetMapping("/appointments/{id}")
 	public Appointments getAppointmentsById(@PathVariable("id") Long id) {
 		return appointmentsRepository.retrieve(id);

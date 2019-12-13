@@ -9,7 +9,7 @@ import java.sql.Time;
 public class Appointments {
     private Long appointmentId;
     private String amkaC;
-    private String doctorId;
+    private String doctor_id;
     private Time time;
     private Date date;
     private String illnessDescription;
@@ -19,14 +19,23 @@ public class Appointments {
 
     public Appointments(){}
 
-    public Appointments(String amkaC, String doctorId, Time time, Date date, String illnessDescription, String comments){
-        this.amkaC = amkaC;
-        this.doctorId = doctorId;
-        this.time = time;
+    /*public Appointments(Citizens citizens, Doctors doctors, Date date, Time time, String illnessDescription, String comments){
+        this.citizens = citizens;
+        this.doctors = doctors;
         this.date = date;
+        this.time = time;
+        this.illnessDescription = illnessDescription;
+        this.comments = comments;
+    }*/
+    public Appointments(Citizens citizens, Doctors doctors, Date date, Time time, String illnessDescription, String comments){
+        this.amkaC = citizens.getAmka();
+        this.doctor_id = doctors.getDoctorId();
+        this.date = date;
+        this.time = time;
         this.illnessDescription = illnessDescription;
         this.comments = comments;
     }
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -48,12 +57,12 @@ public class Appointments {
     public void setDoctors(Doctors doctors) {this.doctors = doctors;}
 
     @Column
-    public Time getTime(){return time;}
-    public void setTime(Time time){this.time = time;}
-
-    @Column
     public Date getDate(){return date;}
     public void setDate(Date date){this.date = date;}
+
+    @Column
+    public Time getTime(){return time;}
+    public void setTime(Time time){this.time = time;}
 
     @Column
     public String getIllnessDescription(){return illnessDescription;}

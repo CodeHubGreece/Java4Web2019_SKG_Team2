@@ -47,10 +47,10 @@ CREATE TABLE appointments (
 appointment_id bigint auto_increment,
 amka_c varchar(11) NOT NULL,
 doctor_id varchar(5) NOT NULL,
-`time` time NOT NULL,
 `date` DATE  NOT NULL,
+`time` time NOT NULL,
 illness_description varchar(50) NOT NULL,
-comments varchar(200) NOT NULL,
+comments varchar(200),
 PRIMARY KEY (appointment_id),
 FOREIGN KEY (amka_c) REFERENCES citizens (amka),
 FOREIGN KEY (doctor_id) REFERENCES doctors (doctor_id)

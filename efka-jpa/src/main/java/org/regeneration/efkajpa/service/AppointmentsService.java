@@ -13,4 +13,9 @@ public class AppointmentsService {
     public Appointments findAppointmentById(Long id){
         return appointmentsRepository.findByAppointmentId(id);
     }
+
+    public void create(Appointments appointments){
+        Appointments appointment = new Appointments(appointments.getCitizens(), appointments.getDoctors(), appointments.getDate(), appointments.getTime(), appointments.getIllnessDescription(), appointments.getComments());
+        appointmentsRepository.save(appointment);
+    }
 }

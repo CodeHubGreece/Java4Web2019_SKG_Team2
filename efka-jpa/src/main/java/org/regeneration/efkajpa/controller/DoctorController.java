@@ -3,6 +3,7 @@ package org.regeneration.efkajpa.controller;
 import java.util.List;
 import java.util.Set;
 
+import org.regeneration.efkajpa.entity.Appointments;
 import org.regeneration.efkajpa.entity.Specialties;
 import org.regeneration.efkajpa.service.DoctorService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,10 +23,13 @@ public class DoctorController {
 	@Autowired
 	private DoctorService doctorService;
 
-	@GetMapping("/doctors/get/{specialty}")
+	@GetMapping("/doctors/specialty/{specialty}")
 	public Set<Doctors> getDoctorBySpecialty(@PathVariable Specialties specialty) {
 		return doctorService.retrieve(specialty);
 	}
+
+	/*@GetMapping("/doctors/appointments")
+	public Set<Appointments> getAppointmentsByDate(@RequestBody )*/
 
 	/*@GetMapping("/doctors/getAll")
 	//Returning is List is supported with JSON response
