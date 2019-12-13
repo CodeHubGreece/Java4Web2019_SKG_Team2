@@ -19,14 +19,6 @@ public class Appointments {
 
     public Appointments(){}
 
-    /*public Appointments(Citizens citizens, Doctors doctors, Date date, Time time, String illnessDescription, String comments){
-        this.citizens = citizens;
-        this.doctors = doctors;
-        this.date = date;
-        this.time = time;
-        this.illnessDescription = illnessDescription;
-        this.comments = comments;
-    }*/
     public Appointments(Citizens citizens, Doctors doctors, Date date, Time time, String illnessDescription, String comments){
         this.citizens = citizens;
         this.doctors = doctors;
@@ -35,7 +27,6 @@ public class Appointments {
         this.illnessDescription = illnessDescription;
         this.comments = comments;
     }
-
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

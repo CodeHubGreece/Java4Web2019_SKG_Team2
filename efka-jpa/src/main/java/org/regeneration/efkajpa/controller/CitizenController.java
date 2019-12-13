@@ -2,6 +2,7 @@ package org.regeneration.efkajpa.controller;
 
 import java.util.List;
 
+import org.regeneration.efkajpa.Registration;
 import org.regeneration.efkajpa.entity.Citizens;
 import org.regeneration.efkajpa.service.NewUserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,12 +25,15 @@ public class CitizenController {
 //		return citizenService.retrieveByAmka(amka);
 //	}
 
-    @PostMapping("/citizen/register")
-	public void createUsers(@RequestParam(value = "amka", required = true) String amka, @RequestParam(value = "lastName", required = true) String lastName,
+	/*@RequestParam(value = "amka", required = true) String amka, @RequestParam(value = "lastName", required = true) String lastName,
 							@RequestParam(value = "firstName", required = true) String firstName, @RequestParam(value = "email", required = true) String email,
 							@RequestParam(value = "username", required = true) String username, @RequestParam(value = "password", required = true) String password,
-							@RequestParam(value = "phone", required = true) String phone) {
-		newUserService.store(amka, lastName, firstName, email, username, password, phone, 'C');
+							@RequestParam(value = "phone", required = true) String phone) {*/
+
+    @PostMapping("/register")
+	public void createUsers(@RequestBody Registration registration){
+		newUserService.store(registration.getAmka(), registration.getLastName(), registration.getFirstName(), registration.getEmail(), registration.getUsername(),
+				registration.getPassword(), registration.getPhone(), registration.getType());
     }
 
 	/*@GetMapping("/citizen/getAll")

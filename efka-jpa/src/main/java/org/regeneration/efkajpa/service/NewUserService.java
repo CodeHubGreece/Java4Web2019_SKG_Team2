@@ -19,8 +19,8 @@ public class NewUserService {
         return usersRepository.findByUsername(username);
     }
 
-    public void store(String amka, String lastName, String firstName, String email, String username, String password, String phone, char type){
-        Users user = new Users(username, password, type);
+    public void store(String amka, String lastName, String firstName, String email, String username, String password, String phone, String type){
+        Users user = new Users(username, password, type.charAt(0));
         usersRepository.save(user);
         Citizens citizen = new Citizens(amka, lastName, firstName, email, phone, user);
         citizenRepository.save(citizen);

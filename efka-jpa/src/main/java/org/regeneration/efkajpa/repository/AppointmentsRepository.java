@@ -7,6 +7,5 @@ public interface AppointmentsRepository extends JpaRepository<Appointments, Long
     Appointments findByAppointmentId(Long id);
      void deleteById(Long id);
 
-    Appointments updateAppointmentsById(Long id);
-
+    //Appointments updateAppointmentsById(Long id);
 }

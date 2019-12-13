@@ -31,8 +31,7 @@ public class AppointmentsService {
     public void deleteAppointments(Long id) {
         appointmentsRepository.deleteById(id);
    }
-    public Appointments updateAppointmentsById(Long id){
+    /*public Appointments updateAppointmentsById(Long id){
         return appointmentsRepository.updateAppointmentsById(id);
-
-    }
+    }*/
 }
