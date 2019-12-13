@@ -31,6 +31,14 @@ public class AppointmentsController {
 		java.sql.Date sqlDate = new java.sql.Date(newDate.getTime());
 		appointmentsService.createAppointment(amkaC, doctorId, sqlDate, time, illnessDescription, comments);
 	}
+	@DeleteMapping("/delete_appointments/{id}")
+	public void deleteAppointments (@PathVariable Long id) {
+			appointmentsService.deleteAppointments(id);
+	}
+	@PutMapping("/update_appointments/{id}")
+	public void updateAppointmentsById(@PathVariable Long id, @RequestBody Appointments updatedAppointments) {
+		appointmentsService.updateAppointmentsById(id);
+	}
 
 	/*@GetMapping("/appointments/{id}")
 	public Appointments getAppointmentsById(@PathVariable("id") Long id) {
