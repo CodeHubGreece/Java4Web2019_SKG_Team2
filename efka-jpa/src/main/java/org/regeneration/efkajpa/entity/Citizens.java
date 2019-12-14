@@ -3,8 +3,7 @@ package org.regeneration.efkajpa.entity;
 import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
-import javax.validation.constraints.Size;
-import java.util.Set;
+import java.util.List;
 
 @Entity
 @Table(name = "citizens")
@@ -15,7 +14,7 @@ public class Citizens {
     private String phone;
     private String email;
     private Users users;
-    private Set<Appointments> appointments;
+    private List<Appointments> appointments;
 
     public Citizens(){}
 
@@ -57,7 +56,7 @@ public class Citizens {
     public void setUsers(Users users){this.users = users;}
 
     /*@OneToMany(mappedBy = "citizens", cascade = CascadeType.ALL)
-    public Set<Appointments> getAppointments(){return appointments;}
-    public void setAppointments(Set<Appointments> appointments){this.appointments = appointments;}*/
+    public List<Appointments> getAppointments(){return appointments;}
+    public void setAppointments(List<Appointments> appointments){this.appointments = appointments;}*/
 
 }

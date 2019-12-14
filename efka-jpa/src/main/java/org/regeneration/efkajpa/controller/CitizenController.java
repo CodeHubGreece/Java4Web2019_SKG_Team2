@@ -9,9 +9,6 @@ import org.regeneration.efkajpa.service.NewUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import org.regeneration.efkajpa.entity.Citizens;
-import org.regeneration.efkajpa.repository.CitizenRepository;
-
 import javax.naming.NameAlreadyBoundException;
 
 @RestController

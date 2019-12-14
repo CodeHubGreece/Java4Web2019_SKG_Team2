@@ -1,7 +1,7 @@
 package org.regeneration.efkajpa.entity;
 
 import javax.persistence.*;
-import java.util.Set;
+import java.util.List;
 
 @Entity
 @Table(name = "doctors")
@@ -11,7 +11,7 @@ public class Doctors {
     private String firstName;
     private Specialties specialties;
     private Users users;
-    private Set<Appointments> appointments;
+    private List<Appointments> appointments;
 
     public Doctors(){}
 
@@ -45,7 +45,7 @@ public class Doctors {
     public void setUsers(Users users){this.users = users;}
 
     /*@OneToMany(mappedBy = "doctors", cascade = CascadeType.ALL)
-    public Set<Appointments> getAppointments(){return appointments;}
-    public void setAppointments(Set<Appointments> appointments){this.appointments = appointments;}*/
+    public List<Appointments> getAppointments(){return appointments;}
+    public void setAppointments(List<Appointments> appointments){this.appointments = appointments;}*/
 
 }

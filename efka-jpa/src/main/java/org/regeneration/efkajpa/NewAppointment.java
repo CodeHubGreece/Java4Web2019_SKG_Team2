@@ -1,7 +1,5 @@
 package org.regeneration.efkajpa;
 
-import org.regeneration.efkajpa.service.NewUserService;
-
 import java.sql.Time;
 
 public class NewAppointment {

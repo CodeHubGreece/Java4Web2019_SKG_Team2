@@ -1,9 +1,9 @@
 package org.regeneration.efkajpa.controller;
 
-import java.sql.Time;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import org.regeneration.efkajpa.NewAppointment;
 import org.regeneration.efkajpa.service.AppointmentsService;
@@ -41,6 +41,16 @@ public class AppointmentsController {
 		Date newDate = new SimpleDateFormat("dd-MM-yyyy").parse(updatedAppointment.getDate());
 		java.sql.Date sqlDate = new java.sql.Date(newDate.getTime());
 		appointmentsService.updateAppointment(id, sqlDate, updatedAppointment.getTime());
+	}
+
+	@GetMapping("/appointments/search")
+	public List<Appointments> getAppointmentsByDate(@RequestParam(value = "fromDate", required = true) String fromDate,
+													@RequestParam(value = "toDate", required = true) String toDate) throws ParseException {
+		Date newFromDate = new SimpleDateFormat("dd-MM-yyyy").parse(fromDate);
+		java.sql.Date sqlFromDate = new java.sql.Date(newFromDate.getTime());
+		Date newToDate = new SimpleDateFormat("dd-MM-yyyy").parse(toDate);
+		java.sql.Date sqlToDate = new java.sql.Date(newToDate.getTime());
+		return appointmentsService.searchAppointments(sqlFromDate, sqlToDate);
 	}
 
 }

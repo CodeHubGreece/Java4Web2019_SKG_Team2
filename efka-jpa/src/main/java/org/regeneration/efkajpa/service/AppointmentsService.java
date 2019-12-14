@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.sql.Date;
 import java.sql.Time;
+import java.util.List;
 
 @Service
 public class AppointmentsService {
@@ -39,5 +40,9 @@ public class AppointmentsService {
         appointmentsRepository.findByAppointmentId(id).setDate(date);
         appointmentsRepository.findByAppointmentId(id).setTime(time);
         appointmentsRepository.flush();
+    }
+
+    public List<Appointments> searchAppointments(Date fromDate, Date toDate){
+        return appointmentsRepository.findByDateBetween(fromDate, toDate);
     }
 }

@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Set;
+import java.util.List;
 
 @Service
 public class DoctorService {
@@ -19,7 +19,7 @@ public class DoctorService {
     @Autowired
     public CitizenService citizenService;
 
-    public Set<Doctors> retrieveBySpecialty(Specialties specialty){
+    public List<Doctors> retrieveBySpecialty(Specialties specialty){
         return doctorRepository.findBySpecialties(specialty);
     }
 
