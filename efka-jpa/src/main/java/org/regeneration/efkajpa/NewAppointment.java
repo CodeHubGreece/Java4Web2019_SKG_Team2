@@ -23,6 +23,11 @@ public class NewAppointment {
         this.comments = comments;
     }
 
+    public NewAppointment(String date, Time time) {
+        this.date = date;
+        this.time = time;
+    }
+
     public String getAmkaC(){
         return amkaC;
     }

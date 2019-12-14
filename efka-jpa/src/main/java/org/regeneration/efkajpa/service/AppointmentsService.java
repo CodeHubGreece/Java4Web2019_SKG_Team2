@@ -35,7 +35,9 @@ public class AppointmentsService {
         appointmentsRepository.deleteById(id);
    }
 
-    public Appointments updateAppointmentsById(Long id){
-        return appointmentsRepository.updateAppointmentsById(id);
+    public void updateAppointment(Long id, Date date, Time time){
+        appointmentsRepository.findByAppointmentId(id).setDate(date);
+        appointmentsRepository.findByAppointmentId(id).setTime(time);
+        appointmentsRepository.flush();
     }
 }

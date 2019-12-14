@@ -25,12 +25,10 @@ public class AppointmentsController {
 
 	@PostMapping("/appointments/create")
 	public void createAppointments(@RequestBody NewAppointment newAppointment) throws ParseException {
-		System.out.println(newAppointment.getDate() + "\n" + newAppointment.getTime());
 		Date newDate = new SimpleDateFormat("dd-MM-yyyy").parse(newAppointment.getDate());
 		java.sql.Date sqlDate = new java.sql.Date(newDate.getTime());
-		System.out.println(newDate + "\n" + sqlDate);
-
-		appointmentsService.createAppointment(newAppointment.getAmkaC(), newAppointment.getDoctorId(), sqlDate, newAppointment.getTime(), newAppointment.getIllnessDescription(), newAppointment.getComments());
+		appointmentsService.createAppointment(newAppointment.getAmkaC(), newAppointment.getDoctorId(), sqlDate, newAppointment.getTime(),
+				newAppointment.getIllnessDescription(), newAppointment.getComments());
 	}
 
 	@DeleteMapping("/appointments/delete/{id}")
@@ -39,8 +37,10 @@ public class AppointmentsController {
 	}
 
 	@PutMapping("/appointments/update/{id}")
-	public void updateAppointmentsById(@PathVariable Long id, @RequestBody Appointments updatedAppointments) {
-		appointmentsService.updateAppointmentsById(id);
+	public void updateAppointmentsById(@PathVariable Long id, @RequestBody NewAppointment updatedAppointment) throws ParseException {
+		Date newDate = new SimpleDateFormat("dd-MM-yyyy").parse(updatedAppointment.getDate());
+		java.sql.Date sqlDate = new java.sql.Date(newDate.getTime());
+		appointmentsService.updateAppointment(id, sqlDate, updatedAppointment.getTime());
 	}
 
 }
