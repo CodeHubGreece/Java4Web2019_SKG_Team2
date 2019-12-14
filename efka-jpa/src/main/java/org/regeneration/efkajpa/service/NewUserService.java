@@ -5,6 +5,7 @@ import org.regeneration.efkajpa.entity.Users;
 import org.regeneration.efkajpa.repository.CitizenRepository;
 import org.regeneration.efkajpa.repository.UsersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -15,12 +16,16 @@ public class NewUserService {
     @Autowired
     public CitizenRepository citizenRepository;
 
+    @Autowired
+    public PasswordEncoder passwordEncoder;
+
     public Users retrieve(String username){
         return usersRepository.findByUsername(username);
     }
 
-    public void store(String amka, String lastName, String firstName, String email, String username, String password, String phone, String type){
-        Users user = new Users(username, password, type.charAt(0));
+    public void store(String amka, String lastName, String firstName, String email, String username, String password,
+                      String phone, String type){
+        Users user = new Users(username, passwordEncoder.encode(password), type.charAt(0));
         usersRepository.save(user);
         Citizens citizen = new Citizens(amka, lastName, firstName, email, phone, user);
         citizenRepository.save(citizen);
