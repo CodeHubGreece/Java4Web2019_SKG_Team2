@@ -8,6 +8,7 @@ import org.regeneration.efkajpa.repository.UsersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Set;
 
 @Service
@@ -25,4 +26,9 @@ public class DoctorService {
     public Doctors retrieveByDoctorId(String doctorId){
         return doctorRepository.findByDoctorId(doctorId);
     }
+
+    public List<Doctors> findAll() {
+        return doctorRepository.findAll();
+    }
+
 }

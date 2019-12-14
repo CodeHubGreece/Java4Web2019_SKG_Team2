@@ -28,4 +28,9 @@ public class DoctorController {
 		return doctorService.retrieveBySpecialty(specialty);
 	}
 
+	@GetMapping("/doctors/all")
+	public List<Doctors> findAll() {
+		return doctorService.findAll();
+	}
+
 }
