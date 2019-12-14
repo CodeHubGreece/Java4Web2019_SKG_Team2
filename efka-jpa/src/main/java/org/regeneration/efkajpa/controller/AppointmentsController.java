@@ -43,7 +43,7 @@ public class AppointmentsController {
 		appointmentsService.updateAppointment(id, sqlDate, updatedAppointment.getTime());
 	}
 
-	@GetMapping("/appointments/search")
+	@GetMapping("/appointments/search/date")
 	public List<Appointments> getAppointmentsByDate(@RequestParam(value = "fromDate", required = true) String fromDate,
 													@RequestParam(value = "toDate", required = true) String toDate) throws ParseException {
 		Date newFromDate = new SimpleDateFormat("dd-MM-yyyy").parse(fromDate);
@@ -51,6 +51,22 @@ public class AppointmentsController {
 		Date newToDate = new SimpleDateFormat("dd-MM-yyyy").parse(toDate);
 		java.sql.Date sqlToDate = new java.sql.Date(newToDate.getTime());
 		return appointmentsService.searchAppointments(sqlFromDate, sqlToDate);
+	}
+
+	@GetMapping("/appointments/search/illness")
+	public List<Appointments> getAppointmentsByIllness(@RequestParam(value = "illnessDescription", required = true) String illnessDescription) throws ParseException {
+		return appointmentsService.searchAppointments(illnessDescription);
+	}
+
+	@GetMapping("/appointments/search/date&illness")
+	public List<Appointments> getAppointmentsByDateAndIllness(@RequestParam(value = "fromDate", required = true) String fromDate,
+													@RequestParam(value = "toDate", required = true) String toDate,
+													@RequestParam(value = "illnessDescription", required = true) String illnessDescription) throws ParseException {
+		Date newFromDate = new SimpleDateFormat("dd-MM-yyyy").parse(fromDate);
+		java.sql.Date sqlFromDate = new java.sql.Date(newFromDate.getTime());
+		Date newToDate = new SimpleDateFormat("dd-MM-yyyy").parse(toDate);
+		java.sql.Date sqlToDate = new java.sql.Date(newToDate.getTime());
+		return appointmentsService.searchAppointments(sqlFromDate, sqlToDate, illnessDescription);
 	}
 
 }

@@ -10,4 +10,5 @@ public interface AppointmentsRepository extends JpaRepository<Appointments, Long
     Appointments findByAppointmentId(Long id);
     void deleteById(Long id);
     List<Appointments> findByDateBetween(Date fromDate, Date toDate);
+    List<Appointments> findByIllnessDescription(String illnessDescription);
 }
