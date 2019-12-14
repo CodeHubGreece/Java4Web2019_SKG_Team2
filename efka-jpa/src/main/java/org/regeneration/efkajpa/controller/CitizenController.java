@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.*;
 import org.regeneration.efkajpa.entity.Citizens;
 import org.regeneration.efkajpa.repository.CitizenRepository;
 
+import javax.naming.NameAlreadyBoundException;
+
 @RestController
 public class CitizenController {
 
@@ -27,7 +29,7 @@ public class CitizenController {
 	}
 
     @PostMapping("/register")
-	public void createUsers(@RequestBody Registration registration){
+	public void createUsers(@RequestBody Registration registration) throws NameAlreadyBoundException {
 		newUserService.store(registration.getAmka(), registration.getLastName(), registration.getFirstName(), registration.getEmail(), registration.getUsername(),
 				registration.getPassword(), registration.getPhone(), registration.getType());
     }
