@@ -1,18 +1,22 @@
 package org.regeneration.efkajpa;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.util.Date;
 import java.sql.Time;
 
 public class NewAppointment {
     private String amkaC;
     private String doctorId;
-    private String date;
+    @DateTimeFormat(pattern="yyyy-MM-dd")
+    private Date date;
     private Time time;
     private String illnessDescription;
     private String comments;
 
     public NewAppointment(){}
 
-    public NewAppointment(String amkaC, String doctorId, String date, Time time, String illnessDescription, String comments) {
+    public NewAppointment(String amkaC, String doctorId, Date date, Time time, String illnessDescription, String comments) {
         this.amkaC = amkaC;
         this.doctorId = doctorId;
         this.date = date;
@@ -21,7 +25,7 @@ public class NewAppointment {
         this.comments = comments;
     }
 
-    public NewAppointment(String date, Time time) {
+    public NewAppointment(Date date, Time time) {
         this.date = date;
         this.time = time;
     }
@@ -42,11 +46,11 @@ public class NewAppointment {
         this.doctorId = doctorId;
     }
 
-    public String getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 

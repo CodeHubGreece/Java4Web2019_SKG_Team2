@@ -1,13 +1,13 @@
 package org.regeneration.efkajpa.controller;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
 import org.regeneration.efkajpa.NewAppointment;
 import org.regeneration.efkajpa.service.AppointmentsService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 
 import org.regeneration.efkajpa.entity.Appointments;
@@ -25,8 +25,7 @@ public class AppointmentsController {
 
 	@PostMapping("/appointments/create")
 	public void createAppointments(@RequestBody NewAppointment newAppointment) throws ParseException {
-		Date newDate = new SimpleDateFormat("dd-MM-yyyy").parse(newAppointment.getDate());
-		java.sql.Date sqlDate = new java.sql.Date(newDate.getTime());
+		java.sql.Date sqlDate = new java.sql.Date(newAppointment.getDate().getTime());
 		appointmentsService.createAppointment(newAppointment.getAmkaC(), newAppointment.getDoctorId(), sqlDate, newAppointment.getTime(),
 				newAppointment.getIllnessDescription(), newAppointment.getComments());
 	}
@@ -38,18 +37,15 @@ public class AppointmentsController {
 
 	@PutMapping("/appointments/update/{id}")
 	public void updateAppointmentsById(@PathVariable Long id, @RequestBody NewAppointment updatedAppointment) throws ParseException {
-		Date newDate = new SimpleDateFormat("dd-MM-yyyy").parse(updatedAppointment.getDate());
-		java.sql.Date sqlDate = new java.sql.Date(newDate.getTime());
+		java.sql.Date sqlDate = new java.sql.Date(updatedAppointment.getDate().getTime());
 		appointmentsService.updateAppointment(id, sqlDate, updatedAppointment.getTime());
 	}
 
 	@GetMapping("/appointments/search/date")
-	public List<Appointments> getAppointmentsByDate(@RequestParam(value = "fromDate", required = true) String fromDate,
-													@RequestParam(value = "toDate", required = true) String toDate) throws ParseException {
-		Date newFromDate = new SimpleDateFormat("dd-MM-yyyy").parse(fromDate);
-		java.sql.Date sqlFromDate = new java.sql.Date(newFromDate.getTime());
-		Date newToDate = new SimpleDateFormat("dd-MM-yyyy").parse(toDate);
-		java.sql.Date sqlToDate = new java.sql.Date(newToDate.getTime());
+	public List<Appointments> getAppointmentsByDate(@RequestParam(value = "fromDate", required = true) @DateTimeFormat(pattern="yyyy-MM-dd") Date fromDate,
+													@RequestParam(value = "toDate", required = true) @DateTimeFormat(pattern="yyyy-MM-dd") Date toDate) throws ParseException {
+		java.sql.Date sqlFromDate = new java.sql.Date(fromDate.getTime());
+		java.sql.Date sqlToDate = new java.sql.Date(toDate.getTime());
 		return appointmentsService.searchAppointments(sqlFromDate, sqlToDate);
 	}
 
@@ -59,13 +55,11 @@ public class AppointmentsController {
 	}
 
 	@GetMapping("/appointments/search/date&illness")
-	public List<Appointments> getAppointmentsByDateAndIllness(@RequestParam(value = "fromDate", required = true) String fromDate,
-													@RequestParam(value = "toDate", required = true) String toDate,
+	public List<Appointments> getAppointmentsByDateAndIllness(@RequestParam(value = "fromDate", required = true) @DateTimeFormat(pattern="yyyy-MM-dd") Date fromDate,
+													@RequestParam(value = "toDate", required = true) @DateTimeFormat(pattern="yyyy-MM-dd") Date toDate,
 													@RequestParam(value = "illnessDescription", required = true) String illnessDescription) throws ParseException {
-		Date newFromDate = new SimpleDateFormat("dd-MM-yyyy").parse(fromDate);
-		java.sql.Date sqlFromDate = new java.sql.Date(newFromDate.getTime());
-		Date newToDate = new SimpleDateFormat("dd-MM-yyyy").parse(toDate);
-		java.sql.Date sqlToDate = new java.sql.Date(newToDate.getTime());
+		java.sql.Date sqlFromDate = new java.sql.Date(fromDate.getTime());
+		java.sql.Date sqlToDate = new java.sql.Date(toDate.getTime());
 		return appointmentsService.searchAppointments(sqlFromDate, sqlToDate, illnessDescription);
 	}
 
