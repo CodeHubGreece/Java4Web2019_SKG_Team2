@@ -12,9 +12,8 @@ body{
     
 #icon{
    width:250px;
-   margin-bottom: -20px;
-   margin-left:500px;
    margin-top:-5px;
+   margin-bottom: -10px;
 }
    
 .form-group input[type=password], input[type=text], input[type=email], input[type=username]{
