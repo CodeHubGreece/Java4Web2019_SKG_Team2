@@ -3,7 +3,6 @@ function login(usernameElement, passwordElement) {
      let password = passwordElement && passwordElement.value ? passwordElement.value : "";
      let type = document.getElementById("userType").value;
 
-    const ROOT_PATH = "http://localhost:8080";
     var fd = new FormData();
     fd.append("username", username);
     fd.append("password", password);
@@ -42,39 +41,49 @@ function login(usernameElement, passwordElement) {
 }
 
 function register() {
-  const ROOT_PATH = "http://localhost:8080";
-  let amka = document.getElementById('amka').value;
-  let lastName = document.getElementById('lastName').value;
-  let firstName = document.getElementById('firstName').value;
-  let email = document.getElementById('email').value;
-  let username = document.getElementById('username').value;
-  let password = document.getElementById('password').value;
-  let phone = document.getElementById('phone').value;
-  let userType = 'C';
-             $.ajax({
-                   url: ROOT_PATH + '/register',
-                   type: 'POST',
-                   dataType: 'json',
-                   data: JSON.stringify({
-                       amka: amka,
-                       lastName: lastName,
-                       firstName: firstName,
-                       email: email,
-                       username: username,
-                       password: password,
-                       phone: phone,
-                       userType: userType
-                  }),
-                  contentType: 'application/json',
-                  success: function (result) {
-                      alert("User Saved: " + JSON.stringify(result));
-                  },
-                  error: function (xhr, resp, text) {
-                    alert(lastName);
-                      //alert("User not Saved: " + text);
-                  }
-              });
-}
-	
-    
+    let amka = document.getElementById('amka').value;
+    let lastName = document.getElementById('lastName').value;
+    let firstName = document.getElementById('firstName').value;
+    let email = document.getElementById('email').value;
+    let username = document.getElementById('username').value;
+    let password = document.getElementById('password').value;
+    let phone = document.getElementById('phone').value;
+    let userType = 'C';
 
+    $.ajax({
+        url: ROOT_PATH + '/register',
+        type: 'POST',
+        dataType: 'json',
+        data: JSON.stringify({
+            amka: amka,
+            lastName: lastName,
+            firstName: firstName,
+            email: email,
+            username: username,
+            password: password,
+            phone: phone,
+            userType: userType
+        }),
+        contentType: 'application/json',
+        success: function (result) {
+            alert("User Saved: " + JSON.stringify(result));
+        },
+        error: function (xhr, resp, text) {
+            alert("User not Saved: " + text);
+        }
+    });
+}
+
+function test(){
+    $.ajax({
+        url: ROOT_PATH + '/doctors/all',
+        type: 'GET',
+        success: function (result) {
+            alert("User Saved: " + JSON.stringify(result));
+        },
+        error: function (xhr, resp, text) {
+            alert("User not Saved: " + text);
+        }
+    });
+
+}
