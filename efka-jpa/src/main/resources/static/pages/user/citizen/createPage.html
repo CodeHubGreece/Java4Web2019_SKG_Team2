@@ -1,0 +1,106 @@
+
+<!-- <header>
+    <ul>
+        <li style="align-content: right;"><a value="Logout" onclick="logout()">Έξοδος</a></li>
+        <li><a href="../citizen/deleteUpdate.html">Διαγραφή</a></li>
+        <li><a href="../citizen/deleteUpdate.html">Ενημέρωση</a></li>
+        <li><a href="./pages\user\citizen\createPage.html">Αναζήτηση</a></li>
+        <li><a class="active" href="#home">Δημιουργία</a></li>
+    </ul>
+</header> -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Doctor Page</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  
+
+  
+  
+  
+  <script src="scripts/config/main.js"></script>
+  <script src="scripts/security/guest-auth.js"></script>
+  <script src="scripts/guest/authentication.js"></script>
+
+
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
+
+  <link rel="stylesheet" href="../../styles/guest.css">
+
+  <style>
+    body{
+ background-color: #ededed;
+}
+      
+.container{        
+ background-color:white;
+}
+
+#icon{
+  width:250px;
+  margin-top:-5px;
+  margin-bottom: -10px;
+}
+ </style> 
+  
+</head>
+
+<body>  
+
+  
+    
+
+    
+     
+
+    
+    <main>
+        <section class="center">
+               <form>
+                <div class="createpageselect">
+                        <h1>Δημιουργία Ραντεβού</h1>
+                    <select>
+                        <option value="" disabled selected>Διαλέξτε Ειδικότητα</option>
+                        <option value="1">Παθολόγος</option>
+                        <option value="2">Καρδιολόγος</option>
+                    </select><br><br>
+                
+                    <select>
+                            <option value="" disabled selected>Διαλέξτε Γιατρό</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                    </select><br><br>
+                    <input type="datetime-local" name="citizen_create"><br><br>
+                    <textarea  id="perigrafh" rows="2" cols="50">Σύντομη Περιγραφή Ασθένειας</textarea><br><br>
+                    <textarea  id="loipes_parathrhseis" rows="7" cols="50">Λοιπές Παρατηρήσεις</textarea><br>
+                    <input type="submit" class="registerbtn" value="Καταχώριση" onclick="">
+                </div>               
+            </form>
+        </section>
+        <section class="center">
+               
+                <form>
+                    <div class="createpageselect">
+                            <h1>Αναζήτηση Ραντεβού</h1>
+                        <select>
+                            <option value="" disabled selected>Διαλέξτε Ειδικότητα</option>
+                            <option value="1">Παθολόγος</option>
+                            <option value="2">Καρδιολόγος</option>
+                        </select><br><br>
+                    <input type="date" name="citizen_search"><br><br>
+                    <input type="date" name="citizen_search"><br><br>
+                      
+                    </div>               
+                </form>
+            </section>
+    </main>
+</body>
+</html>
