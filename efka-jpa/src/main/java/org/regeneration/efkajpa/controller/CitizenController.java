@@ -28,7 +28,7 @@ public class CitizenController {
     @PostMapping("/register")
 	public void createUsers(@RequestBody Registration registration) throws NameAlreadyBoundException {
 		newUserService.store(registration.getAmka(), registration.getLastName(), registration.getFirstName(), registration.getEmail(), registration.getUsername(),
-				registration.getPassword(), registration.getPhone(), registration.getType());
+				registration.getPassword(), registration.getPhone(), registration.getUserType());
     }
 
 }

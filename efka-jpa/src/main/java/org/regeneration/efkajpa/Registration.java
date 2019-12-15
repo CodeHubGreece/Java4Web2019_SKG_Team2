@@ -8,11 +8,11 @@ public class Registration {
     private String username;
     private String password;
     private String phone;
-    private String type;
+    private String userType;
 
     public Registration(){}
 
-    public Registration(String amka, String lastName, String firstName, String email, String username, String password, String phone, String type){
+    public Registration(String amka, String lastName, String firstName, String email, String username, String password, String phone, String userType){
         this.amka = amka;
         this.lastName = lastName;
         this.firstName = firstName;
@@ -20,7 +20,7 @@ public class Registration {
         this.username = username;
         this.password = password;
         this.phone = phone;
-        this.type = type;
+        this.userType = userType;
     }
 
     public String getAmka() {
@@ -79,11 +79,11 @@ public class Registration {
         this.phone = phone;
     }
 
-    public String getType() {
-        return type;
+    public String getUserType() {
+        return userType;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setUserType(String userType) {
+        this.userType = userType;
     }
 }

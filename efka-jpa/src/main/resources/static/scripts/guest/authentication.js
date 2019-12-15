@@ -1,4 +1,3 @@
-
 function login(usernameElement, passwordElement) {
      let username = usernameElement && usernameElement.value ? usernameElement.value : "";
      let password = passwordElement && passwordElement.value ? passwordElement.value : "";
@@ -43,6 +42,7 @@ function login(usernameElement, passwordElement) {
 }
 
 function register() {
+  const ROOT_PATH = "http://localhost:8080";
   let amka = document.getElementById('amka').value;
   let lastName = document.getElementById('lastName').value;
   let firstName = document.getElementById('firstName').value;
@@ -50,25 +50,28 @@ function register() {
   let username = document.getElementById('username').value;
   let password = document.getElementById('password').value;
   let phone = document.getElementById('phone').value;
+  let userType = 'C';
              $.ajax({
-                       url: ROOT_PATH + '/register',
-                       type: 'POST',
-                       dataType: 'json',
-                       data: JSON.stringify({
-                       amka:amka,
-                       lastName:lastName,
-                       firstName:firstName,
-                       email:email,
-                       username:username,
-                       password:password,                      
-                       phone:phone,                          
+                   url: ROOT_PATH + '/register',
+                   type: 'POST',
+                   dataType: 'json',
+                   data: JSON.stringify({
+                       amka: amka,
+                       lastName: lastName,
+                       firstName: firstName,
+                       email: email,
+                       username: username,
+                       password: password,
+                       phone: phone,
+                       userType: userType
                   }),
                   contentType: 'application/json',
                   success: function (result) {
                       alert("User Saved: " + JSON.stringify(result));
                   },
                   error: function (xhr, resp, text) {
-                      alert("User not Saved: " + text);
+                    alert(lastName);
+                      //alert("User not Saved: " + text);
                   }
               });
 }

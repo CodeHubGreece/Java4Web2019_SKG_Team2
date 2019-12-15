@@ -26,11 +26,11 @@ public class NewUserService {
     }
 
     public void store(String amka, String lastName, String firstName, String email, String username, String password,
-                      String phone, String type) throws NameAlreadyBoundException {
+                      String phone, String userType) throws NameAlreadyBoundException {
         if(!usersRepository.existsByUsername(username)) {
             if(!citizenRepository.existsByAmka(amka)) {
                 //Users user = new Users(username, passwordEncoder.encode(password), type.charAt(0));
-                Users user = new Users(username, password, type.charAt(0));
+                Users user = new Users(username, password, userType.charAt(0));
                 usersRepository.save(user);
 
                 Citizens citizen = new Citizens(amka, lastName, firstName, email, phone, user);
