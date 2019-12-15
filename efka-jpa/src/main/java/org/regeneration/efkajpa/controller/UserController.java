@@ -1,10 +1,8 @@
 //package org.regeneration.efkajpa.controller;
 //
 //
-//import org.regeneration.efkajpa.entity.Citizens;
 //import org.regeneration.efkajpa.entity.Users;
 //import org.regeneration.efkajpa.repository.CitizenRepository;
-//import org.regeneration.efkajpa.service.NewUserService;
 //import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.web.bind.annotation.*;
 //
@@ -16,23 +14,23 @@
 //    @Autowired
 //    private CitizenRepository citizenRepository;
 //
+//    @Autowired
+//    private UserService userService;
+//
 //    @GetMapping("/users")
 //    public List<Users> getUsers(@RequestParam(value = "username", required = true) String username) {
 //        Users user = new Users(username, "1234", 'd');
 //        return Arrays.asList(user);
 //    }
 //
-//    @GetMapping("/users/get/{username}")
+//    /*@GetMapping("/users/get/{username}")
 //    public Users getUsersByUsername(@PathVariable String username) {
 //        return newUserService.retrieve(username);
-//    }
+//    }*/
 //
 //    @PostMapping("/users/create")
-//    public void createUsers(@RequestParam(value = "amka", required = true) String amka, @RequestParam(value = "lastName", required = true) String lastName,
-//                            @RequestParam(value = "firstName", required = true) String firstName, @RequestParam(value = "email", required = true) String email,
-//                            @RequestParam(value = "username", required = true) String username, @RequestParam(value = "password", required = true) String password,
-//                            @RequestParam(value = "phone", required = true) String phone) {
-//        newUserService.store(amka, lastName, firstName, email, username, password, phone, 'C');
+//    public void createUsers(@RequestBody Users user) {
+//        userService.store(user);
 //    }
 //
 //   /* @GetMapping("/users/getAll")

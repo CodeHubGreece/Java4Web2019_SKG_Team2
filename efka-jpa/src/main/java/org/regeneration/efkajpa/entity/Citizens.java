@@ -1,7 +1,9 @@
 package org.regeneration.efkajpa.entity;
 
+import org.hibernate.validator.constraints.Length;
+
 import javax.persistence.*;
-import java.util.Set;
+import java.util.List;
 
 @Entity
 @Table(name = "citizens")
@@ -12,7 +14,7 @@ public class Citizens {
     private String phone;
     private String email;
     private Users users;
-    private Set<Appointments> appointments;
+    private List<Appointments> appointments;
 
     public Citizens(){}
 
@@ -26,7 +28,8 @@ public class Citizens {
     }
 
     @Id
-    @Column(length = 11)
+    @Column
+    @Length(min = 11, max = 11)
     public String getAmka(){return amka;}
     public void setAmka(String amka){this.amka = amka;}
 
@@ -39,6 +42,7 @@ public class Citizens {
     public void setFirstName(String firstName){this.firstName = firstName;}
 
     @Column
+    @Length(min = 10, max = 10)
     public String getPhone(){return phone;}
     public void setPhone(String phone){this.phone = phone;}
 
@@ -52,7 +56,7 @@ public class Citizens {
     public void setUsers(Users users){this.users = users;}
 
     /*@OneToMany(mappedBy = "citizens", cascade = CascadeType.ALL)
-    public Set<Appointments> getAppointments(){return appointments;}
-    public void setAppointments(Set<Appointments> appointments){this.appointments = appointments;}*/
+    public List<Appointments> getAppointments(){return appointments;}
+    public void setAppointments(List<Appointments> appointments){this.appointments = appointments;}*/
 
 }
