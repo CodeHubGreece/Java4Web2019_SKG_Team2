@@ -50,25 +50,17 @@ function register() {
     let phone = document.getElementById('phone').value;
     let userType = 'C';
 
-//    let amka = "11114569875";
-//    let lastName = "egwewgewgew";
-//    let firstName = "sdgsg";
-//    let email = "gsgsgweg";
-//    let username = "dsgbsdgw";
-//    let password = "sgewgewg";
-//    let phone = "6987456321";
-//    let userType = 'C';
-/*
-    let fd = new FormData();
-    fd.append("amka", amka);
-    fd.append("lastName", lastName);
-    fd.append("firstName", firstName);
-    fd.append("email", email);
-    fd.append("username", username);
-    fd.append("password", password);
-    fd.append("phone", phone);
-    fd.append("userType", userType);
-    console.log(fd.lastName);*/
+//    let fd = new FormData();
+//    fd.append("amka", amka);
+//    fd.append("lastName", lastName);
+//    fd.append("firstName", firstName);
+//    fd.append("email", email);
+//    fd.append("username", username);
+//    fd.append("password", password);
+//    fd.append("phone", phone);
+//    fd.append("userType", userType);
+//    console.log(fd.lastName);
+
     $.ajax({
         url: ROOT_PATH + '/register',
         type: 'POST',
