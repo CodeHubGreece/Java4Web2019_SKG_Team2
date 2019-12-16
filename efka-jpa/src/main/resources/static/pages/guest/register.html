@@ -13,6 +13,7 @@
   <script src="../../scripts/config/main.js"></script>
   <script src="../../scripts/security/guest-auth.js"></script>
   <script src="../../scripts/guest/authentication.js"></script>
+  <script src="../../scripts/validations/validations.js"></script>
 
 
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
@@ -47,42 +48,48 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text">Text</span>
                      </div>
-                     <input class="form-control" placeholder="AMKA" type="text" id="amka" name="amka" value="" required>
+                     <input class="form-control" placeholder="AMKA" type="text" id="amka" name="amka" pattern="[0-9]{10,}$" minlength="11" maxlength="11" required autofocus/> 
+                     <div class="error-label">Το ΑΜΚΑ σας πρέπει να αποτελείται από 11 αριθμούς.</div>
                 </div>
 
                 <div class="form-group input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text"> <i class="fa fa-user"></i> </span>
                     </div>
-                    <input class="form-control" placeholder="Επίθετο Χρήστη" id="lastName" type="text" value="" required>
+                    <input class="form-control" placeholder="Επίθετο Χρήστη" id="lastName" type="text" pattern="[A-Za-z]{2,}$" maxlength="45" required /> 
+                    <div class="error-label">Το επώνυμο σας πρέπει να αποτελείται από τουλάχιστον 2 χαρακτήρες.</div>
                 </div>
 
                 <div class="form-group input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text"> <i class="fa fa-user"></i> </span>
                     </div>
-                    <input class="form-control" placeholder="Όνομα Χρήστη" id="firstName" type="text" value="" required>
+                    <input class="form-control" placeholder="Όνομα Χρήστη" id="firstName" type="text" pattern="[A-Za-z]{2,}$" minLength="2" maxlength="45" required /> 
+                    <div class="error-label">Το όνομα σας πρέπει να αποτελείται από τουλάχιστον 2 χαρακτήρες.</div>
                 </div>
 
                 <div class="form-group input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
                     </div>
-                    <input class="form-control" placeholder="Email address" type="email" id="email" type="text" value="" required>
+                    <input class="form-control" placeholder="Email address" type="email" id="email" type="text" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" maxlength="45" required />
+                    <div class="error-label">Το email σας δεν ακολουθεί το πρότυπο @example.com</div>
                 </div> 
 
                 <div class="form-group input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text"> <i class="fa fa-user"></i> </span>
                     </div>
-                    <input class="form-control" placeholder="Username" style="border-radius:none" id="username" type="username" value="" required>
+                    <input class="form-control" placeholder="Username" style="border-radius:none" id="username" type="username" pattern="[a-z0-9]{5,}$" maxlength="45" required /> 
+                    <div class="error-label">Το όνομα χρήστη σας πρέπει να αποτελείται από τουλάχιστον 5 χαρακτήρες.</div>
                 </div> 
 
                 <div class="form-group input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
                     </div>
-                    <input class="form-control" placeholder="Password" id="password" type="password" value=""  required>
+                    <input class="form-control" placeholder="Password" id="password" type="password" pattern="[a-z0-9]{8,}$" maxlength="45" required /> 
+                    <div class="error-label">Ο κωδικός σας πρέπει να αποτελείται από τουλάχιστον 8 χαρακτήρες.</div>
                 </div>
 
                 <div class="form-group input-group">
@@ -90,10 +97,11 @@
                         <span class="input-group-text"> <i class="fa fa-phone"></i> </span>
                     </div>	
                     <input class="form-control" placeholder="Αριθμός κινητού" id="phone" type="text" name="phone" pattern="[6]{1}[9]{1}[0-9]{8}" maxlength="10" value="" required>
+                    <div class="error-label">Ο αριθμός τηλεφώνου σας δεν είναι σωστός.</div>
                 </div> 
 
                 <div class="form-group">
-                    <button type="button" onclick="register()" class="btn btn-primary btn-block"> Δημιουργία Λογαριασμού </button>
+                    <button type="button" onclick="register()" disabled="true" class="btn btn-primary btn-block"> Δημιουργία Λογαριασμού </button>
                 </div> 
                 <p class="text-center">Έχετε ήδη λογαριασμό; <a href="../../index.html"> Σύνδεση</a> </p>   
                 

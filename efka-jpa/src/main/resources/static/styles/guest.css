@@ -32,6 +32,26 @@ body{
 
 
 
+.error-label {
+  display: none;
+  margin-top: 4px;
+  color: red;
+}
+
+.form-group :focus:invalid  {
+  border: 1px solid rgba(251, 40, 59, 0.5);
+  box-shadow: 0 0 0 0.2rem rgba(163, 5, 18, 0.164);
+  outline: initial;
+}
+
+.form-group :focus:valid  {
+  border: 1px solid rgba(46, 204, 113, 0.5);
+  box-shadow: 0 0 0 0.2rem rgba(46, 204, 113, 0.5);
+  outline: initial;
+}
+
+
+
 
     
     
