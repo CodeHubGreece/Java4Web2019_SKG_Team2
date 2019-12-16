@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  <title>Doctor Page</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+  <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
+  <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+
+
+  <link: href="cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+  <link href="//cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js">
+
+    
+</head>
+<body>
+
+<nav class="navbar navbar-default">
+  <div class="container">    
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">        
+        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container-fluid text-center ">
+  <img id="icon" src="../../../img/efka1.jpg"  alt="efkalogo" width="250px" margin-top="-5px" margin-bottom="-80px" >  
+  <hr />
+</div>
+
+<div class="container">    
+
+    <h4 class="card-title mt-3 text-center">Αναζήτηση ραντεβού</h4>  <br/>
+
+    <div class="row d-flex justify-content-center">
+
+        <div class="col-auto text-center" >
+
+            <form>
+                <label> Από </label>
+                <input id="datepicker"  width="276"  />     
+                <script>
+                    $('#datepicker').datepicker();
+                </script>     
+                    
+                <br />
+                <label> Έως </label>
+                <input id="datepicker1"  width="276"  />     
+                <script>
+                    $('#datepicker1').datepicker();
+                </script>     
+
+                <br/>
+                   
+                <label>Περιγράψτε την ασθένεια </label> <br/>
+                <input id="illness" style="width: 276px;"  type="text" class="form-control"/>   
+
+                <div>
+                  <button type="button" class="form-control mt-4 btn-primary" style="width: 276px;">Αναζήτηση</button>
+                </div>
+            </form>
+            <script>
+
+            $(document).ready( function () {
+              $('#myTable').DataTable();
+          } );
+          </script>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+</body>
+
+
+</html>

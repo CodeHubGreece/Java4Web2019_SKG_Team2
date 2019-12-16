@@ -1,0 +1,38 @@
+.block {
+  display: block;
+}
+
+body{
+  background-color: #ededed;
+}
+       
+.container{        
+  background-color:white;
+}
+    
+#icon{
+   width:250px;
+   margin-top:-5px;
+   margin-bottom: -10px;
+}
+   
+.form-group input[type=password], input[type=text], input[type=email], input[type=username]{
+    border-color:black;    
+    text-align: center;   
+}
+
+.field {
+  margin-bottom: 8px;
+  font-size: 16px;
+}
+.field > label:nth-child(1){
+  font-weight: 900;
+  width: 75px;
+}
+
+
+
+
+    
+    
+       

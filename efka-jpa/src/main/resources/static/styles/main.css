@@ -1,0 +1,50 @@
+body{
+   background-color: #ededed;}
+   
+.container{        
+   background-color:white;
+}
+
+img{  
+   width:300px;
+   margin: 0, auto;
+   padding-bottom:50px;
+}
+
+h4{  
+   padding-top:20px;
+   padding-bottom: 50px;
+   text-align:center;
+}
+
+.form-group input[type="username"], input[type="password"] {
+    border-color:black;
+    border-radius: 50px;
+    text-align: center;
+}
+
+.error-label {
+  display: none;
+  margin-top: 4px;
+  color: red;
+}
+
+.field. invalid-data {
+  border: 1px solid red !important;
+  outline: initial !important;
+}
+
+.field :invalid  {
+  border: 1px solid red;
+  outline: initial;
+}
+
+.field .valid-data {
+  border: 1px solid green !important;
+  outline: initial !important;
+}
+
+.field :valid  {
+  border: 1px solid green;
+  outline: initial;
+}

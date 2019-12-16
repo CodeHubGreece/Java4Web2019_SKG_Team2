@@ -5,4 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface CitizenRepository extends JpaRepository<Citizens, String> {
     Citizens findByAmka(String amka);
+    boolean existsByAmka(String amka);
 }

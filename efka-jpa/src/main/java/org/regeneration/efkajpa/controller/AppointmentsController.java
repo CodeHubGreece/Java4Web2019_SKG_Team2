@@ -8,6 +8,7 @@ import org.regeneration.efkajpa.NewAppointment;
 import org.regeneration.efkajpa.service.AppointmentsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import org.regeneration.efkajpa.entity.Appointments;
@@ -23,6 +24,8 @@ public class AppointmentsController {
 		return appointmentsService.findAppointmentById(id);
 	}
 
+	@CrossOrigin(origins = "http://localhost:63342")
+	@ResponseStatus(HttpStatus.CREATED)
 	@PostMapping("/appointments/create")
 	public void createAppointments(@RequestBody NewAppointment newAppointment) throws ParseException {
 		java.sql.Date sqlDate = new java.sql.Date(newAppointment.getDate().getTime());
