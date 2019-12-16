@@ -50,25 +50,44 @@ function register() {
     let phone = document.getElementById('phone').value;
     let userType = 'C';
 
+//    let amka = "11114569875";
+//    let lastName = "egwewgewgew";
+//    let firstName = "sdgsg";
+//    let email = "gsgsgweg";
+//    let username = "dsgbsdgw";
+//    let password = "sgewgewg";
+//    let phone = "6987456321";
+//    let userType = 'C';
+/*
+    let fd = new FormData();
+    fd.append("amka", amka);
+    fd.append("lastName", lastName);
+    fd.append("firstName", firstName);
+    fd.append("email", email);
+    fd.append("username", username);
+    fd.append("password", password);
+    fd.append("phone", phone);
+    fd.append("userType", userType);
+    console.log(fd.lastName);*/
     $.ajax({
         url: ROOT_PATH + '/register',
         type: 'POST',
         dataType: 'json',
         data: JSON.stringify({
-            amka: amka,
-            lastName: lastName,
-            firstName: firstName,
-            email: email,
-            username: username,
-            password: password,
-            phone: phone,
-            userType: userType
+            "amka": amka,
+            "lastName": lastName,
+            "firstName": firstName,
+            "email": email,
+            "username": username,
+            "password": password,
+            "phone": phone,
+            "userType": userType
         }),
         contentType: 'application/json',
-        success: function (result) {
-            alert("User Saved: " + JSON.stringify(result));
+        success: function () {
+            alert("User Saved");
         },
-        error: function (xhr, resp, text) {
+        error: function (text) {
             alert("User not Saved: " + text);
         }
     });
