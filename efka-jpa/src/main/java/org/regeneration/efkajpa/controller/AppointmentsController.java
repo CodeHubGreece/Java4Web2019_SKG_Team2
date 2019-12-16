@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.regeneration.efkajpa.NewAppointment;
+import org.regeneration.efkajpa.entity.Specialties;
 import org.regeneration.efkajpa.service.AppointmentsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -44,6 +45,19 @@ public class AppointmentsController {
 		appointmentsService.updateAppointment(id, sqlDate, updatedAppointment.getTime());
 	}
 
+	@CrossOrigin(origins = "http://localhost:63342")
+	@ResponseStatus(HttpStatus.OK)
+	@GetMapping("/appointments/search/date_specialty")
+	public List<Appointments> getAppointmentsByDateAndSpecialty(@RequestParam(value = "specialtyId", required = true) Specialties specialtyId,
+																@RequestParam(value = "fromDate", required = true) @DateTimeFormat(pattern="yyyy-MM-dd") Date fromDate,
+													@RequestParam(value = "toDate", required = true) @DateTimeFormat(pattern="yyyy-MM-dd") Date toDate) throws ParseException {
+		java.sql.Date sqlFromDate = new java.sql.Date(fromDate.getTime());
+		java.sql.Date sqlToDate = new java.sql.Date(toDate.getTime());
+		return appointmentsService.searchAppointments(specialtyId, sqlFromDate, sqlToDate);
+	}
+
+	@CrossOrigin(origins = "http://localhost:63342")
+	@ResponseStatus(HttpStatus.OK)
 	@GetMapping("/appointments/search/date")
 	public List<Appointments> getAppointmentsByDate(@RequestParam(value = "fromDate", required = true) @DateTimeFormat(pattern="yyyy-MM-dd") Date fromDate,
 													@RequestParam(value = "toDate", required = true) @DateTimeFormat(pattern="yyyy-MM-dd") Date toDate) throws ParseException {
@@ -52,12 +66,16 @@ public class AppointmentsController {
 		return appointmentsService.searchAppointments(sqlFromDate, sqlToDate);
 	}
 
+	@CrossOrigin(origins = "http://localhost:63342")
+	@ResponseStatus(HttpStatus.OK)
 	@GetMapping("/appointments/search/illness")
 	public List<Appointments> getAppointmentsByIllness(@RequestParam(value = "illnessDescription", required = true) String illnessDescription) throws ParseException {
 		return appointmentsService.searchAppointments(illnessDescription);
 	}
 
-	@GetMapping("/appointments/search/date&illness")
+	@CrossOrigin(origins = "http://localhost:63342")
+	@ResponseStatus(HttpStatus.OK)
+	@GetMapping("/appointments/search/date_illness")
 	public List<Appointments> getAppointmentsByDateAndIllness(@RequestParam(value = "fromDate", required = true) @DateTimeFormat(pattern="yyyy-MM-dd") Date fromDate,
 													@RequestParam(value = "toDate", required = true) @DateTimeFormat(pattern="yyyy-MM-dd") Date toDate,
 													@RequestParam(value = "illnessDescription", required = true) String illnessDescription) throws ParseException {

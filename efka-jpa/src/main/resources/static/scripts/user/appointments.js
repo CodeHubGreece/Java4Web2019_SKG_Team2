@@ -54,6 +54,39 @@ function createAppointment(){
         });
 }
 
+function searchAppointments(){
+    let specialtyId = document.getElementById("specialtyId").value;
+    let fromDate = document.getElementById("fromDate").value;
+    let toDate = document.getElementById("toDate").value;
+
+    fromDate = formatDate(fromDate);
+    toDate = formatDate(toDate);
+
+        $.ajax({
+                url: ROOT_PATH + '/appointments/search/date_specialty',
+                type: 'GET',
+                dataType: 'json',
+                data: JSON.stringify({
+                    "specialtyId": specialtyId,
+                    "fromDate": fromDate,
+                    "toDate": toDate
+                }),
+                contentType: 'application/json',
+                success: function (appointments) {
+                    /*let doctorsOptions = '<option value="" disabled selected>--Γιατρός--</option>';
+                    for(let i=0; i<doctors.length; i++){
+                        doctorsOptions += '<option value="' + doctors[i].doctorId + '">' + doctors[i].lastName + ' ' + doctors[i].firstName + '</option>';
+                    }
+                    document.getElementById("doctorId").innerHTML = doctorsOptions;*/
+                    console.log(appointments);
+                },
+                error: function (text) {
+                    alert("ERROR: " + text);
+                }
+        });
+
+}
+
 function formatDate(date) {
     var d = new Date(date),
         month = '' + (d.getMonth() + 1),
