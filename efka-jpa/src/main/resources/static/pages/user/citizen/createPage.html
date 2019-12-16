@@ -1,106 +1,137 @@
-
-<!-- <header>
-    <ul>
-        <li style="align-content: right;"><a value="Logout" onclick="logout()">Έξοδος</a></li>
-        <li><a href="../citizen/deleteUpdate.html">Διαγραφή</a></li>
-        <li><a href="../citizen/deleteUpdate.html">Ενημέρωση</a></li>
-        <li><a href="./pages\user\citizen\createPage.html">Αναζήτηση</a></li>
-        <li><a class="active" href="#home">Δημιουργία</a></li>
-    </ul>
-</header> -->
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <title>Doctor Page</title>
+  
+  <title>Citizen Page</title>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
-  
-  
-  
-  <script src="scripts/config/main.js"></script>
-  <script src="scripts/security/guest-auth.js"></script>
-  <script src="scripts/guest/authentication.js"></script>
+  <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
+  <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
 
 
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+  <link: href="cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+  <link href="//cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js">
 
-  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-
-
-  <link rel="stylesheet" href="../../styles/guest.css">
-
-  <style>
-    body{
- background-color: #ededed;
-}
-      
-.container{        
- background-color:white;
-}
-
-#icon{
-  width:250px;
-  margin-top:-5px;
-  margin-bottom: -10px;
-}
- </style> 
-  
+    
 </head>
+<body>
 
-<body>  
+  <nav class="navbar navbar-expand-md bg-dark navbar-dark">    
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+      <ul class="navbar-nav mr-auto">
+      </ul>
+      <form>
+        <button type="submit" onclick="logout();" class="btn btn-primary btn-block"> Logout </button><span class="glyphicon glyphicon-log-in"></span> 
+      </form>
+    </div>
+  </nav>
 
-  
-    
+<div class="container-fluid text-center ">
+  <img id="icon" src="../../../img/efka1.jpg"  alt="efkalogo" width="250px" margin-top="-5px" margin-bottom="-80px" >  
+  <hr />
+</div>
 
-    
-     
+<div class="container">    
 
-    
-    <main>
-        <section class="center">
-               <form>
-                <div class="createpageselect">
-                        <h1>Δημιουργία Ραντεβού</h1>
-                    <select>
-                        <option value="" disabled selected>Διαλέξτε Ειδικότητα</option>
-                        <option value="1">Παθολόγος</option>
-                        <option value="2">Καρδιολόγος</option>
-                    </select><br><br>
+    <br/>
+    <h4 class="card-title mt-3 text-center">Δημιουργία ραντεβού</h4>  <br/> <br/>
+
+    <div class="row d-flex justify-content-center">
+
+        <div class="col-auto text-center" >
+
+            <form>
+              <div class="form-group text-center">
+                <label for="sel1">Επιλέξτε ειδικότητα:</label>
+                <select class="form-control text-center" id="sel1">
+                  <option> </option>
+                  <option>Καρδιολόγος </option>
+                  <option>Δερματολόγος</option>
+                  <option>Πνευμονολόγος</option>
+                  <option>Ωτορινολαρυγγολόγος</option>
+                  <option>Γυναικολόγος</option>
+                  <option>Παθολόγος</option>
+                  <option>Ορθοπαιδικός</option>
+                  <option>Ουρολόγος</option>
+                  <option>Οφθαλμίατρος</option>
+                  <option>Οδοντίατρος</option>
+                </select>
+
+                <!--type=submit gia to buttom kai to input me type=hidden stelnei dedomena --> 
+                <div> 
+                  <button id ="show_buttom" type="submit" class="form-control mt-4 btn-primary" onclick="block_none();" style="width: 276px;">Αναζήτηση</button>
+                  <input type="hidden" id="postId" name="postId" value="34657">
+                </div>
+
+                <script>
+          
+                    function block_none(){
+                    $document.getElementById('hidden-div').classList.add('show');
+                    $document.getElementById('button-id').classList.add('hide');
+}
+              </script>
+
+
+
+                <br />               
                 
-                    <select>
-                            <option value="" disabled selected>Διαλέξτε Γιατρό</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                    </select><br><br>
-                    <input type="datetime-local" name="citizen_create"><br><br>
-                    <textarea  id="perigrafh" rows="2" cols="50">Σύντομη Περιγραφή Ασθένειας</textarea><br><br>
-                    <textarea  id="loipes_parathrhseis" rows="7" cols="50">Λοιπές Παρατηρήσεις</textarea><br>
-                    <input type="submit" class="registerbtn" value="Καταχώριση" onclick="">
-                </div>               
             </form>
-        </section>
-        <section class="center">
-               
-                <form>
-                    <div class="createpageselect">
-                            <h1>Αναζήτηση Ραντεβού</h1>
-                        <select>
-                            <option value="" disabled selected>Διαλέξτε Ειδικότητα</option>
-                            <option value="1">Παθολόγος</option>
-                            <option value="2">Καρδιολόγος</option>
-                        </select><br><br>
-                    <input type="date" name="citizen_search"><br><br>
-                    <input type="date" name="citizen_search"><br><br>
-                      
-                    </div>               
-                </form>
-            </section>
-    </main>
+    
+                <label for="sel1">Επιλέξτε γιατρό:</label>
+                <select class="form-control" id="sel1">
+                  <option> </option>
+                  <option> 4</option>
+                  <option>5</option>
+                  <option></option>
+                  <option></option>
+                </select>
+                <br/>
+              
+                <label> Ημερομηνία: </label>
+                <input class="text-center" id="datepicker"  width="276"  />     
+                <script>
+                    $('#datepicker').datepicker();
+                </script>     
+                    
+                <br />
+
+                <label> Ώρα: </label>
+                <input class="text-center" id="timepicker" width="276" />
+                <script>
+                  $('#timepicker').timepicker();
+                </script>
+                <br/>
+                                   
+                <label>Περιγράψτε την ασθένεια </label> <br/> 
+                <input class="text-center" id="illness" style="width: 276px;"  type="text" class="form-control"/>   
+                <br/> <br/>
+
+                <label>Λοιπές παρατηρήσεις </label> <br/>
+                <input class="text-center" id="comment" style="width: 276px;"  type="text" class="form-control"/>   
+                <br/>
+
+                <div>
+                  <button type="button" class="form-control mt-4 btn-primary" style="width: 276px;">Καταχώρηση</button>
+                </div>
+            </form>
+
+            <script>
+            $(document).ready( function () {
+              $('#myTable').DataTable();
+          } );
+          </script>
+        </div>
+    </div>
+</div>
+
 </body>
+
 </html>

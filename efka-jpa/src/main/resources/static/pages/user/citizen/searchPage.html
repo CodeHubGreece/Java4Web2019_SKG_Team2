@@ -2,24 +2,22 @@
 <html lang="en">
 <head>
   
-  <title>Doctor Page</title>
+  <title>Citizen Page</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-  
-    
+
   <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
   <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
 
-  <script src="scripts/config/main.js"></script>
-  <script src="scripts/security/home-auth.js"></script>
-  <script src="scripts/guest/authentication.js"></script>
-  <script src="scripts/validations/global-validations.js"></script>
-  <script src="scripts/user/home.js"></script>
-      
+
+  <link: href="cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+  <link href="//cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js">
+
+    
 </head>
 <body>
 
@@ -36,14 +34,14 @@
     </div>
   </nav>
 
-  <div class="container-fluid text-center ">
-    <img id="icon" src="../../../img/efka1.jpg"  alt="efkalogo" width="250px" margin-top="-1px;" margin-bottom="-70px" >  
-    <hr />
-  </div>
-
+<div class="container-fluid text-center ">
+  <img id="icon" src="../../../img/efka1.jpg"  alt="efkalogo" width="250px" margin-top="-5px" margin-bottom="-80px" >  
+  <hr />
+</div>
 
 <div class="container">    
 
+    <br/>
     <h4 class="card-title mt-3 text-center">Αναζήτηση ραντεβού</h4>  <br/> <br/>
 
     <div class="row d-flex justify-content-center">
@@ -51,39 +49,49 @@
         <div class="col-auto text-center" >
 
             <form>
-                <label><b> Από </b></label>
-                <input  class = "text-center" id="datepicker"  width="276">     
+              <div class="form-group text-center">
+                <label for="sel1">Επιλέξτε ειδικότητα:</label>
+                <select class="form-control text-center" id="sel1">
+                  <option> </option>
+                  <option>Καρδιολόγος </option>
+                  <option>Δερματολόγος</option>
+                  <option>Πνευμονολόγος</option>
+                  <option>Ωτορινολαρυγγολόγος</option>
+                  <option>Γυναικολόγος</option>
+                  <option>Παθολόγος</option>
+                  <option>Ορθοπαιδικός</option>
+                  <option>Ουρολόγος</option>
+                  <option>Οφθαλμίατρος</option>
+                  <option>Οδοντίατρος</option>
+                </select>
+              </div>
+
+                <br />       
+                              
+                <label> Ημερομηνία: </label>
+                <input class="text-center" id="datepicker"  width="276"  />     
                 <script>
                     $('#datepicker').datepicker();
                 </script>     
                     
                 <br />
-                <label> <b>Έως</b> </label>
-                <input class = "text-center" id="datepicker1"  width="276"  />     
+
+                <label> Ώρα: </label>
+                <input class="text-center" id="timepicker" width="276" />
                 <script>
-                    $('#datepicker1').datepicker();
-                </script>     
-
-                <br/>
-                   
-                <label><b>Περιγράφη ασθένειας</b></label> <br/>
-                <input id="illness" style="width: 276px;"  type="text" class="form-control"/>   
-                <br/>
-
-                <div>
-                  <button type="button" class="form-control mt-4 btn-primary" style="width: 276px;">Αναζήτηση</button>
-                </div>
-            </form>
-            
-        </div>
-    </div>
-</div>
-
-
-
-
+                  $('#timepicker').timepicker();
+                </script>
+                <br/>           
+             
+            </form>          
+                                      
+            <div>
+                <button type="button" class="form-control mt-4 btn-primary" style="width: 276px;">Αναζήτηση</button>
+            </div>                      
+          </div>
+      </div>
+   </div>
 
 </body>
-
 
 </html>
