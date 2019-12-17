@@ -21,11 +21,6 @@ public class CitizenController {
 	@Autowired
 	public CitizenService citizenService;
 
-	@GetMapping("/citizen/get/{id}")
-	public Citizens getCitizenByAmka(@PathVariable("id") String amka) {
-		return citizenService.retrieveByAmka(amka);
-	}
-
 	@CrossOrigin(origins = "http://localhost:63342")
 	@ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/register")

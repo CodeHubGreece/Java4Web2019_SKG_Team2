@@ -1,6 +1,7 @@
 package org.regeneration.efkajpa.service;
 
 import org.regeneration.efkajpa.entity.Citizens;
+import org.regeneration.efkajpa.entity.Users;
 import org.regeneration.efkajpa.repository.CitizenRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,5 +13,9 @@ public class CitizenService {
 
     public Citizens retrieveByAmka(String amka){
         return citizenRepository.findByAmka(amka);
+    }
+
+    public Citizens retrieveByUserId(Users user){
+        return citizenRepository.findByUsers(user);
     }
 }

@@ -25,7 +25,6 @@ public class AppointmentsController {
 		return appointmentsService.findAppointmentById(id);
 	}
 
-	@CrossOrigin(origins = "http://localhost:63342")
 	@ResponseStatus(HttpStatus.CREATED)
 	@PostMapping("/appointments/create")
 	public void createAppointments(@RequestBody NewAppointment newAppointment) throws ParseException {
@@ -45,7 +44,6 @@ public class AppointmentsController {
 		appointmentsService.updateAppointment(id, sqlDate, updatedAppointment.getTime());
 	}
 
-	@CrossOrigin(origins = "http://localhost:63342")
 	@ResponseStatus(HttpStatus.OK)
 	@GetMapping("/appointments/search/date_specialty")
 	public List<Appointments> getAppointmentsByDateAndSpecialty(@RequestParam(value = "specialtyId", required = true) Specialties specialtyId,
@@ -56,7 +54,6 @@ public class AppointmentsController {
 		return appointmentsService.searchAppointments(specialtyId, sqlFromDate, sqlToDate);
 	}
 
-	@CrossOrigin(origins = "http://localhost:63342")
 	@ResponseStatus(HttpStatus.OK)
 	@GetMapping("/appointments/search/date")
 	public List<Appointments> getAppointmentsByDate(@RequestParam(value = "fromDate", required = true) @DateTimeFormat(pattern="yyyy-MM-dd") Date fromDate,
@@ -66,14 +63,12 @@ public class AppointmentsController {
 		return appointmentsService.searchAppointments(sqlFromDate, sqlToDate);
 	}
 
-	@CrossOrigin(origins = "http://localhost:63342")
 	@ResponseStatus(HttpStatus.OK)
 	@GetMapping("/appointments/search/illness")
 	public List<Appointments> getAppointmentsByIllness(@RequestParam(value = "illnessDescription", required = true) String illnessDescription) throws ParseException {
 		return appointmentsService.searchAppointments(illnessDescription);
 	}
 
-	@CrossOrigin(origins = "http://localhost:63342")
 	@ResponseStatus(HttpStatus.OK)
 	@GetMapping("/appointments/search/date_illness")
 	public List<Appointments> getAppointmentsByDateAndIllness(@RequestParam(value = "fromDate", required = true) @DateTimeFormat(pattern="yyyy-MM-dd") Date fromDate,

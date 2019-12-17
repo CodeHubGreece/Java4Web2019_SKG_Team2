@@ -21,34 +21,24 @@ function login(usernameElement, passwordElement) {
           contentType: false,
           type: 'POST',
           success: function(data){
+
+              console.log(username);
               $.ajax({
-                  url: ROOT_PATH + "/user",
-                    data: JSON.stringify({
-                        "password": password
-                    }),
-                   dataType: 'json',
-                  //processData: false,
-                  contentType: 'application/json',
-                  type: "GET",
-                  success: function(user){
-  //                    if(type==="D"){
-  //                        window.location.replace(ROOT_PATH + "/pages/user/doctor/doctorSearch.html");
-  //                    }else if(type==="C"){
-  //                        window.location.replace(ROOT_PATH + "/pages/user/citizen/createPage.html");
-  //                    }
-                      console.log(user);
-                      //window.location.replace(ROOT_PATH + "/pages/user/citizen/createPage.html");
+                  url: ROOT_PATH + '/user',
+                  type: 'GET',
+                  //contentType: 'application/json',
+                  success: function (user) {
+                    sessionStorage.setItem(SESSION_STORAGE_LOGIN_TOKEN_NAME, user.id);
+                    if(user.type==='D'){
+                        window.location.replace(ROOT_PATH + "/pages/user/doctor/doctorSearch.html");
+                    }else if(user.type==='C'){
+                        window.location.replace(ROOT_PATH + "/pages/user/citizen/createSearchPage.html");
+                    }
                   },
-                  error: function(error){
-                    alert(fd);
-                  },
-                  statusCode: {
-                      401: function() {
-                          alert("Invalid username or password!");
-                      }
+                  error: function (error) {
+                      alert("User not found: " + error);
                   }
               });
-            sessionStorage.setItem(SESSION_STORAGE_LOGIN_TOKEN_NAME, username);
           },
           statusCode: {
             401 : function() {
@@ -68,17 +58,6 @@ function register() {
     let password = document.getElementById('password').value;
     let phone = document.getElementById('phone').value;
     let userType = 'C';
-
-//    let fd = new FormData();
-//    fd.append("amka", amka);
-//    fd.append("lastName", lastName);
-//    fd.append("firstName", firstName);
-//    fd.append("email", email);
-//    fd.append("username", username);
-//    fd.append("password", password);
-//    fd.append("phone", phone);
-//    fd.append("userType", userType);
-//    console.log(fd.lastName);
 
     $.ajax({
         url: ROOT_PATH + '/register',
