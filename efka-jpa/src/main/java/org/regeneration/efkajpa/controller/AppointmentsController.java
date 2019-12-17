@@ -54,29 +54,34 @@ public class AppointmentsController {
 		return appointmentsService.searchAppointments(specialtyId, sqlFromDate, sqlToDate);
 	}
 
+
+
 	@ResponseStatus(HttpStatus.OK)
 	@GetMapping("/appointments/search/date")
 	public List<Appointments> getAppointmentsByDate(@RequestParam(value = "fromDate", required = true) @DateTimeFormat(pattern="yyyy-MM-dd") Date fromDate,
-													@RequestParam(value = "toDate", required = true) @DateTimeFormat(pattern="yyyy-MM-dd") Date toDate) throws ParseException {
+													@RequestParam(value = "toDate", required = true) @DateTimeFormat(pattern="yyyy-MM-dd") Date toDate,
+													@RequestParam(value = "doctorId", required = true) String doctorId) throws ParseException {
 		java.sql.Date sqlFromDate = new java.sql.Date(fromDate.getTime());
 		java.sql.Date sqlToDate = new java.sql.Date(toDate.getTime());
-		return appointmentsService.searchAppointments(sqlFromDate, sqlToDate);
+		return appointmentsService.searchAppointments(sqlFromDate, sqlToDate, doctorId);
 	}
 
 	@ResponseStatus(HttpStatus.OK)
 	@GetMapping("/appointments/search/illness")
-	public List<Appointments> getAppointmentsByIllness(@RequestParam(value = "illnessDescription", required = true) String illnessDescription) throws ParseException {
-		return appointmentsService.searchAppointments(illnessDescription);
+	public List<Appointments> getAppointmentsByIllness(@RequestParam(value = "illnessDescription", required = true) String illnessDescription,
+													   @RequestParam(value = "doctorId", required = true) String doctorId) throws ParseException {
+		return appointmentsService.searchAppointments(illnessDescription, doctorId);
 	}
 
 	@ResponseStatus(HttpStatus.OK)
 	@GetMapping("/appointments/search/date_illness")
 	public List<Appointments> getAppointmentsByDateAndIllness(@RequestParam(value = "fromDate", required = true) @DateTimeFormat(pattern="yyyy-MM-dd") Date fromDate,
 													@RequestParam(value = "toDate", required = true) @DateTimeFormat(pattern="yyyy-MM-dd") Date toDate,
-													@RequestParam(value = "illnessDescription", required = true) String illnessDescription) throws ParseException {
+													@RequestParam(value = "illnessDescription", required = true) String illnessDescription,
+													@RequestParam(value = "doctorId", required = true) String doctorId) throws ParseException {
 		java.sql.Date sqlFromDate = new java.sql.Date(fromDate.getTime());
 		java.sql.Date sqlToDate = new java.sql.Date(toDate.getTime());
-		return appointmentsService.searchAppointments(sqlFromDate, sqlToDate, illnessDescription);
+		return appointmentsService.searchAppointments(sqlFromDate, sqlToDate, illnessDescription, doctorId);
 	}
 
 }

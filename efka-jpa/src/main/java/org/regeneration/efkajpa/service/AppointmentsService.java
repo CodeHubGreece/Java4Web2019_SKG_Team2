@@ -63,15 +63,31 @@ public class AppointmentsService {
         return combinedList;
     }
 
-    public List<Appointments> searchAppointments(Date fromDate, Date toDate){
-        return appointmentsRepository.findByDateBetween(fromDate, toDate);
+    public List<Appointments> searchAppointments(Date fromDate, Date toDate, String doctorId){
+        List<Appointments> dateList = new ArrayList<Appointments>();
+        dateList = appointmentsRepository.findByDateBetween(fromDate, toDate);
+        List<Appointments> resultList = new ArrayList<Appointments>();
+        for(int i=0; i<dateList.size(); i++){
+            if(doctorId.equals(dateList.get(i).getDoctors().getDoctorId())){
+                resultList.add(dateList.get(i));
+            }
+        }
+        return resultList;
     }
 
-    public List<Appointments> searchAppointments(String illnessDescription){
-        return appointmentsRepository.findByIllnessDescription(illnessDescription);
+    public List<Appointments> searchAppointments(String illnessDescription, String doctorId){
+        List<Appointments> illnessList = new ArrayList<Appointments>();
+        illnessList = appointmentsRepository.findByIllnessDescription(illnessDescription);
+        List<Appointments> resultList = new ArrayList<Appointments>();
+        for(int i=0; i<illnessList.size(); i++){
+            if(doctorId.equals(illnessList.get(i).getDoctors().getDoctorId())){
+                resultList.add(illnessList.get(i));
+            }
+        }
+        return resultList;
     }
 
-    public List<Appointments> searchAppointments(Date fromDate, Date toDate, String illnessDescription){
+    public List<Appointments> searchAppointments(Date fromDate, Date toDate, String illnessDescription, String doctorId){
         List<Appointments> dateList = new ArrayList<Appointments>();
         List<Appointments> illnessList = new ArrayList<Appointments>();
         List<Appointments> combinedList = new ArrayList<Appointments>();
@@ -79,7 +95,9 @@ public class AppointmentsService {
         illnessList  = appointmentsRepository.findByIllnessDescription(illnessDescription);
         for(Appointments appointment : dateList){
             if(illnessList.contains(appointment)){
-                combinedList.add(appointment);
+                if(doctorId.equals(appointment.getDoctors().getDoctorId())) {
+                    combinedList.add(appointment);
+                }
             }
         }
         return combinedList;

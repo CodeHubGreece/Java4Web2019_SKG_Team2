@@ -9,8 +9,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.naming.NameAlreadyBoundException;
-import java.util.ArrayList;
-import java.util.List;
 
 @Service
 public class NewUserService {
@@ -32,7 +30,6 @@ public class NewUserService {
         if(!usersRepository.existsByUsername(username)) {
             if(!citizenRepository.existsByAmka(amka)) {
                 Users user = new Users(username, passwordEncoder.encode(password), userType.charAt(0));
-                //Users user = new Users(username, password, userType.charAt(0));
                 usersRepository.save(user);
 
                 Citizens citizen = new Citizens(amka, lastName, firstName, email, phone, user);
@@ -46,13 +43,4 @@ public class NewUserService {
         }
     }
 
-    public void updatePass(){
-        List<Users> users = new ArrayList<Users>();
-        users = usersRepository.findAll();
-        for(Users u : users){
-            String i = u.getPassword();
-            u.setPassword(passwordEncoder.encode(i));
-        }
-        usersRepository.flush();
-    }
 }

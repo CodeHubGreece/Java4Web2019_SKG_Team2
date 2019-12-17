@@ -52,26 +52,26 @@
 
             <form>
                 <label><b> Από </b></label>
-                <input  class = "text-center" id="datepicker"  width="276">     
+                <input  class = "text-center" id="fromDate"  width="276">
                 <script>
-                    $('#datepicker').datepicker();
+                    $('#fromDate').datepicker();
                 </script>     
                     
                 <br />
                 <label> <b>Έως</b> </label>
-                <input class = "text-center" id="datepicker1"  width="276"  />     
+                <input class = "text-center" id="toDate"  width="276"  />
                 <script>
-                    $('#datepicker1').datepicker();
+                    $('#toDate').datepicker();
                 </script>     
 
                 <br/>
                    
                 <label><b>Περιγράφη ασθένειας</b></label> <br/>
-                <input id="illness" style="width: 276px;"  type="text" class="form-control"/>   
+                <input id="illnessDescription" style="width: 276px;"  type="text" class="form-control"/>
                 <br/>
 
                 <div>
-                  <button type="button" onclick="" class="form-control mt-4 btn-primary" style="width: 276px;">Αναζήτηση</button>
+                  <button type="button" onclick="searchAppointmentsDoctor()" class="form-control mt-4 btn-primary" style="width: 276px;">Αναζήτηση</button>
                 </div>
             </form>
             
