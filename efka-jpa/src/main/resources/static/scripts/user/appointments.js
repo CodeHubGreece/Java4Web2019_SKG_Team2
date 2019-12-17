@@ -55,7 +55,7 @@ function createAppointment(){
 }
 
 function searchAppointments(){
-    let specialtyId = document.getElementById("specialtyId").value;
+    let specialtyId = document.getElementById("specialtyIdSearch").value;
     let fromDate = document.getElementById("fromDate").value;
     let toDate = document.getElementById("toDate").value;
 

@@ -103,17 +103,3 @@ function register() {
         }
     });
 }
-
-function test(){
-    $.ajax({
-        url: ROOT_PATH + '/doctors/all',
-        type: 'GET',
-        success: function (result) {
-            alert("User Saved: " + JSON.stringify(result));
-        },
-        error: function (xhr, resp, text) {
-            alert("User not Saved: " + text);
-        }
-    });
-
-}

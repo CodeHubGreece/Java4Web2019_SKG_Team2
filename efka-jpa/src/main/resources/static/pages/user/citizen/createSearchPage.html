@@ -134,37 +134,37 @@
                 <h4 class="card-title mt-3 text-center">Αναζήτηση ραντεβού</h4>  <br/> <br/>
                 <form>
                     <div class="form-group ">
-                        <label for="sel1" >Επιλέξτε ειδικότητα:</label>
-                        <select style="width: 276px;" class="form-control text-center" id="sel1">
-                            <option> </option>
-                            <option>Καρδιολόγος </option>
-                            <option>Δερματολόγος</option>
-                            <option>Πνευμονολόγος</option>
-                            <option>Ωτορινολαρυγγολόγος</option>
-                            <option>Γυναικολόγος</option>
-                            <option>Παθολόγος</option>
-                            <option>Ορθοπαιδικός</option>
-                            <option>Ουρολόγος</option>
-                            <option>Οφθαλμίατρος</option>
-                            <option>Οδοντίατρος</option>
+                        <label for="specialtyIdSearch" >Επιλέξτε ειδικότητα:</label>
+                        <select class="form-control text-center" id="specialtyIdSearch">
+                            <option value="" disabled selected>--Ειδικότητα--</option>
+                            <option value="1">Καρδιολόγος</option>
+                            <option value="2">Δερματολόγος</option>
+                            <option value="3">Πνευμονολόγος</option>
+                            <option value="4">Ωτορινολαρυγγολόγος</option>
+                            <option value="5">Γυναικολόγος</option>
+                            <option value="6">Παθολόγος</option>
+                            <option value="7">Ορθοπαιδικός</option>
+                            <option value="8">Ουρολόγος</option>
+                            <option value="9">Οφθαλμίατρος</option>
+                            <option value="10">Οδοντίατρος</option>
                         </select>
                     </div>
 
                     <br />
 
-                    <label> Ημερομηνία: </label> <br />
-                    <input class="text-center" id="datepicker3" width="276" />
+                    <label> Ημερομηνία από: </label>
+                    <input class="text-center" id="fromDate"  width="276"  />
                     <script>
-                        $('#datepicker3').datepicker();
-                    </script>
+                    $('#fromDate').datepicker();
+                </script>
 
                     <br />
 
-                    <label> Ώρα: </label> <br />
-                    <input class="text-center" id="timepicker2" width="276" />
+                    <label> Ημερομηνία εώς: </label>
+                    <input class="text-center" id="toDate"  width="276"  />
                     <script>
-                        $('#timepicker2').timepicker();
-                    </script>
+                    $('#toDate').datepicker();
+                </script>
                     <br />
 
                 </form>
