@@ -10,7 +10,7 @@ DROP TABLE IF EXISTS users;
 CREATE TABLE users (
 id bigint auto_increment,
 username varchar(50) NOT NULL,
-`password` varchar(50) NOT NULL,
+`password` varchar(100) NOT NULL,
 `type` char(1) NOT NULL,
 PRIMARY KEY (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;

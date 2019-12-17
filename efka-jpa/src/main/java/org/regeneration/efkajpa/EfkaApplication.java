@@ -5,13 +5,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class EfkaApplication implements CommandLineRunner {
+public class EfkaApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(EfkaApplication.class, args);
 	}
 
-	@Override
-	public void run(String... args) throws Exception{
-	}
 }

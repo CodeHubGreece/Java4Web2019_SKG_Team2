@@ -1,7 +1,4 @@
 function login(usernameElement, passwordElement) {
-//     let username = usernameElement && usernameElement.value ? usernameElement.value : "";
-//     let password = passwordElement && passwordElement.value ? passwordElement.value : "";
-//     let type = document.getElementById("userType").value;
 
     let username = usernameElement.value;
     let password = passwordElement.value;

@@ -21,15 +21,13 @@ function getDoctorsBySpecialty(){
 }
 
 function createAppointment(){
-    //let amkaC = document.getElementById('amkaC').value;
+    let amkaC = sessionStorage.getItem(SESSION_STORAGE_LOGIN_TOKEN_NAME);
     let doctorId = document.getElementById("doctorId").value;
     let date = document.getElementById('date').value;
     let time = document.getElementById('time').value;
     let illnessDescription = document.getElementById('illnessDescription').value;
     let comments = document.getElementById('comments').value;
-    let amkaC = "56452859521";
     date = formatDate(date);
-    console.log(date);
     time += ":00";
 
      $.ajax({
@@ -62,15 +60,15 @@ function searchAppointments(){
     fromDate = formatDate(fromDate);
     toDate = formatDate(toDate);
 
+
         $.ajax({
                 url: ROOT_PATH + '/appointments/search/date_specialty',
                 type: 'GET',
-                dataType: 'json',
-                data: JSON.stringify({
-                    "specialtyId": specialtyId,
-                    "fromDate": fromDate,
-                    "toDate": toDate
-                }),
+                data: {
+                    specialtyId: specialtyId,
+                    fromDate: fromDate,
+                    toDate: toDate
+                },
                 contentType: 'application/json',
                 success: function (appointments) {
                     /*let doctorsOptions = '<option value="" disabled selected>--Γιατρός--</option>';

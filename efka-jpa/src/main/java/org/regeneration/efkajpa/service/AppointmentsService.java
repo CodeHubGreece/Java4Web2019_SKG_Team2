@@ -53,9 +53,11 @@ public class AppointmentsService {
         List<Appointments> combinedList = new ArrayList<Appointments>();
         dateList = appointmentsRepository.findByDateBetween(fromDate, toDate);
         doctorsList = doctorRepository.findBySpecialties(specialtyId);
-        for(Appointments appointment : dateList){
-            if(doctorsList.contains(appointment)){
-                combinedList.add(appointment);
+        for(int i=0; i<doctorsList.size(); i++){
+            for(int j=0; j<dateList.size(); j++){
+                if(doctorsList.get(i).getDoctorId().equals(dateList.get(j).getDoctors().getDoctorId())){
+                    combinedList.add(dateList.get(j));
+                }
             }
         }
         return combinedList;
