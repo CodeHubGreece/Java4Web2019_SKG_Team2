@@ -10,12 +10,10 @@ public class ApiUserDetails implements UserDetails {
 
     private final String username;
     private final String password;
-    private final char type;
 
-    public ApiUserDetails(String username, String password, char type) {
+    public ApiUserDetails(String username, String password) {
         this.username = username;
         this.password = password;
-        this.type = type;
     }
 
     @Override
@@ -52,6 +50,4 @@ public class ApiUserDetails implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
-
-    public char getType() {return type; }
 }

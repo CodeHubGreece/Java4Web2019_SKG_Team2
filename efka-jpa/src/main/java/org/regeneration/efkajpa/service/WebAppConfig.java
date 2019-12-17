@@ -3,6 +3,7 @@ package org.regeneration.efkajpa.service;
 import org.regeneration.efkajpa.security.ApiAccessDeniedHandler;
 import org.regeneration.efkajpa.security.ApiAuthenticationEntryPoint;
 import org.regeneration.efkajpa.security.ApiAuthenticationSuccessHandler;
+import org.regeneration.efkajpa.security.ApiUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -23,7 +24,7 @@ public class WebAppConfig extends WebSecurityConfigurerAdapter {
     private ApiAuthenticationEntryPoint authenticationEntryPoint;
     private ApiAuthenticationSuccessHandler apiSuccessHandler;
     private ApiAccessDeniedHandler accessDeniedHandler;
-    private UserDetailsService userDetailsService;
+    private ApiUserDetailsService apiUserDetailsService;
 
     @Autowired
     public void setAuthenticationEntryPoint(ApiAuthenticationEntryPoint authenticationEntryPoint) {
@@ -41,14 +42,14 @@ public class WebAppConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Autowired
-    public void setUserDetailsService(UserDetailsService userDetailsService) {
-        this.userDetailsService = userDetailsService;
+    public void setUserDetailsService(ApiUserDetailsService apiUserDetailsService) {
+        this.apiUserDetailsService = apiUserDetailsService;
     }
 
     @Bean
     public DaoAuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
-        authProvider.setUserDetailsService(userDetailsService);
+        authProvider.setUserDetailsService(apiUserDetailsService);
         authProvider.setPasswordEncoder(passwordEncoder());
         return authProvider;
     }
