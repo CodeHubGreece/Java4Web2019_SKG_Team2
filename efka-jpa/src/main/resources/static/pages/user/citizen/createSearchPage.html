@@ -47,7 +47,7 @@
             <ul class="navbar-nav mr-auto">
             </ul>
             <form>
-                <button type="submit" onclick="logout();" class="btn btn-primary btn-block"> Logout </button><span
+                <button type="button" onclick="logout()" class="btn btn-primary btn-block"> Logout </button><span
                     class="glyphicon glyphicon-log-in"></span>
             </form>
         </div>
@@ -99,32 +99,31 @@
                     <br />
 
                     <label> Ημερομηνία: </label>
-                    <input class="text-center" id="datepicker" width="276" />
+                    <input class="text-center" id="date" width="276" />
                     <script>
-                        $('#datepicker').datepicker();
+                        $('#date').datepicker();
                     </script>
 
                     <br />
 
                     <label> Ώρα: </label>
-                    <input id="timepicker" width="276" />
+                    <input id="time" class="text-center" width="276" />
                     <script>
-                        $('#timepicker').timepicker();
+                        $('#time').timepicker();
                     </script>
                     <br />
 
                     <label>Περιγράψτε την ασθένεια </label> <br />
-                    <input id="illness" style="width: 276px;" type="text" class="form-control" />
+                    <input id="illnessDescription" style="width: 276px;" type="text" class="form-control" />
                     <br /> <br />
 
                     <label>Λοιπές παρατηρήσεις </label> <br />
-                    <input id="comment" style="width: 276px;" type="text" class="form-control" />
+                    <input id="comments" style="width: 276px;" type="text" class="form-control" />
                     <br />
 
 
                     <div>
-                        <button id="btn" type="button" class="form-control mt-4 btn-primary"
-                            style="width: 276px;">Καταχώρηση</button id="btn">
+                        <button id="btn" type="button" class="form-control mt-4 btn-primary" onclick="createAppointment()" style="width: 276px;">Καταχώρηση</button>
                     </div>
                 </form>
                 <hr class="d-sm-none">
@@ -170,7 +169,7 @@
                 </form>
 
                 <div>
-                    <button type="button" class="form-control mt-4 btn-primary" style="width: 276px;">Αναζήτηση</button>
+                    <button type="button" onclick="searchAppointments()" class="form-control mt-4 btn-primary" style="width: 276px;">Αναζήτηση</button>
                 </div>
             </div>
         </div>

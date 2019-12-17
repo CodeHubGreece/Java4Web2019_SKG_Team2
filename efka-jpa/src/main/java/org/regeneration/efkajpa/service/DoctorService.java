@@ -31,4 +31,8 @@ public class DoctorService {
         return doctorRepository.findAll();
     }
 
+    public Doctors retrieveByUserId(Users user){
+        return doctorRepository.findByUsers(user);
+    }
+
 }
