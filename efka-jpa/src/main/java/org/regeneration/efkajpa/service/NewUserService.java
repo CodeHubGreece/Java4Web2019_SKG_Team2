@@ -29,8 +29,8 @@ public class NewUserService {
                       String phone, String userType) throws NameAlreadyBoundException {
         if(!usersRepository.existsByUsername(username)) {
             if(!citizenRepository.existsByAmka(amka)) {
-                //Users user = new Users(username, passwordEncoder.encode(password), type.charAt(0));
-                Users user = new Users(username, password, userType.charAt(0));
+                Users user = new Users(username, passwordEncoder.encode(password), userType.charAt(0));
+                //Users user = new Users(username, password, userType.charAt(0));
                 usersRepository.save(user);
 
                 Citizens citizen = new Citizens(amka, lastName, firstName, email, phone, user);

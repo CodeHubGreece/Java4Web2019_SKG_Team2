@@ -21,14 +21,13 @@ public class ApiUserDetailsService implements UserDetailsService {
     }
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        // find user in repository
+    public ApiUserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Users user = usersRepository.findByUsername(username);
         if (user == null) {
+            System.out.println("1111111111111111111111111111");
             throw new UsernameNotFoundException("username not found");
         }
-
-        ApiUserDetails userDetails = new ApiUserDetails(user.getUsername(), user.getPassword(), user.getType());
-        return userDetails;
+        System.out.println(user.getUsername() + "\n" + user.getPassword() + "\n" + user.getType());
+        return new ApiUserDetails(user.getUsername(), user.getPassword(), user.getType());
     }
 }
