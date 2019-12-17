@@ -18,7 +18,6 @@ public class DoctorController {
 	@Autowired
 	private DoctorService doctorService;
 
-	@CrossOrigin(origins = "http://localhost:63342")
 	@GetMapping("/get_specialty/{specialtyId}")
 	public List<Doctors> getDoctorsBySpecialty(@PathVariable Specialties specialtyId) {
 		return doctorService.retrieveBySpecialty(specialtyId);
