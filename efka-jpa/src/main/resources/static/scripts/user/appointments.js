@@ -87,11 +87,14 @@ function searchAppointmentsCitizen(){
 
 }
 
-function searchAppointmentsDoctor(){
+async function searchAppointmentsDoctor(){
     let fromDate = document.getElementById("fromDate").value;
     let toDate = document.getElementById("toDate").value;
     let illnessDescription = document.getElementById("illnessDescription").value;
     let doctorId = sessionStorage.getItem(SESSION_STORAGE_LOGIN_TOKEN_NAME);
+
+    let successFlag = false;
+    let details = [];
 
     if(fromDate==""){fromDate=null;}
     if(toDate==""){toDate=null;}
@@ -109,13 +112,10 @@ function searchAppointmentsDoctor(){
                 doctorId: doctorId
             },
             contentType: 'application/json',
+            async: false,
             success: function (appointments) {
-                /*let doctorsOptions = '<option value="" disabled selected>--Γιατρός--</option>';
-                for(let i=0; i<doctors.length; i++){
-                    doctorsOptions += '<option value="' + doctors[i].doctorId + '">' + doctors[i].lastName + ' ' + doctors[i].firstName + '</option>';
-                }
-                document.getElementById("doctorId").innerHTML = doctorsOptions;*/
-                console.log(appointments);
+                successFlag = true;
+                getDetails(appointments);
             },
             error: function (text) {
                 alert("ERROR: " + text);
@@ -130,13 +130,10 @@ function searchAppointmentsDoctor(){
                 doctorId: doctorId
             },
             contentType: 'application/json',
+            async: false,
             success: function (appointments) {
-                /*let doctorsOptions = '<option value="" disabled selected>--Γιατρός--</option>';
-                for(let i=0; i<doctors.length; i++){
-                    doctorsOptions += '<option value="' + doctors[i].doctorId + '">' + doctors[i].lastName + ' ' + doctors[i].firstName + '</option>';
-                }
-                document.getElementById("doctorId").innerHTML = doctorsOptions;*/
-                console.log(appointments);
+                successFlag = true;
+                getDetails(appointments);
             },
             error: function (text) {
                 alert("ERROR: " + text);
@@ -155,13 +152,10 @@ function searchAppointmentsDoctor(){
                     doctorId: doctorId
                 },
                 contentType: 'application/json',
+                async: false,
                 success: function (appointments) {
-                    /*let doctorsOptions = '<option value="" disabled selected>--Γιατρός--</option>';
-                    for(let i=0; i<doctors.length; i++){
-                        doctorsOptions += '<option value="' + doctors[i].doctorId + '">' + doctors[i].lastName + ' ' + doctors[i].firstName + '</option>';
-                    }
-                    document.getElementById("doctorId").innerHTML = doctorsOptions;*/
-                    console.log(appointments);
+                    successFlag = true;
+                    getDetails(appointments);
                 },
                 error: function (text) {
                     alert("ERROR: " + text);
@@ -169,6 +163,9 @@ function searchAppointmentsDoctor(){
         });
     } else{
         alert("Please fill in the dates, the illness or both");
+    }
+    if(successFlag){
+        window.location.replace(ROOT_PATH + "/pages/user/doctor/doctorSearchResults.html");
     }
 
 }
@@ -185,4 +182,21 @@ function formatDate(date) {
         day = '0' + day;
 
     return [year, month, day].join('-');
+}
+
+function getDetails(appointments){
+    let details = [];
+    for(let i=0; i<appointments.length; i++){
+        details.push({
+          "date": appointments[i].date,
+          "time": appointments[i].time,
+          "illnessDescription": appointments[i].illnessDescription,
+          "comments": appointments[i].comments,
+          "fullname": appointments[i].citizens.lastName + " " + appointments[i].citizens.firstName,
+          "email": appointments[i].citizens.email,
+          "phone": appointments[i].citizens.phone
+        });
+    }
+    console.log(details);
+    sessionStorage.setItem("appointmentsDetails", JSON.stringify(details));
 }

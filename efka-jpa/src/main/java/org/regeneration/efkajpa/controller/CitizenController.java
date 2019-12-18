@@ -21,7 +21,6 @@ public class CitizenController {
 	@Autowired
 	public CitizenService citizenService;
 
-	@CrossOrigin(origins = "http://localhost:63342")
 	@ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/register")
 	public void createUsers(@RequestBody Registration registration) throws NameAlreadyBoundException {

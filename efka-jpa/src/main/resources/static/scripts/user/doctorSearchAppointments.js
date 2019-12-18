@@ -3,24 +3,26 @@ function format ( d ) {
     // `d` is the original data object for the row
     return '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">'+
         '<tr>'+
-            '<td>Full name:</td>'+
-            '<td>'+d.name+'</td>'+
+            '<td>Ονοματεπώνυμο:</td>'+
+            '<td>'+d.fullname+'</td>'+
         '</tr>'+
         '<tr>'+
-            '<td>Extension number:</td>'+
-            '<td>'+d.extn+'</td>'+
+            '<td>Email:</td>'+
+            '<td>'+d.email+'</td>'+
         '</tr>'+
         '<tr>'+
-            '<td>Extra info:</td>'+
-            '<td>And any further details here (images etc)...</td>'+
+            '<td>Τηλέφωνο:</td>'+
+            '<td>'+d.phone+'</td>'+
         '</tr>'+
     '</table>';
 }
 
 
 $(document).ready(function() {
-    var table = $('#example').DataTable( {
-        "ajax": "../../../ajax/data/objects.txt",
+    let details = JSON.parse(sessionStorage.getItem("appointmentsDetails"));
+    console.log(details);
+    var table = $('#doctorsTable').DataTable( {
+        "data": details,
         "columns": [
             {
                 "className":      'details-control',
@@ -28,19 +30,19 @@ $(document).ready(function() {
                 "data":           null,
                 "defaultContent": ''
             },
-            { "data": "name" },
-            { "data": "position" },
-            { "data": "office" },
-            { "data": "salary" }
+            { "data": "date" },
+            { "data": "time" },
+            { "data": "illnessDescription" },
+            { "data": "comments" }
         ],
         "order": [[1, 'asc']]
     } );
      
     // Add event listener for opening and closing details
-    $('#example tbody').on('click', 'td.details-control', function () {
+    $('#doctorsTable tbody').on('click', 'td.details-control', function () {
         var tr = $(this).closest('tr');
         var row = table.row( tr );
- 
+
         if ( row.child.isShown() ) {
             // This row is already open - close it
             row.child.hide();
