@@ -103,6 +103,10 @@ async function searchAppointmentsDoctor(){
     if(fromDate!==null && toDate!==null && illnessDescription===null){
     fromDate = formatDate(fromDate);
     toDate = formatDate(toDate);
+
+    window.location.replace(ROOT_PATH + "/pages/user/doctor/doctorSearchResults.html?fromDate=" + fromDate + "&toDate=" + toDate);
+    return;
+
         $.ajax({
             url: ROOT_PATH + '/appointments/search/date',
             type: 'GET',

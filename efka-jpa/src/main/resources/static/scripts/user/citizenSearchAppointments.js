@@ -1,56 +1,81 @@
-
-/* Formatting function for row details - modify as you need */
-function format ( d ) {
-    // `d` is the original data object for the row
-    return '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">'+
-        '<tr>'+
-            '<td>Full name:</td>'+
-            '<td>'+d.name+'</td>'+
-        '</tr>'+
-        '<tr>'+
-            '<td>Extension number:</td>'+
-            '<td>'+d.extn+'</td>'+
-        '</tr>'+
-        '<tr>'+
-            '<td>Extra info:</td>'+
-            '<td>And any further details here (images etc)...</td>'+
-        '</tr>'+
-    '</table>';
-}
-
-
 $(document).ready(function() {
-    var table = $('#example').DataTable( {
-        "ajax": "../../../ajax/data/objects.txt",
-        "columns": [
-            {
-                "className":      'details-control',
-                "orderable":      false,
-                "data":           null,
-                "defaultContent": ''
-            },
-            { "data": "name" },
-            { "data": "position" },
-            { "data": "office" },
-            { "data": "salary" }
-        ],
-        "order": [[1, 'asc']]
+    editor = new $.fn.dataTable.Editor( {
+        "ajax": "../../../ajax/data/appointments.txt",
+        "table": "#example",
+        "fields": [ {
+                "label": "First name:",
+                "name": "first_name"
+            }, {
+                "label": "Last name:",
+                "name": "last_name"
+            }, {
+                "label": "Position:",
+                "name": "position"
+            }, {
+                "label": "Office:",
+                "name": "office"
+            }, {
+                "label": "Extension:",
+                "name": "extn"
+            }, {
+                "label": "Start date:",
+                "name": "start_date",
+                "type": "datetime"
+            }, {
+                "label": "Salary:",
+                "name": "salary"
+            }
+        ]
     } );
-     
-    // Add event listener for opening and closing details
-    $('#example tbody').on('click', 'td.details-control', function () {
-        var tr = $(this).closest('tr');
-        var row = table.row( tr );
  
-        if ( row.child.isShown() ) {
-            // This row is already open - close it
-            row.child.hide();
-            tr.removeClass('shown');
-        }
-        else {
-            // Open this row
-            row.child( format(row.data()) ).show();
-            tr.addClass('shown');
-        }
+    // New record
+    $('a.editor_create').on('click', function (e) {
+        e.preventDefault();
+ 
+        editor.create( {
+            title: 'Create new record',
+            buttons: 'Add'
+        } );
+    } );
+ 
+    // Edit record
+    $('#example').on('click', 'a.editor_edit', function (e) {
+        e.preventDefault();
+ 
+        editor.edit( $(this).closest('tr'), {
+            title: 'Edit record',
+            buttons: 'Update'
+        } );
+    } );
+ 
+    // Delete a record
+    $('#example').on('click', 'a.editor_remove', function (e) {
+        e.preventDefault();
+ 
+        editor.remove( $(this).closest('tr'), {
+            title: 'Delete record',
+            message: 'Are you sure you wish to remove this record?',
+            buttons: 'Delete'
+        } );
+    } );
+ 
+    $('#example').DataTable( {
+        ajax: "../php/staff.php",
+        columns: [
+            { data: null, render: function ( data, type, row ) {
+                // Combine the first and last names into a single table field
+                return data.first_name+' '+data.last_name;
+            } },
+            { data: "position" },
+            { data: "office" },
+            { data: "extn" },
+            { data: "start_date" },
+            { data: "salary", render: $.fn.dataTable.render.number( ',', '.', 0, '$' ) },
+            {
+                data: null,
+                className: "center",
+                defaultContent: '<a href="" class="editor_edit">Edit</a> / <a href="" class="editor_remove">Delete</a>'
+            }
+        ]
     } );
 } );

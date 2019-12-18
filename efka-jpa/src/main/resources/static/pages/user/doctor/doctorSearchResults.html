@@ -1,10 +1,10 @@
+
 <!DOCTYPE html>
 <head>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
     <script src="../../../scripts/user/doctorSearchAppointments.js"></script>
-
     <link href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css" rel="stylesheet">
     
     <title>Appointment Results</title>
@@ -24,7 +24,6 @@
     <!-- <script src="../../../scripts/user/appointments.js"></script>  insert doc here         -->
     <script src="../../../scripts/config/main.js"></script>
     <script src="../../../scripts/user/home.js"></script>
-<!--    <script src="../../../scripts/user/appointmentsResults.js"></script>-->
 
     <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
 
@@ -38,7 +37,7 @@
             <ul class="navbar-nav mr-auto">
             </ul>
             <form>
-                <button type="button" onclick="logout()" class="btn btn-primary btn-block"> Logout </button><span
+                <button type="submit" onclick="logout();" class="btn btn-primary btn-block"> Logout </button><span
                     class="glyphicon glyphicon-log-in"></span>
             </form>
         </div>
@@ -50,8 +49,8 @@
         <hr />
     </div>
 
-<table id="doctorsTable" class="display" style="width:95%;align:center" >
-    <thead>
+    <table id="doctorsTable" class="display" style="width:95%;align:center" >
+        <thead>
         <tr>
             <th></th>
             <th>Ημερομηνία</th>
@@ -59,8 +58,8 @@
             <th>Ασθένεια</th>
             <th>Σχόλια</th>
         </tr>
-    </thead>
-</table>
+        </thead>
+    </table>
 
 </body>
 <style>
@@ -71,5 +70,18 @@
     tr.shown td.details-control {
         background: url('../../../img/details_close.png') no-repeat center center;
     }
-    </style>
+
+    .dataTables_wrapper .dataTables_length  {
+
+    display: none;
+    }
+    .dataTables_wrapper .dataTables_filter {
+        display: none;
+    }
+    .dataTables_wrapper .dataTables_info {
+         display: none;
+    }
+    .dataTables_wrapper .dataTables_paginate {
+        padding-bottom: 20px;}
+</style>
 </html>
