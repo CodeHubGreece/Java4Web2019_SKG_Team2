@@ -1,3 +1,4 @@
+
 /* Formatting function for row details - modify as you need */
 function format ( d ) {
     // `d` is the original data object for the row

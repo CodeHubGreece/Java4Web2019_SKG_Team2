@@ -29,7 +29,7 @@ h4{
   color: red;
 }
 
-.field. invalid-data {
+.field .invalid-data {
   border: 1px solid red !important;
   outline: initial !important;
 }
