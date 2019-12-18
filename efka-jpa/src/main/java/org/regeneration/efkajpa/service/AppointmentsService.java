@@ -47,7 +47,7 @@ public class AppointmentsService {
         appointmentsRepository.flush();
     }
 
-    public List<Appointments> searchAppointments(Specialties specialtyId, Date fromDate, Date toDate, String amka){
+    public List<Appointments> searchAppointments(Specialties specialtyId, Date fromDate, Date toDate){
         List<Appointments> dateList = new ArrayList<Appointments>();
         List<Doctors> doctorsList = new ArrayList<Doctors>();
         List<Appointments> combinedList = new ArrayList<Appointments>();
@@ -56,40 +56,34 @@ public class AppointmentsService {
         for(int i=0; i<doctorsList.size(); i++){
             for(int j=0; j<dateList.size(); j++){
                 if(doctorsList.get(i).getDoctorId().equals(dateList.get(j).getDoctors().getDoctorId())){
-                    if(dateList.get(j).getCitizens().getAmka().equals(amka)){
-                        combinedList.add(dateList.get(j));
-                    }
+                    combinedList.add(dateList.get(j));
                 }
             }
         }
         return combinedList;
     }
 
-    public List<Appointments> searchAppointments(Date fromDate, Date toDate, String doctorId){
+    public List<Appointments> searchAppointments(Date fromDate, Date toDate){
         List<Appointments> dateList = new ArrayList<Appointments>();
         dateList = appointmentsRepository.findByDateBetween(fromDate, toDate);
         List<Appointments> resultList = new ArrayList<Appointments>();
         for(int i=0; i<dateList.size(); i++){
-            if(doctorId.equals(dateList.get(i).getDoctors().getDoctorId())){
-                resultList.add(dateList.get(i));
-            }
+            resultList.add(dateList.get(i));
         }
         return resultList;
     }
 
-    public List<Appointments> searchAppointments(String illnessDescription, String doctorId){
+    public List<Appointments> searchAppointments(String illnessDescription){
         List<Appointments> illnessList = new ArrayList<Appointments>();
         illnessList = appointmentsRepository.findByIllnessDescription(illnessDescription);
         List<Appointments> resultList = new ArrayList<Appointments>();
         for(int i=0; i<illnessList.size(); i++){
-            if(doctorId.equals(illnessList.get(i).getDoctors().getDoctorId())){
-                resultList.add(illnessList.get(i));
-            }
+            resultList.add(illnessList.get(i));
         }
         return resultList;
     }
 
-    public List<Appointments> searchAppointments(Date fromDate, Date toDate, String illnessDescription, String doctorId){
+    public List<Appointments> searchAppointments(Date fromDate, Date toDate, String illnessDescription){
         List<Appointments> dateList = new ArrayList<Appointments>();
         List<Appointments> illnessList = new ArrayList<Appointments>();
         List<Appointments> combinedList = new ArrayList<Appointments>();
@@ -97,9 +91,7 @@ public class AppointmentsService {
         illnessList  = appointmentsRepository.findByIllnessDescription(illnessDescription);
         for(Appointments appointment : dateList){
             if(illnessList.contains(appointment)){
-                if(doctorId.equals(appointment.getDoctors().getDoctorId())) {
-                    combinedList.add(appointment);
-                }
+                combinedList.add(appointment);
             }
         }
         return combinedList;

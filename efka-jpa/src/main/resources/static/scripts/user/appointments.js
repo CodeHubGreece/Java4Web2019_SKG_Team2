@@ -100,77 +100,90 @@ async function searchAppointmentsDoctor(){
     if(toDate==""){toDate=null;}
     if(illnessDescription==""){illnessDescription=null;}
 
-    if(fromDate!==null && toDate!==null && illnessDescription===null){
-    fromDate = formatDate(fromDate);
-    toDate = formatDate(toDate);
-
-    window.location.replace(ROOT_PATH + "/pages/user/doctor/doctorSearchResults.html?fromDate=" + fromDate + "&toDate=" + toDate);
-    return;
-
-        $.ajax({
-            url: ROOT_PATH + '/appointments/search/date',
-            type: 'GET',
-            data: {
-                fromDate: fromDate,
-                toDate: toDate,
-                doctorId: doctorId
-            },
-            contentType: 'application/json',
-            async: false,
-            success: function (appointments) {
-                successFlag = true;
-                getDetails(appointments);
-            },
-            error: function (text) {
-                alert("ERROR: " + text);
-            }
-        });
-    } else if(fromDate===null && toDate===null && illnessDescription!==null){
-        $.ajax({
-            url: ROOT_PATH + '/appointments/search/illness',
-            type: 'GET',
-            data: {
-                illnessDescription: illnessDescription,
-                doctorId: doctorId
-            },
-            contentType: 'application/json',
-            async: false,
-            success: function (appointments) {
-                successFlag = true;
-                getDetails(appointments);
-            },
-            error: function (text) {
-                alert("ERROR: " + text);
-            }
-        });
+    if(fromDate!=null && toDate!=null && illnessDescription==null){
+        fromDate = formatDate(fromDate);
+        toDate = formatDate(toDate);
+        window.location.replace(ROOT_PATH + "/pages/user/doctor/doctorSearchResults.html?fromDate=" + fromDate + "&toDate=" + toDate);
+    } else if(fromDate==null && toDate==null && illnessDescription!=null){
+//        window.location.replace(ROOT_PATH + "/pages/user/doctor/doctorSearchResults.html?fromDate=null" + "&toDate=null" + "&illnessDescription=" + illnessDescription);
+        window.location.replace(ROOT_PATH + "/pages/user/doctor/doctorSearchResults.html?illnessDescription=" + illnessDescription);
     } else if(fromDate!==null && toDate!==null && illnessDescription!==null){
         fromDate = formatDate(fromDate);
         toDate = formatDate(toDate);
-        $.ajax({
-                url: ROOT_PATH + '/appointments/search/date_illness',
-                type: 'GET',
-                data: {
-                    fromDate: fromDate,
-                    toDate: toDate,
-                    illnessDescription: illnessDescription,
-                    doctorId: doctorId
-                },
-                contentType: 'application/json',
-                async: false,
-                success: function (appointments) {
-                    successFlag = true;
-                    getDetails(appointments);
-                },
-                error: function (text) {
-                    alert("ERROR: " + text);
-                }
-        });
+        window.location.replace(ROOT_PATH + "/pages/user/doctor/doctorSearchResults.html?fromDate=" + fromDate + "&toDate=" + toDate + "&illnessDescription=" + illnessDescription);
     } else{
         alert("Please fill in the dates, the illness or both");
     }
-    if(successFlag){
-        window.location.replace(ROOT_PATH + "/pages/user/doctor/doctorSearchResults.html");
-    }
+
+
+//
+//    window.location.replace(ROOT_PATH + "/pages/user/doctor/doctorSearchResults.html?fromDate=" + fromDate + "&toDate=" + toDate + "&illnessDescription=null");
+//    return;
+//
+//        $.ajax({
+//            url: ROOT_PATH + '/appointments/search/date',
+//            type: 'GET',
+//            data: {
+//                fromDate: fromDate,
+//                toDate: toDate,
+//                doctorId: doctorId
+//            },
+//            contentType: 'application/json',
+//            async: false,
+//            success: function (appointments) {
+//                successFlag = true;
+//                getDetails(appointments);
+//            },
+//            error: function (text) {
+//                alert("ERROR: " + text);
+//            }
+//        });
+//    } else if(fromDate===null && toDate===null && illnessDescription!==null){
+//        $.ajax({
+//            url: ROOT_PATH + '/appointments/search/illness',
+//            type: 'GET',
+//            data: {
+//                illnessDescription: illnessDescription,
+//                doctorId: doctorId
+//            },
+//            contentType: 'application/json',
+//            async: false,
+//            success: function (appointments) {
+//                successFlag = true;
+//                getDetails(appointments);
+//            },
+//            error: function (text) {
+//                alert("ERROR: " + text);
+//            }
+//        });
+//    } else if(fromDate!==null && toDate!==null && illnessDescription!==null){
+//        fromDate = formatDate(fromDate);
+//        toDate = formatDate(toDate);
+//        $.ajax({
+//                url: ROOT_PATH + '/appointments/search/date_illness',
+//                type: 'GET',
+//                data: {
+//                    fromDate: fromDate,
+//                    toDate: toDate,
+//                    illnessDescription: illnessDescription,
+//                    doctorId: doctorId
+//                },
+//                contentType: 'application/json',
+//                async: false,
+//                success: function (appointments) {
+//                    successFlag = true;
+//                    getDetails(appointments);
+//                },
+//                error: function (text) {
+//                    alert("ERROR: " + text);
+//                }
+//        });
+//    } else{
+//        alert("Please fill in the dates, the illness or both");
+//    }
+//    if(successFlag){
+//        window.location.replace(ROOT_PATH + "/pages/user/doctor/doctorSearchResults.html");
+//    }
 
 }
 

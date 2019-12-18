@@ -44,45 +44,47 @@ public class AppointmentsController {
 		appointmentsService.updateAppointment(id, sqlDate, updatedAppointment.getTime());
 	}
 
+//	@ResponseStatus(HttpStatus.OK)
+//	@GetMapping("/appointments/search/date_specialty")
+//	public List<Appointments> getAppointmentsByDateAndSpecialty(@RequestParam(value = "specialtyId", required = true) Specialties specialtyId,
+//																@RequestParam(value = "fromDate", required = true) @DateTimeFormat(pattern="yyyy-MM-dd") Date fromDate,
+//																@RequestParam(value = "toDate", required = true) @DateTimeFormat(pattern="yyyy-MM-dd") Date toDate) throws ParseException {
+//		java.sql.Date sqlFromDate = new java.sql.Date(fromDate.getTime());
+//		java.sql.Date sqlToDate = new java.sql.Date(toDate.getTime());
+//		return appointmentsService.searchAppointments(specialtyId, sqlFromDate, sqlToDate);
+//	}
+//
+//	@ResponseStatus(HttpStatus.OK)
+//	@GetMapping("/appointments/search/date")
+//	public List<Appointments> getAppointmentsByDate(@RequestParam(value = "fromDate", required = true) @DateTimeFormat(pattern="yyyy-MM-dd") Date fromDate,
+//													@RequestParam(value = "toDate", required = true) @DateTimeFormat(pattern="yyyy-MM-dd") Date toDate) throws ParseException {
+//
+//		java.sql.Date sqlFromDate = new java.sql.Date(fromDate.getTime());
+//		java.sql.Date sqlToDate = new java.sql.Date(toDate.getTime());
+//		return appointmentsService.searchAppointments(sqlFromDate, sqlToDate);
+//	}
+//
+//	@ResponseStatus(HttpStatus.OK)
+//	@GetMapping("/appointments/search/illness")
+//	public List<Appointments> getAppointmentsByIllness(@RequestParam(value = "illnessDescription", required = true) String illnessDescription) throws ParseException {
+//		return appointmentsService.searchAppointments(illnessDescription);
+//	}
+
 	@ResponseStatus(HttpStatus.OK)
-	@GetMapping("/appointments/search/date_specialty")
-	public List<Appointments> getAppointmentsByDateAndSpecialty(@RequestParam(value = "specialtyId", required = true) Specialties specialtyId,
-																@RequestParam(value = "fromDate", required = true) @DateTimeFormat(pattern="yyyy-MM-dd") Date fromDate,
-																@RequestParam(value = "toDate", required = true) @DateTimeFormat(pattern="yyyy-MM-dd") Date toDate,
-																@RequestParam(value = "amka", required = true) String amka) throws ParseException {
+	@GetMapping("/pages/user/doctor/doctorSearchResults")
+	public List<Appointments> getAppointmentsByDateAndIllness(@RequestParam(value = "fromDate", required = false) @DateTimeFormat(pattern="yyyy-MM-dd") Date fromDate,
+													@RequestParam(value = "toDate", required = false) @DateTimeFormat(pattern="yyyy-MM-dd") Date toDate,
+													@RequestParam(value = "illnessDescription", required = false) String illnessDescription) throws ParseException {
+		if(fromDate!=null && toDate!=null && illnessDescription==null){
+			java.sql.Date sqlFromDate = new java.sql.Date(fromDate.getTime());
+			java.sql.Date sqlToDate = new java.sql.Date(toDate.getTime());
+			return appointmentsService.searchAppointments(sqlFromDate, sqlToDate);
+		} else if(fromDate==null && toDate==null && illnessDescription!=null){
+			return appointmentsService.searchAppointments(illnessDescription);
+		}
 		java.sql.Date sqlFromDate = new java.sql.Date(fromDate.getTime());
 		java.sql.Date sqlToDate = new java.sql.Date(toDate.getTime());
-		return appointmentsService.searchAppointments(specialtyId, sqlFromDate, sqlToDate, amka);
-	}
-
-
-
-	@ResponseStatus(HttpStatus.OK)
-	@GetMapping("/appointments/search/date")
-	public List<Appointments> getAppointmentsByDate(@RequestParam(value = "fromDate", required = true) @DateTimeFormat(pattern="yyyy-MM-dd") Date fromDate,
-													@RequestParam(value = "toDate", required = true) @DateTimeFormat(pattern="yyyy-MM-dd") Date toDate,
-													@RequestParam(value = "doctorId", required = true) String doctorId) throws ParseException {
-		java.sql.Date sqlFromDate = new java.sql.Date(fromDate.getTime());
-		java.sql.Date sqlToDate = new java.sql.Date(toDate.getTime());
-		return appointmentsService.searchAppointments(sqlFromDate, sqlToDate, doctorId);
-	}
-
-	@ResponseStatus(HttpStatus.OK)
-	@GetMapping("/appointments/search/illness")
-	public List<Appointments> getAppointmentsByIllness(@RequestParam(value = "illnessDescription", required = true) String illnessDescription,
-													   @RequestParam(value = "doctorId", required = true) String doctorId) throws ParseException {
-		return appointmentsService.searchAppointments(illnessDescription, doctorId);
-	}
-
-	@ResponseStatus(HttpStatus.OK)
-	@GetMapping("/appointments/search/date_illness")
-	public List<Appointments> getAppointmentsByDateAndIllness(@RequestParam(value = "fromDate", required = true) @DateTimeFormat(pattern="yyyy-MM-dd") Date fromDate,
-													@RequestParam(value = "toDate", required = true) @DateTimeFormat(pattern="yyyy-MM-dd") Date toDate,
-													@RequestParam(value = "illnessDescription", required = true) String illnessDescription,
-													@RequestParam(value = "doctorId", required = true) String doctorId) throws ParseException {
-		java.sql.Date sqlFromDate = new java.sql.Date(fromDate.getTime());
-		java.sql.Date sqlToDate = new java.sql.Date(toDate.getTime());
-		return appointmentsService.searchAppointments(sqlFromDate, sqlToDate, illnessDescription, doctorId);
+		return appointmentsService.searchAppointments(sqlFromDate, sqlToDate, illnessDescription);
 	}
 
 }
