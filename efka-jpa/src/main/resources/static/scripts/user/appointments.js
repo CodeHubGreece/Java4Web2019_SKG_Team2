@@ -56,6 +56,7 @@ function searchAppointmentsCitizen(){
     let specialtyId = document.getElementById("specialtyIdSearch").value;
     let fromDate = document.getElementById("fromDate").value;
     let toDate = document.getElementById("toDate").value;
+    let amka = sessionStorage.getItem(SESSION_STORAGE_LOGIN_TOKEN_NAME);
 
     fromDate = formatDate(fromDate);
     toDate = formatDate(toDate);
@@ -67,7 +68,8 @@ function searchAppointmentsCitizen(){
                 data: {
                     specialtyId: specialtyId,
                     fromDate: fromDate,
-                    toDate: toDate
+                    toDate: toDate,
+                    amka: amka
                 },
                 contentType: 'application/json',
                 success: function (appointments) {
@@ -91,33 +93,13 @@ function searchAppointmentsDoctor(){
     let illnessDescription = document.getElementById("illnessDescription").value;
     let doctorId = sessionStorage.getItem(SESSION_STORAGE_LOGIN_TOKEN_NAME);
 
+    if(fromDate==""){fromDate=null;}
+    if(toDate==""){toDate=null;}
+    if(illnessDescription==""){illnessDescription=null;}
+
+    if(fromDate!==null && toDate!==null && illnessDescription===null){
     fromDate = formatDate(fromDate);
     toDate = formatDate(toDate);
-
-    if(fromDate===null && toDate===null && illnessDescription!==null){
-        $.ajax({
-                url: ROOT_PATH + '/appointments/search/date_illness',
-                type: 'GET',
-                data: {
-                    fromDate: fromDate,
-                    toDate: toDate,
-                    illnessDescription: illnessDescription,
-                    doctorId: doctorId
-                },
-                contentType: 'application/json',
-                success: function (appointments) {
-                    /*let doctorsOptions = '<option value="" disabled selected>--Γιατρός--</option>';
-                    for(let i=0; i<doctors.length; i++){
-                        doctorsOptions += '<option value="' + doctors[i].doctorId + '">' + doctors[i].lastName + ' ' + doctors[i].firstName + '</option>';
-                    }
-                    document.getElementById("doctorId").innerHTML = doctorsOptions;*/
-                    console.log(appointments);
-                },
-                error: function (text) {
-                    alert("ERROR: " + text);
-                }
-        });
-    } else if(illnessDescription!==null){
         $.ajax({
             url: ROOT_PATH + '/appointments/search/date',
             type: 'GET',
@@ -139,7 +121,7 @@ function searchAppointmentsDoctor(){
                 alert("ERROR: " + text);
             }
         });
-    } else if(fromDate===null && toDate===null){
+    } else if(fromDate===null && toDate===null && illnessDescription!==null){
         $.ajax({
             url: ROOT_PATH + '/appointments/search/illness',
             type: 'GET',
@@ -159,6 +141,31 @@ function searchAppointmentsDoctor(){
             error: function (text) {
                 alert("ERROR: " + text);
             }
+        });
+    } else if(fromDate!==null && toDate!==null && illnessDescription!==null){
+        fromDate = formatDate(fromDate);
+        toDate = formatDate(toDate);
+        $.ajax({
+                url: ROOT_PATH + '/appointments/search/date_illness',
+                type: 'GET',
+                data: {
+                    fromDate: fromDate,
+                    toDate: toDate,
+                    illnessDescription: illnessDescription,
+                    doctorId: doctorId
+                },
+                contentType: 'application/json',
+                success: function (appointments) {
+                    /*let doctorsOptions = '<option value="" disabled selected>--Γιατρός--</option>';
+                    for(let i=0; i<doctors.length; i++){
+                        doctorsOptions += '<option value="' + doctors[i].doctorId + '">' + doctors[i].lastName + ' ' + doctors[i].firstName + '</option>';
+                    }
+                    document.getElementById("doctorId").innerHTML = doctorsOptions;*/
+                    console.log(appointments);
+                },
+                error: function (text) {
+                    alert("ERROR: " + text);
+                }
         });
     } else{
         alert("Please fill in the dates, the illness or both");

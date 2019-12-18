@@ -47,7 +47,7 @@ public class AppointmentsService {
         appointmentsRepository.flush();
     }
 
-    public List<Appointments> searchAppointments(Specialties specialtyId, Date fromDate, Date toDate){
+    public List<Appointments> searchAppointments(Specialties specialtyId, Date fromDate, Date toDate, String amka){
         List<Appointments> dateList = new ArrayList<Appointments>();
         List<Doctors> doctorsList = new ArrayList<Doctors>();
         List<Appointments> combinedList = new ArrayList<Appointments>();
@@ -56,7 +56,9 @@ public class AppointmentsService {
         for(int i=0; i<doctorsList.size(); i++){
             for(int j=0; j<dateList.size(); j++){
                 if(doctorsList.get(i).getDoctorId().equals(dateList.get(j).getDoctors().getDoctorId())){
-                    combinedList.add(dateList.get(j));
+                    if(dateList.get(j).getCitizens().getAmka().equals(amka)){
+                        combinedList.add(dateList.get(j));
+                    }
                 }
             }
         }

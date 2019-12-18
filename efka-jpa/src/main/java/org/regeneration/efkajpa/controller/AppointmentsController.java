@@ -48,10 +48,11 @@ public class AppointmentsController {
 	@GetMapping("/appointments/search/date_specialty")
 	public List<Appointments> getAppointmentsByDateAndSpecialty(@RequestParam(value = "specialtyId", required = true) Specialties specialtyId,
 																@RequestParam(value = "fromDate", required = true) @DateTimeFormat(pattern="yyyy-MM-dd") Date fromDate,
-													@RequestParam(value = "toDate", required = true) @DateTimeFormat(pattern="yyyy-MM-dd") Date toDate) throws ParseException {
+																@RequestParam(value = "toDate", required = true) @DateTimeFormat(pattern="yyyy-MM-dd") Date toDate,
+																@RequestParam(value = "amka", required = true) String amka) throws ParseException {
 		java.sql.Date sqlFromDate = new java.sql.Date(fromDate.getTime());
 		java.sql.Date sqlToDate = new java.sql.Date(toDate.getTime());
-		return appointmentsService.searchAppointments(specialtyId, sqlFromDate, sqlToDate);
+		return appointmentsService.searchAppointments(specialtyId, sqlFromDate, sqlToDate, amka);
 	}
 
 
