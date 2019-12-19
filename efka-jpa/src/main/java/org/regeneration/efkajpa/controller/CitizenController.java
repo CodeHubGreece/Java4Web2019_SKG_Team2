@@ -23,9 +23,10 @@ public class CitizenController {
 
 	@ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/register")
-	public void createUsers(@RequestBody Registration registration) throws NameAlreadyBoundException {
+	public Citizens createUsers(@RequestBody Registration registration) throws NameAlreadyBoundException {
 		newUserService.store(registration.getAmka(), registration.getLastName(), registration.getFirstName(), registration.getEmail(), registration.getUsername(),
 				registration.getPassword(), registration.getPhone(), registration.getUserType());
+		return new Citizens();
     }
 
 }
