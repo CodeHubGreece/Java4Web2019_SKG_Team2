@@ -1,26 +1,4 @@
-
-/* Formatting function for row details - modify as you need */
-function format ( d ) {
-    // `d` is the original data object for the row
-    return '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">'+
-        '<tr>'+
-            '<td>Ονοματεπώνυμο:</td>'+
-            '<td>'+d.fullname+'</td>'+
-        '</tr>'+
-        '<tr>'+
-            '<td>Email:</td>'+
-            '<td>'+d.email+'</td>'+
-        '</tr>'+
-        '<tr>'+
-            '<td>Τηλέφωνο:</td>'+
-            '<td>'+d.phone+'</td>'+
-        '</tr>'+
-    '</table>';
-}
-
-
 $(document).ready(function() {
-    let details = JSON.parse(sessionStorage.getItem("appointmentsDetails"));
     let url = new URL(window.location.href);
     let fromDate = url.searchParams.get("fromDate");
     let toDate = url.searchParams.get("toDate");
@@ -40,7 +18,7 @@ $(document).ready(function() {
             async: false,
             success: function (appointments) {
                 let result = getByDoctor(appointments);
-                insertToDataTable(result);
+                populateDataTable(result);
             },
             error: function (text) {
                 alert("ERROR: " + text);
@@ -57,7 +35,7 @@ $(document).ready(function() {
             async: false,
             success: function (appointments) {
                 let result = getByDoctor(appointments);
-                insertToDataTable(result);
+                populateDataTable(result);
             },
             error: function (text) {
                 alert("ERROR: " + text);
@@ -78,14 +56,13 @@ $(document).ready(function() {
                 async: false,
                 success: function (appointments) {
                     let result = getByDoctor(appointments);
-                    insertToDataTable(result);
+                    populateDataTable(result);
                 },
                 error: function (text) {
                     alert("ERROR: " + text);
                 }
         });
     }
-
 } );
 
 function formatDate(date) {
@@ -131,11 +108,12 @@ function insertToDataTable(result){
        "order": [[1, 'asc']]
    } );
 
-   // Add event listener for opening and closing details
-   $('#doctorsTable tbody').on('click', 'td.details-control', function () {
-       var tr = $(this).closest('tr');
-       var row = table.row( tr );
 
+   // Add event listener for opening and closing details
+   $('#doctorsTable tr').on('click', 'td.details-control', function () {
+//       var tr = $(this).closest('tr');
+       console.log(this.id )
+       var row = table.row( tr );
        if ( row.child.isShown() ) {
            // This row is already open - close it
            row.child.hide();
@@ -143,8 +121,49 @@ function insertToDataTable(result){
        }
        else {
            // Open this row
-           row.child( format(row.data()) ).show();
+           row.child( format(result[0].citizens)).show();
            tr.addClass('shown');
        }
    } );
+}
+
+function populateDataTable(appointments) {
+    $("#doctorsTable").append("<tbody>");
+    jQuery.each(appointments, function(i,appointment) {
+        $("#doctorsTable").append("<tr id='appointmentsRow" + appointment.appointmentId + "'><td>" + '<div class="dropdown"><button onclick="show(' +appointment.appointmentId+' )" class="dropbtn">Citizen details</button></div>'
+         + '<div id="' + appointment.appointmentId + '" class="dropdown-content" style="display: none">'
+         + "<p>Ονοματεπώνυμο: " + appointment.citizens.lastName + " " + appointment.citizens.firstName
+         + "<br>"
+         + "Email: " + appointment.citizens.email
+         + "<br>"
+         + "Τηλέφωνο: " + appointment.citizens.phone
+         + '</p>'
+         + "</td><td>" + appointment.date + "</td><td>" + appointment.time + "</td><td>"
+        + appointment.illnessDescription + "</td><td>" + appointment.comments + "</td></tr>");
+     });
+     $("#doctorsTable").append("</tbody>");
+//     $("#doctorsTable tr").click(function() {
+////        loadBook($(this).children("td").html());
+//        //console.log($(this).children("td").html());
+//     });
+    $('#doctorsTable').DataTable();
+
+}
+
+//function loadBook(id) {
+//    $.ajax({
+//        url: ROOT_PATH + "/appointments/" + id
+//    }).then(function(appointment) {
+//       $("input[name=id]").val(appointment.appointmentId);
+//       $("input[name=date]").val(appointment.date);
+//       $("input[name=time]").val(appointment.time);
+//    });
+//};
+
+function show(id){
+    if(document.getElementById(id).style.display === "none"){
+        document.getElementById(id).style.display = "block";
+    } else{
+        document.getElementById(id).style.display = "none";
+    }
 }

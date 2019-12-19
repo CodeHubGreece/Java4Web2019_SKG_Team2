@@ -56,45 +56,36 @@ function searchAppointmentsCitizen(){
     let specialtyId = document.getElementById("specialtyIdSearch").value;
     let fromDate = document.getElementById("fromDate").value;
     let toDate = document.getElementById("toDate").value;
-    let amka = sessionStorage.getItem(SESSION_STORAGE_LOGIN_TOKEN_NAME);
 
     fromDate = formatDate(fromDate);
     toDate = formatDate(toDate);
 
-
-        $.ajax({
-                url: ROOT_PATH + '/appointments/search/date_specialty',
-                type: 'GET',
-                data: {
-                    specialtyId: specialtyId,
-                    fromDate: fromDate,
-                    toDate: toDate,
-                    amka: amka
-                },
-                contentType: 'application/json',
-                success: function (appointments) {
-                    /*let doctorsOptions = '<option value="" disabled selected>--Γιατρός--</option>';
-                    for(let i=0; i<doctors.length; i++){
-                        doctorsOptions += '<option value="' + doctors[i].doctorId + '">' + doctors[i].lastName + ' ' + doctors[i].firstName + '</option>';
-                    }
-                    document.getElementById("doctorId").innerHTML = doctorsOptions;*/
-                    console.log(appointments);
-                },
-                error: function (text) {
-                    alert("ERROR: " + text);
-                }
-        });
+    window.location.replace(ROOT_PATH + "/pages/user/citizen/searchResults.html?specialtyId=" + specialtyId + "&fromDate=" + fromDate + "&toDate=" + toDate);
 
 }
 
-async function searchAppointmentsDoctor(){
+//        $.ajax({
+//                url: ROOT_PATH + '/appointments/search/date_specialty',
+//                type: 'GET',
+//                data: {
+//                    specialtyId: specialtyId,
+//                    fromDate: fromDate,
+//                    toDate: toDate,
+//                    amka: amka
+//                },
+//                contentType: 'application/json',
+//                success: function (appointments) {
+//                    console.log(appointments);
+//                },
+//                error: function (text) {
+//                    alert("ERROR: " + text);
+//                }
+//        });
+
+function searchAppointmentsDoctor(){
     let fromDate = document.getElementById("fromDate").value;
     let toDate = document.getElementById("toDate").value;
     let illnessDescription = document.getElementById("illnessDescription").value;
-    let doctorId = sessionStorage.getItem(SESSION_STORAGE_LOGIN_TOKEN_NAME);
-
-    let successFlag = false;
-    let details = [];
 
     if(fromDate==""){fromDate=null;}
     if(toDate==""){toDate=null;}
@@ -105,7 +96,6 @@ async function searchAppointmentsDoctor(){
         toDate = formatDate(toDate);
         window.location.replace(ROOT_PATH + "/pages/user/doctor/doctorSearchResults.html?fromDate=" + fromDate + "&toDate=" + toDate);
     } else if(fromDate==null && toDate==null && illnessDescription!=null){
-//        window.location.replace(ROOT_PATH + "/pages/user/doctor/doctorSearchResults.html?fromDate=null" + "&toDate=null" + "&illnessDescription=" + illnessDescription);
         window.location.replace(ROOT_PATH + "/pages/user/doctor/doctorSearchResults.html?illnessDescription=" + illnessDescription);
     } else if(fromDate!==null && toDate!==null && illnessDescription!==null){
         fromDate = formatDate(fromDate);
@@ -114,77 +104,6 @@ async function searchAppointmentsDoctor(){
     } else{
         alert("Please fill in the dates, the illness or both");
     }
-
-
-//
-//    window.location.replace(ROOT_PATH + "/pages/user/doctor/doctorSearchResults.html?fromDate=" + fromDate + "&toDate=" + toDate + "&illnessDescription=null");
-//    return;
-//
-//        $.ajax({
-//            url: ROOT_PATH + '/appointments/search/date',
-//            type: 'GET',
-//            data: {
-//                fromDate: fromDate,
-//                toDate: toDate,
-//                doctorId: doctorId
-//            },
-//            contentType: 'application/json',
-//            async: false,
-//            success: function (appointments) {
-//                successFlag = true;
-//                getDetails(appointments);
-//            },
-//            error: function (text) {
-//                alert("ERROR: " + text);
-//            }
-//        });
-//    } else if(fromDate===null && toDate===null && illnessDescription!==null){
-//        $.ajax({
-//            url: ROOT_PATH + '/appointments/search/illness',
-//            type: 'GET',
-//            data: {
-//                illnessDescription: illnessDescription,
-//                doctorId: doctorId
-//            },
-//            contentType: 'application/json',
-//            async: false,
-//            success: function (appointments) {
-//                successFlag = true;
-//                getDetails(appointments);
-//            },
-//            error: function (text) {
-//                alert("ERROR: " + text);
-//            }
-//        });
-//    } else if(fromDate!==null && toDate!==null && illnessDescription!==null){
-//        fromDate = formatDate(fromDate);
-//        toDate = formatDate(toDate);
-//        $.ajax({
-//                url: ROOT_PATH + '/appointments/search/date_illness',
-//                type: 'GET',
-//                data: {
-//                    fromDate: fromDate,
-//                    toDate: toDate,
-//                    illnessDescription: illnessDescription,
-//                    doctorId: doctorId
-//                },
-//                contentType: 'application/json',
-//                async: false,
-//                success: function (appointments) {
-//                    successFlag = true;
-//                    getDetails(appointments);
-//                },
-//                error: function (text) {
-//                    alert("ERROR: " + text);
-//                }
-//        });
-//    } else{
-//        alert("Please fill in the dates, the illness or both");
-//    }
-//    if(successFlag){
-//        window.location.replace(ROOT_PATH + "/pages/user/doctor/doctorSearchResults.html");
-//    }
-
 }
 
 function formatDate(date) {
@@ -199,21 +118,4 @@ function formatDate(date) {
         day = '0' + day;
 
     return [year, month, day].join('-');
-}
-
-function getDetails(appointments){
-    let details = [];
-    for(let i=0; i<appointments.length; i++){
-        details.push({
-          "date": appointments[i].date,
-          "time": appointments[i].time,
-          "illnessDescription": appointments[i].illnessDescription,
-          "comments": appointments[i].comments,
-          "fullname": appointments[i].citizens.lastName + " " + appointments[i].citizens.firstName,
-          "email": appointments[i].citizens.email,
-          "phone": appointments[i].citizens.phone
-        });
-    }
-    console.log(details);
-    sessionStorage.setItem("appointmentsDetails", JSON.stringify(details));
 }
