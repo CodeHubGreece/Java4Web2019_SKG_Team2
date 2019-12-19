@@ -9,6 +9,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.naming.NameAlreadyBoundException;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class NewUserService {
@@ -29,11 +31,15 @@ public class NewUserService {
                       String phone, String userType) throws NameAlreadyBoundException {
         if(!usersRepository.existsByUsername(username)) {
             if(!citizenRepository.existsByAmka(amka)) {
-                Users user = new Users(username, passwordEncoder.encode(password), userType.charAt(0));
-                usersRepository.save(user);
+                if(!citizenRepository.existsByEmail(email)) {
+                    Users user = new Users(username, passwordEncoder.encode(password), userType.charAt(0));
+                    usersRepository.save(user);
 
-                Citizens citizen = new Citizens(amka, lastName, firstName, email, phone, user);
-                citizenRepository.save(citizen);
+                    Citizens citizen = new Citizens(amka, lastName, firstName, email, phone, user);
+                    citizenRepository.save(citizen);
+                } else {
+                    throw new NameAlreadyBoundException("This email address already exists");
+                }
             } else {
                 throw new NameAlreadyBoundException("This AMKA number already exists");
             }
@@ -41,6 +47,16 @@ public class NewUserService {
         else {
             throw new NameAlreadyBoundException("Username already exists");
         }
+    }
+
+    public void updatePass() {
+        List<Users> users = new ArrayList<Users>();
+        users = usersRepository.findAll();
+        for (Users u : users) {
+            String i = u.getPassword();
+            u.setPassword(passwordEncoder.encode(i));
+        }
+        usersRepository.flush();
     }
 
 }
