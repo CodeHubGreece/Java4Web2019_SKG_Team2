@@ -96,7 +96,7 @@ function populateDataTable(appointments) {
         $("#doctorsTable").append("<tr id='appointmentsRow" + appointment.appointmentId + "'><td style=\"width: 15%\">" + '<div class="dropdown"><button onclick="show('
          +appointment.appointmentId+' )" class="btn btn-primary btn-block">Στοιχεία ασθενή</button></div>'
          + '<div id="' + appointment.appointmentId + '" class="dropdown-content" style="display: none">'
-         + "<p style= 'margin-top:5px; margin-bottom: auto;'><b>Ονοματεπώνυμο:</b> " + appointment.doctors.lastName + " " + appointment.doctors.firstName
+         + "<p style= 'margin-top:5px; margin-bottom: auto;'><b>Ονοματεπώνυμο:</b> " + appointment.citizens.lastName + " " + appointment.citizens.firstName
          + "<br>"
          + "<b>Email:</b> " + appointment.citizens.email
          + "<br>"

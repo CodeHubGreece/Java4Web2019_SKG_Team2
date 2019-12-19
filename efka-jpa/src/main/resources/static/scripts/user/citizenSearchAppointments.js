@@ -64,31 +64,9 @@ function populateDataTable(appointments) {
             + "</td><td>" + appointment.date + "</td><td>" + appointment.time + "</td><td>"
             + appointment.illnessDescription + "</td><td>" + appointment.comments + "</td><td>"
             + '<div class="dropdown"><button onclick="showUpdate(' + appointment.appointmentId + ')" id="update' + appointment.appointmentId + '" class="btn btn-success" style=\"width: 100%\">Ενημέρωση</button></div>'
-            + '<div id="' + appointment.appointmentId + '" class="dropdown-content" style="display: none">'
-            + "<p>Ονοματεπώνυμο: " + appointment.citizens.lastName + " " + appointment.citizens.firstName
-            + "<br>"
-            + "Email: " + appointment.citizens.email
-            + "<br>"
-            + "Τηλέφωνο: " + appointment.citizens.phone
-            + '</p></div>' + "</td><td>"
-            //+ '<div class="dropdown"><button onclick="(' +appointment.appointmentId+' )" class="dropbtn">Delete</button></div>'
+            + "</td><td>"
             + '<div class="dropdown"><button id="delete' + appointment.appointmentId + '" onclick="deleteRow(' + appointment.appointmentId + ')" class="btn btn-danger" style=\"width: 100%\">Διαγραφή</button></div>'
-            + '<div id="' + appointment.appointmentId + '" class="dropdown-content" style="display: none">'
-            + "<p>Ονοματεπώνυμο: " + appointment.citizens.lastName + " " + appointment.citizens.firstName
-            + "<br>"
-            + "Email: " + appointment.citizens.email
-            + "<br>"
-            + "Τηλέφωνο: " + appointment.citizens.phone
-            + '</p></div>'
             + "</td></tr>");
-//            + "<script>"
-//            +      "$(document).ready(function () {"
-//            +          "$('#updateAppointments').hide();"
-//            +          "$('#update" + appointment.appointmentId + "\"').on('click', function () {"
-//            +              "$(#updateAppointments).show();"
-//            +         "});"
-//            +     "});"
-//            + "</script>");
      });
      $("#citizensTable").append("</tbody>");
     $('#citizensTable').DataTable();

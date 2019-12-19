@@ -72,7 +72,7 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
                     </div>
-                    <input class="form-control" placeholder="Email address" type="email" id="email" type="text" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" maxlength="45" required />
+                    <input class="form-control" placeholder="Email" type="email" id="email" type="text" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" maxlength="45" required />
                     <div class="error-label">Το email σας δεν ακολουθεί το πρότυπο @example.com</div>
                 </div> 
 
@@ -88,7 +88,7 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
                     </div>
-                    <input class="form-control" placeholder="Password" id="password" type="password" pattern="[a-z0-9]{8,}$" maxlength="45" required /> 
+                    <input class="form-control" placeholder="Κωδικός" id="password" type="password" pattern="[a-z0-9]{8,}$" maxlength="45" required />
                     <div class="error-label">Ο κωδικός σας πρέπει να αποτελείται από τουλάχιστον 8 χαρακτήρες.</div>
                 </div>
 
@@ -109,6 +109,25 @@
         </div>
     </div>
  </div>
+
+  <div id = "success" style="display: none">
+      <div class="container">
+          <div class="row d-flex justify-content-center">
+              <div class="col-auto text-center" >
+                  <form >
+                      <label><b id="successMessage">---</b></label>
+                      <br/>
+                      <div>
+                          <button id="successButton" type="button" class="form-control mt-4 btn-primary"
+                                  style="width: 276px;">OK</button>
+                      </div>
+                      <br/>
+
+                  </form>
+              </div>
+          </div>
+      </div>
+  </div>
 
 </body>
 
