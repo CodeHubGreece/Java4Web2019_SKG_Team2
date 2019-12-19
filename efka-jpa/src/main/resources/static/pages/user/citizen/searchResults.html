@@ -71,6 +71,21 @@
         </thead>
     </table>
 
+    <div id="updateAppointment" style="display: none; align: center" class="text-center">
+        <label> Ημερομηνία: </label>
+        <input class="text-center" id="date" width="276" />
+        <script>
+            $('#date').datepicker();
+        </script>
+        <br />
+
+        <label> Ώρα: </label>
+        <input id="time" class="text-center" width="276" />
+        <script>
+            $('#time').timepicker();
+        </script>
+    </div>
+
 </body>
 <style>
     td.details-control {

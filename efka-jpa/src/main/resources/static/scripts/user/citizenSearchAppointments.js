@@ -54,8 +54,8 @@ function getByCitizen(appointments){
 function populateDataTable(appointments) {
     $("#citizensTable").append("<tbody>");
     jQuery.each(appointments, function(i,appointment) {
-        $("#citizensTable").append("<tr id='appointmentsRow" + appointment.appointmentId + "'><td>"
-            + '<div class="dropdown"><button onclick="show(' +appointment.appointmentId+' )" class="dropbtn">Doctor details</button></div>'
+        $("#citizensTable").append("<tr id='appointmentsRow" + appointment.appointmentId + "'><td id=\"td" + appointment.appointmentId + "\" style=\"width: 15%\">"
+            + '<div class="dropdown"><button onclick="show(' +appointment.appointmentId+' )" class="btn btn-primary btn-block">Doctor details</button></div>'
             + '<div id="' + appointment.appointmentId + '" class="dropdown-content" style="display: none">'
             + "<p>Ονοματεπώνυμο: " + appointment.doctors.lastName + " " + appointment.doctors.firstName
             + "<br>"
@@ -63,7 +63,7 @@ function populateDataTable(appointments) {
             + '</p></div>'
             + "</td><td>" + appointment.date + "</td><td>" + appointment.time + "</td><td>"
             + appointment.illnessDescription + "</td><td>" + appointment.comments + "</td><td>"
-            + '<div class="dropdown"><button onclick="show(' +appointment.appointmentId+' )" class="dropbtn">Update</button></div>'
+            + '<div class="dropdown"><button onclick="updateRow(' + appointment.appointmentId + ')" id="update' + appointment.appointmentId + '" class="btn btn-success">Update</button></div>'
             + '<div id="' + appointment.appointmentId + '" class="dropdown-content" style="display: none">'
             + "<p>Ονοματεπώνυμο: " + appointment.citizens.lastName + " " + appointment.citizens.firstName
             + "<br>"
@@ -71,7 +71,8 @@ function populateDataTable(appointments) {
             + "<br>"
             + "Τηλέφωνο: " + appointment.citizens.phone
             + '</p></div>' + "</td><td>"
-            + '<div class="dropdown"><button onclick="show(' +appointment.appointmentId+' )" class="dropbtn">Delete</button></div>'
+            //+ '<div class="dropdown"><button onclick="(' +appointment.appointmentId+' )" class="dropbtn">Delete</button></div>'
+            + '<div class="dropdown"><button id="delete' + appointment.appointmentId + '" onclick="deleteRow(' + appointment.appointmentId + ')" class="btn btn-danger">Delete</button></div>'
             + '<div id="' + appointment.appointmentId + '" class="dropdown-content" style="display: none">'
             + "<p>Ονοματεπώνυμο: " + appointment.citizens.lastName + " " + appointment.citizens.firstName
             + "<br>"
@@ -80,6 +81,14 @@ function populateDataTable(appointments) {
             + "Τηλέφωνο: " + appointment.citizens.phone
             + '</p></div>'
             + "</td></tr>");
+//            + "<script>"
+//            +      "$(document).ready(function () {"
+//            +          "$('#updateAppointments').hide();"
+//            +          "$('#update" + appointment.appointmentId + "\"').on('click', function () {"
+//            +              "$(#updateAppointments).show();"
+//            +         "});"
+//            +     "});"
+//            + "</script>");
      });
      $("#citizensTable").append("</tbody>");
     $('#citizensTable').DataTable();
@@ -89,11 +98,68 @@ function populateDataTable(appointments) {
 function show(id){
     if(document.getElementById(id).style.display === "none"){
         document.getElementById(id).style.display = "block";
+        document.getElementById("td" + id).style.width = "40%";
     } else{
         document.getElementById(id).style.display = "none";
+        document.getElementById("td" + id).style.width = "15%";
     }
 }
 
+function deleteRow(appointmentsId){
+    $("#citizensTable").on('click', function(event){
+        $.ajax({
+            url: ROOT_PATH + "/appointments/delete/" + appointmentsId,
+            type : "DELETE",
+            dataType : 'json',
+            contentType: 'application/json',
+                success : function(result) {
+                    $("#appointmentsRow" + appointmentsId).remove();
+                    $("input[name=fromDate]").val("");
+                    $("input[name=toDate]").val("");
+                    $("input[name=illnessDescription]").val("");
+                    $("input[name=comments]").val("");
+                    $("#appointmentsRow" + appointmentsId).dataTable().fnDraw();
+                },
+                error: function(xhr, resp, text) {
+                    console.log(xhr, resp, text);
+                    alert("Could not delete appointment!");
+                 }
+         })
+    });
+    location.reload();
+}
+
+function updateRow(appointmentsId){
+    document.getElementById("updateAppointment").style.display = "block";
+
+    $("#citizensTable").on('click', function(event){
+        $.ajax({
+            url: ROOT_PATH + "/appointments/update/" + appointmentsId,
+            type : "PUT",
+            dataType : 'json',
+            data: JSON.stringify({
+                "date": "1971-01-01",
+                "time": "10:00:00"
+            }),
+            contentType: 'application/json',
+                success : function(result) {
+//                    $("#appointmentsRow" + appointmentsId).remove();
+//                    $("input[name=fromDate]").val("");
+//                    $("input[name=toDate]").val("");
+//                    $("input[name=illnessDescription]").val("");
+//                    $("input[name=comments]").val("");
+//                    $("#appointmentsRow" + appointmentsId).dataTable().fnDraw();
+                },
+                error: function(xhr, resp, text) {
+                    console.log(xhr, resp, text);
+                    alert("Could not delete appointment!");
+                 }
+         })
+    });
+
+    document.getElementById("update" + id).style.display = "none";
+//    location.reload();
+}
 
 //$(document).ready(function() {
 //    editor = new $.fn.dataTable.Editor( {
