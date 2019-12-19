@@ -28,5 +28,10 @@ public class UserController {
         return apiUserDetailsService.getUserByUsername(user.getName());
     }
 
+    @PutMapping("/pass")
+    public void encodePasswords(){
+        newUserService.updatePass();
+    }
+
 }
 
