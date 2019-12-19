@@ -27,21 +27,23 @@ public class AppointmentsController {
 
 	@ResponseStatus(HttpStatus.CREATED)
 	@PostMapping("/appointments/create")
-	public void createAppointments(@RequestBody NewAppointment newAppointment) throws ParseException {
+	public Appointments createAppointments(@RequestBody NewAppointment newAppointment) throws ParseException {
 		java.sql.Date sqlDate = new java.sql.Date(newAppointment.getDate().getTime());
-		appointmentsService.createAppointment(newAppointment.getAmkaC(), newAppointment.getDoctorId(), sqlDate, newAppointment.getTime(),
+		return appointmentsService.createAppointment(newAppointment.getAmkaC(), newAppointment.getDoctorId(), sqlDate, newAppointment.getTime(),
 				newAppointment.getIllnessDescription(), newAppointment.getComments());
 	}
 
 	@DeleteMapping("/appointments/delete/{id}")
-	public void deleteAppointments (@PathVariable Long id) {
-			appointmentsService.deleteAppointments(id);
+	public Appointments deleteAppointments (@PathVariable Long id) {
+		appointmentsService.deleteAppointments(id);
+		return new Appointments();
 	}
 
 	@PutMapping("/appointments/update/{id}")
-	public void updateAppointmentsById(@PathVariable Long id, @RequestBody NewAppointment updatedAppointment) throws ParseException {
+	public Appointments updateAppointmentsById(@PathVariable Long id, @RequestBody NewAppointment updatedAppointment) throws ParseException {
 		java.sql.Date sqlDate = new java.sql.Date(updatedAppointment.getDate().getTime());
 		appointmentsService.updateAppointment(id, sqlDate, updatedAppointment.getTime());
+		return new Appointments();
 	}
 
 	@ResponseStatus(HttpStatus.OK)

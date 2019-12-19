@@ -31,10 +31,10 @@ public class AppointmentsService {
         return appointmentsRepository.findByAppointmentId(id);
     }
 
-    public void createAppointment(String amkaC, String doctorId, Date date, Time time, String illnessDescription, String comments){
+    public Appointments createAppointment(String amkaC, String doctorId, Date date, Time time, String illnessDescription, String comments){
         Appointments appointment = new Appointments(citizenService.retrieveByAmka(amkaC), doctorService.retrieveByDoctorId(doctorId),
                 date, time, illnessDescription, comments);
-        appointmentsRepository.save(appointment);
+        return appointmentsRepository.save(appointment);
     }
 
     public void deleteAppointments(Long id) {

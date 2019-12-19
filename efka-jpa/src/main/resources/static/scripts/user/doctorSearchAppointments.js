@@ -90,81 +90,32 @@ function getByDoctor(appointments){
     return result;
 }
 
-function insertToDataTable(result){
-   var table = $('#doctorsTable').DataTable( {
-       "data": result,
-       "columns": [
-           {
-               "className":      'details-control',
-               "orderable":      false,
-               "data":           null,
-               "defaultContent": ''
-           },
-           { "data": "date" },
-           { "data": "time" },
-           { "data": "illnessDescription" },
-           { "data": "comments" }
-       ],
-       "order": [[1, 'asc']]
-   } );
-
-
-   // Add event listener for opening and closing details
-   $('#doctorsTable tr').on('click', 'td.details-control', function () {
-//       var tr = $(this).closest('tr');
-       console.log(this.id )
-       var row = table.row( tr );
-       if ( row.child.isShown() ) {
-           // This row is already open - close it
-           row.child.hide();
-           tr.removeClass('shown');
-       }
-       else {
-           // Open this row
-           row.child( format(result[0].citizens)).show();
-           tr.addClass('shown');
-       }
-   } );
-}
-
 function populateDataTable(appointments) {
     $("#doctorsTable").append("<tbody>");
     jQuery.each(appointments, function(i,appointment) {
-        $("#doctorsTable").append("<tr id='appointmentsRow" + appointment.appointmentId + "'><td>" + '<div class="dropdown"><button onclick="show('
-         +appointment.appointmentId+' )" class="dropbtn">Citizen details</button></div>'
+        $("#doctorsTable").append("<tr id='appointmentsRow" + appointment.appointmentId + "'><td style=\"width: 15%\">" + '<div class="dropdown"><button onclick="show('
+         +appointment.appointmentId+' )" class="btn btn-primary btn-block">Στοιχεία ασθενή</button></div>'
          + '<div id="' + appointment.appointmentId + '" class="dropdown-content" style="display: none">'
-         + "<p>Ονοματεπώνυμο: " + appointment.citizens.lastName + " " + appointment.citizens.firstName
+         + "<p style= 'margin-top:5px; margin-bottom: auto;'><b>Ονοματεπώνυμο:</b> " + appointment.doctors.lastName + " " + appointment.doctors.firstName
          + "<br>"
-         + "Email: " + appointment.citizens.email
+         + "<b>Email:</b> " + appointment.citizens.email
          + "<br>"
-         + "Τηλέφωνο: " + appointment.citizens.phone
-         + '</p>'
+         + "<b>Τηλέφωνο:</b> " + appointment.citizens.phone
+         + '</p></div>'
          + "</td><td>" + appointment.date + "</td><td>" + appointment.time + "</td><td>"
         + appointment.illnessDescription + "</td><td>" + appointment.comments + "</td></tr>");
      });
      $("#doctorsTable").append("</tbody>");
-//     $("#doctorsTable tr").click(function() {
-////        loadBook($(this).children("td").html());
-//        //console.log($(this).children("td").html());
-//     });
     $('#doctorsTable').DataTable();
 
 }
 
-//function loadBook(id) {
-//    $.ajax({
-//        url: ROOT_PATH + "/appointments/" + id
-//    }).then(function(appointment) {
-//       $("input[name=id]").val(appointment.appointmentId);
-//       $("input[name=date]").val(appointment.date);
-//       $("input[name=time]").val(appointment.time);
-//    });
-//};
-
 function show(id){
     if(document.getElementById(id).style.display === "none"){
         document.getElementById(id).style.display = "block";
+        document.getElementById("td" + id).style.width = "20%";
     } else{
         document.getElementById(id).style.display = "none";
+        document.getElementById("td" + id).style.width = "15%";
     }
 }

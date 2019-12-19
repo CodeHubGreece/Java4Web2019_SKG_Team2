@@ -71,19 +71,35 @@
         </thead>
     </table>
 
-    <div id="updateAppointment" style="display: none; align: center" class="text-center">
-        <label> Ημερομηνία: </label>
-        <input class="text-center" id="date" width="276" />
-        <script>
-            $('#date').datepicker();
-        </script>
-        <br />
+    <div id = "updateAppointment" style="display: none">
+        <div class="container">
+            <div class="row d-flex justify-content-center">
+                <div class="col-auto text-center" >
+                    <form >
+                        <label><b> Ημερομηνία </b></label>
+                        <input  class = "text-center" id="date"  width="276">
+                        <script>
+                        $('#date').datepicker();
+                    </script>
 
-        <label> Ώρα: </label>
-        <input id="time" class="text-center" width="276" />
-        <script>
-            $('#time').timepicker();
-        </script>
+                        <br />
+                        <label> <b> Ώρα: </b> </label>
+                        <input id="time" class="text-center" width="276" />
+                        <script>
+                            $('#time').timepicker();
+                        </script>
+                        <br/>
+                        <div>
+                            <button id="updateButton" type="button" class="form-control mt-4 btn-primary"
+                                    style="width: 276px;">Καταχώρηση</button>
+                        </div>
+                        <br/>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+
     </div>
 
 </body>
