@@ -130,7 +130,8 @@ function insertToDataTable(result){
 function populateDataTable(appointments) {
     $("#doctorsTable").append("<tbody>");
     jQuery.each(appointments, function(i,appointment) {
-        $("#doctorsTable").append("<tr id='appointmentsRow" + appointment.appointmentId + "'><td>" + '<div class="dropdown"><button onclick="show(' +appointment.appointmentId+' )" class="dropbtn">Citizen details</button></div>'
+        $("#doctorsTable").append("<tr id='appointmentsRow" + appointment.appointmentId + "'><td>" + '<div class="dropdown"><button onclick="show('
+         +appointment.appointmentId+' )" class="dropbtn">Citizen details</button></div>'
          + '<div id="' + appointment.appointmentId + '" class="dropdown-content" style="display: none">'
          + "<p>Ονοματεπώνυμο: " + appointment.citizens.lastName + " " + appointment.citizens.firstName
          + "<br>"
