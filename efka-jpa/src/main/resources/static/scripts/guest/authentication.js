@@ -72,10 +72,12 @@ function register() {
         }),
         contentType: 'application/json',
         success: function () {
-            document.getElementById("successMessage").innerHTML = "Ο χρήστης δημιουργήθηκε επιτυχώς";
-            document.getElementById("success").style.display = "block";
-            let button = document.getElementById("successButton");
-            button.onclick = function(){window.location.replace(ROOT_PATH);};
+//            document.getElementById("successMessage").innerHTML = "Ο χρήστης δημιουργήθηκε επιτυχώς";
+//            document.getElementById("success").style.display = "block";
+//            let button = document.getElementById("successButton");
+//            button.onclick = function(){window.location.replace(ROOT_PATH);};
+            alert("User Saved");
+            window.location.replace(ROOT_PATH);
         },
         error: function (text) {
             alert("User not Saved: " + text);
